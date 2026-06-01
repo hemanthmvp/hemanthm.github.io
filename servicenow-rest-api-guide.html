@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ServiceNow REST API Integration Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --card: #161d2e;
+    --border: #1e2d45;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #0d1117;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, #0a0e1a 0%, #0f172a 40%, #1a0533 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 80%, rgba(124,58,237,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 46px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    font-weight: 300;
+  }
+  .use-case-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  /* SECTION TITLES */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    margin-top: 56px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* CONCEPT GRID */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .concept-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    transition: border-color 0.2s;
+  }
+  .concept-card:hover { border-color: var(--accent); }
+  .method-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .get { background: rgba(16,185,129,0.15); color: var(--green); }
+  .post { background: rgba(0,212,255,0.12); color: var(--accent); }
+  .put { background: rgba(245,158,11,0.12); color: var(--orange); }
+  .del { background: rgba(239,68,68,0.12); color: var(--red); }
+  .concept-label { font-size: 13px; color: var(--text); }
+  .concept-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* TYPE CARDS */
+  .type-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .type-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .type-card.inbound { border-top: 3px solid var(--accent); }
+  .type-card.outbound { border-top: 3px solid var(--accent2); }
+  .type-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .type-card.inbound .type-num { color: var(--accent); }
+  .type-card.outbound .type-num { color: #a78bfa; }
+  .type-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .type-desc { font-size: 13px; color: var(--muted); }
+  .type-example {
+    margin-top: 12px;
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    border-left: 3px solid var(--border);
+  }
+
+  /* STEP CARDS */
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    padding: 28px 28px 28px 24px;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .step-card:first-child { border-radius: 12px 12px 0 0; }
+  .step-card:last-child { border-radius: 0 0 12px 12px; }
+  .step-card:not(:last-child) { border-bottom: none; }
+  .step-card:hover { background: #1a2233; }
+
+  .step-num {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+    margin-top: 2px;
+    box-shadow: 0 0 20px rgba(0,212,255,0.2);
+  }
+  .step-body { flex: 1; }
+  .step-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .step-desc { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+
+  .how-to {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .how-to-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .how-to ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .how-to li {
+    font-size: 13px;
+    color: #94a3b8;
+    padding-left: 16px;
+    position: relative;
+  }
+  .how-to li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  /* CODE BLOCK */
+  .code-block {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-top: 14px;
+    overflow: hidden;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: #0a0f1e;
+  }
+  .code-lang {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+  }
+  .code-dots { display: flex; gap: 6px; }
+  .code-dots span {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  pre {
+    padding: 18px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .kw { color: #ff7b72; }
+  .fn { color: #d2a8ff; }
+  .str { color: #a5d6ff; }
+  .cm { color: #8b949e; font-style: italic; }
+  .num { color: #79c0ff; }
+  .key { color: #ffa657; }
+
+  /* HTTP STATUS */
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .status-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .status-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .status-label { font-size: 12px; color: var(--muted); }
+  .s2xx { color: var(--green); border-top: 3px solid var(--green); }
+  .s4xx { color: var(--orange); border-top: 3px solid var(--orange); }
+  .s5xx { color: var(--red); border-top: 3px solid var(--red); }
+
+  /* BEST PRACTICES */
+  .bp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .bp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .bp-icon {
+    font-size: 20px;
+    margin-top: 2px;
+  }
+  .bp-text { font-size: 13.5px; color: #94a3b8; }
+  .bp-text strong { color: var(--text); display: block; margin-bottom: 3px; }
+
+  /* TIP BOX */
+  .tip-box {
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 32px;
+  }
+  .tip-icon { font-size: 22px; }
+  .tip-text { font-size: 14px; color: #fbbf24; line-height: 1.6; }
+  .tip-text strong { display: block; margin-bottom: 4px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .tag {
+    display: inline-block;
+    background: rgba(124,58,237,0.12);
+    border: 1px solid rgba(124,58,237,0.25);
+    color: #a78bfa;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .type-row { grid-template-columns: 1fr; }
+    .step-card { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Step-by-Step Guide</div>
+  <h1>ServiceNow <span>REST API</span><br>Integration</h1>
+  <p>A fully spoon-fed walkthrough — from zero to a working P1 Incident → Slack alert integration.</p>
+  <div class="use-case-box">
+    🎯 Use Case: Auto-alert Slack whenever a P1 Incident is created in ServiceNow
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- SECTION 1: Core Concepts -->
+  <div class="section-title">01 &nbsp; Core REST API Concepts</div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div>
+        <div class="method-badge get">GET</div>
+      </div>
+      <div>
+        <div class="concept-label">Retrieve Data</div>
+        <div class="concept-sub">Fetch records from ServiceNow</div>
+      </div>
+    </div>
+    <div class="concept-card">
+      <div>
+        <div class="method-badge post">POST</div>
+      </div>
+      <div>
+        <div class="concept-label">Send Data</div>
+        <div class="concept-sub">Create records or send payloads</div>
+      </div>
+    </div>
+    <div class="concept-card">
+      <div>
+        <div class="method-badge put">PUT</div>
+      </div>
+      <div>
+        <div class="concept-label">Update Data</div>
+        <div class="concept-sub">Modify existing records</div>
+      </div>
+    </div>
+    <div class="concept-card">
+      <div>
+        <div class="method-badge del">DELETE</div>
+      </div>
+      <div>
+        <div class="concept-label">Remove Data</div>
+        <div class="concept-sub">Delete records from a system</div>
+      </div>
+    </div>
+  </div>
+  <div class="concept-grid" style="margin-top:10px;">
+    <div class="concept-card">
+      <div style="font-size:18px;margin-top:2px;">🔗</div>
+      <div>
+        <div class="concept-label">Endpoint</div>
+        <div class="concept-sub">The external system's URL you call</div>
+      </div>
+    </div>
+    <div class="concept-card">
+      <div style="font-size:18px;margin-top:2px;">📦</div>
+      <div>
+        <div class="concept-label">JSON</div>
+        <div class="concept-sub">The data format used to exchange info</div>
+      </div>
+    </div>
+    <div class="concept-card" style="grid-column: span 2;">
+      <div style="font-size:18px;margin-top:2px;">📡</div>
+      <div>
+        <div class="concept-label">HTTP Status Codes</div>
+        <div class="concept-sub">Response indicators — tells you if the API call succeeded or failed (200 = OK, 401 = Unauthorized, etc.)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Integration Types -->
+  <div class="section-title">02 &nbsp; Two Types of REST Integration</div>
+  <div class="type-row">
+    <div class="type-card inbound">
+      <div class="type-num">① Inbound</div>
+      <div class="type-title">External → ServiceNow</div>
+      <div class="type-desc">An outside system sends data INTO ServiceNow. ServiceNow acts as the receiver.</div>
+      <div class="type-example">Jira creates an Incident in ServiceNow</div>
+    </div>
+    <div class="type-card outbound">
+      <div class="type-num">② Outbound</div>
+      <div class="type-title">ServiceNow → External</div>
+      <div class="type-desc">ServiceNow sends data OUT to another system. ServiceNow acts as the caller.</div>
+      <div class="type-example">ServiceNow sends an alert to Slack</div>
+    </div>
+  </div>
+  <p style="font-size:13px; color: var(--muted); margin-top: 10px;">💡 Our use case is <strong style="color:var(--text)">Outbound</strong> — ServiceNow calls the Slack Webhook.</p>
+
+  <!-- SECTION 3: Step by Step -->
+  <div class="section-title">03 &nbsp; Step-by-Step Implementation</div>
+  <div class="steps-list">
+
+    <!-- STEP 1 -->
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Create a Slack Incoming Webhook</div>
+        <div class="step-desc">Get the Slack URL that ServiceNow will POST messages to.</div>
+        <div class="how-to">
+          <div class="how-to-title">How to do it</div>
+          <ul>
+            <li>Go to <strong>api.slack.com/apps</strong> → Click "Create New App"</li>
+            <li>Choose <strong>"From Scratch"</strong> → give it a name (e.g., SN-Alerts)</li>
+            <li>Under "Add Features", click <strong>"Incoming Webhooks"</strong></li>
+            <li>Toggle ON → Click <strong>"Add New Webhook to Workspace"</strong></li>
+            <li>Pick the Slack channel → Click <strong>Allow</strong></li>
+            <li>Copy the Webhook URL — it looks like:<br><code style="color:var(--accent);font-family:monospace;font-size:12px">https://hooks.slack.com/services/T.../B.../xxx</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Configure a REST Message in ServiceNow</div>
+        <div class="step-desc">Tell ServiceNow about the external system it will call — this is called a "REST Message".</div>
+        <div class="how-to">
+          <div class="how-to-title">How to do it</div>
+          <ul>
+            <li>In ServiceNow, navigate to <strong>System Web Services → Outbound → REST Message</strong></li>
+            <li>Click <strong>New</strong></li>
+            <li><strong>Name:</strong> e.g., <code style="font-family:monospace;color:var(--accent)">Slack_P1_Alert</code></li>
+            <li><strong>Endpoint:</strong> Paste your Slack Webhook URL here</li>
+            <li>Authentication: <strong>No authentication</strong> (Slack webhook handles it via the URL)</li>
+            <li>Click <strong>Submit</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Add an HTTP POST Method</div>
+        <div class="step-desc">Define the actual POST call and what JSON payload (message) to send to Slack.</div>
+        <div class="how-to">
+          <div class="how-to-title">How to do it</div>
+          <ul>
+            <li>Open your REST Message <code style="font-family:monospace;color:var(--accent)">Slack_P1_Alert</code></li>
+            <li>Scroll to the <strong>HTTP Methods</strong> related list at the bottom</li>
+            <li>Click <strong>New</strong> → Name it <code style="font-family:monospace;color:var(--accent)">post_alert</code></li>
+            <li><strong>HTTP Method:</strong> POST</li>
+            <li>In the <strong>Content</strong> tab, set <strong>Content-Type:</strong> <code style="font-family:monospace">application/json</code></li>
+            <li>In the <strong>HTTP Request Body</strong>, paste this JSON:</li>
+          </ul>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+            <div class="code-lang">JSON · Request Body</div>
+          </div>
+          <pre>{
+  <span class="key">"text"</span>: <span class="str">"🚨 *P1 Incident Created!*\nNumber: ${incident_number}\nDescription: ${short_description}\nAssigned To: ${assigned_to}"</span>
+}</pre>
+        </div>
+        <div class="how-to" style="margin-top:12px;">
+          <div class="how-to-title">About Variables</div>
+          <ul>
+            <li><code style="font-family:monospace;color:var(--accent)">${incident_number}</code> — these are substitution variables</li>
+            <li>Their values will be injected dynamically by the Business Rule script</li>
+            <li>Click <strong>Submit</strong> to save the method</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Create a Business Rule to Trigger the API Call</div>
+        <div class="step-desc">Write the server-side script that fires when a P1 Incident is created and sends the Slack alert.</div>
+        <div class="how-to">
+          <div class="how-to-title">How to set up the Business Rule</div>
+          <ul>
+            <li>Go to <strong>System Definition → Business Rules</strong> → Click <strong>New</strong></li>
+            <li><strong>Name:</strong> <code style="font-family:monospace;color:var(--accent)">Send Slack Alert on P1 Incident</code></li>
+            <li><strong>Table:</strong> <code style="font-family:monospace">Incident [incident]</code></li>
+            <li><strong>When:</strong> <code style="font-family:monospace">after</code> | <strong>Insert:</strong> ✅ checked</li>
+            <li><strong>Filter Condition:</strong> Priority <strong>is</strong> 1 - Critical</li>
+            <li>Check <strong>"Advanced"</strong> to unlock the Script tab</li>
+          </ul>
+        </div>
+        <div class="code-block" style="margin-top:14px;">
+          <div class="code-header">
+            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+            <div class="code-lang">JavaScript · Business Rule Script</div>
+          </div>
+          <pre><span class="cm">// Business Rule: Send Slack Alert on P1 Incident</span>
+<span class="cm">// Table: incident | When: after | Insert: true</span>
+<span class="cm">// Condition: Priority is 1 - Critical</span>
+
+(<span class="kw">function</span> <span class="fn">executeRule</span>(current, previous) {
+
+  <span class="kw">try</span> {
+    <span class="cm">// Step 1: Reference the REST Message and its HTTP Method</span>
+    <span class="kw">var</span> rm = <span class="kw">new</span> <span class="fn">sn_ws.RESTMessageV2</span>(
+      <span class="str">'Slack_P1_Alert'</span>,   <span class="cm">// REST Message Name</span>
+      <span class="str">'post_alert'</span>         <span class="cm">// HTTP Method Name</span>
+    );
+
+    <span class="cm">// Step 2: Inject variable values from the current Incident record</span>
+    rm.<span class="fn">setStringParameterNoEscape</span>(
+      <span class="str">'incident_number'</span>,
+      current.number.<span class="fn">getDisplayValue</span>()
+    );
+    rm.<span class="fn">setStringParameterNoEscape</span>(
+      <span class="str">'short_description'</span>,
+      current.short_description.<span class="fn">getDisplayValue</span>()
+    );
+    rm.<span class="fn">setStringParameterNoEscape</span>(
+      <span class="str">'assigned_to'</span>,
+      current.assigned_to.<span class="fn">getDisplayValue</span>()
+    );
+
+    <span class="cm">// Step 3: Execute the REST call</span>
+    <span class="kw">var</span> response = rm.<span class="fn">execute</span>();
+
+    <span class="cm">// Step 4: Log the response for debugging</span>
+    <span class="kw">var</span> statusCode = response.<span class="fn">getStatusCode</span>();
+    gs.<span class="fn">info</span>(<span class="str">'Slack Alert Sent. HTTP Status: '</span> + statusCode);
+
+    <span class="kw">if</span> (statusCode != <span class="num">200</span>) {
+      gs.<span class="fn">error</span>(<span class="str">'Slack Alert Failed. Body: '</span> + response.<span class="fn">getBody</span>());
+    }
+
+  } <span class="kw">catch</span> (ex) {
+    gs.<span class="fn">error</span>(<span class="str">'Slack REST call exception: '</span> + ex.message);
+  }
+
+})(current, previous);</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Test It — Send Instant Alert to Your Response Team</div>
+        <div class="step-desc">Create a P1 Incident and verify the Slack message arrives.</div>
+        <div class="how-to">
+          <div class="how-to-title">How to test</div>
+          <ul>
+            <li>Go to <strong>Incident → Create New</strong></li>
+            <li>Set <strong>Priority</strong> to <code style="font-family:monospace;color:var(--accent)">1 - Critical</code></li>
+            <li>Fill in Short Description and Assigned To → <strong>Submit</strong></li>
+            <li>Check your Slack channel — alert should appear within seconds!</li>
+            <li>To debug: Go to <strong>System Log → All</strong> → filter by <code style="font-family:monospace">Slack Alert</code></li>
+            <li>Also test via REST Message → open <code style="font-family:monospace">post_alert</code> method → click <strong>"Test"</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /steps-list -->
+
+  <!-- SECTION 4: HTTP Status Codes -->
+  <div class="section-title">04 &nbsp; HTTP Status Codes Cheat Sheet</div>
+  <div class="status-grid">
+    <div class="status-card s2xx"><div class="status-code">200</div><div class="status-label">Success</div></div>
+    <div class="status-card s2xx"><div class="status-code">201</div><div class="status-label">Created</div></div>
+    <div class="status-card s4xx"><div class="status-code">400</div><div class="status-label">Bad Request</div></div>
+    <div class="status-card s4xx"><div class="status-code">401</div><div class="status-label">Unauthorized</div></div>
+    <div class="status-card s4xx"><div class="status-code">404</div><div class="status-label">Not Found</div></div>
+    <div class="status-card s5xx"><div class="status-code">500</div><div class="status-label">Server Error</div></div>
+  </div>
+
+  <!-- SECTION 5: Troubleshooting -->
+  <div class="section-title">05 &nbsp; Troubleshooting Checklist</div>
+  <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-icon">🔌</div>
+      <div class="bp-text"><strong>Endpoint Connectivity</strong>Can ServiceNow reach the Slack URL? Try the "Test" button on the REST method first.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-icon">🔑</div>
+      <div class="bp-text"><strong>Auth / Token Validity</strong>If using OAuth or API keys, check expiry. Most Slack webhook failures = expired or wrong URL.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-icon">📄</div>
+      <div class="bp-text"><strong>Request Payload Structure</strong>Ensure JSON is valid. A missing comma or wrong key name causes a 400 Bad Request.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-icon">📊</div>
+      <div class="bp-text"><strong>HTTP Response Codes</strong>Log <code style="font-family:monospace">getStatusCode()</code> and <code style="font-family:monospace">getBody()</code> — they tell you exactly what went wrong.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-icon">📋</div>
+      <div class="bp-text"><strong>Error Logs</strong>Check <strong>System Log → All</strong> and filter by your script name for <code style="font-family:monospace">gs.error()</code> output.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-icon">⚙️</div>
+      <div class="bp-text"><strong>Transform Scripts / Null Values</strong>Always null-check fields before sending. Null in payload → 400 error from external system.</div>
+    </div>
+  </div>
+
+  <!-- KEY LESSON -->
+  <div class="tip-box">
+    <div class="tip-icon">👆</div>
+    <div class="tip-text">
+      <strong>Key Lesson from Real Projects</strong>
+      Most integration failures are NOT caused by the script itself — they're caused by payload structure changes or auth token expiry on the external side. Always check those first before debugging your code.
+    </div>
+  </div>
+
+  <!-- TAGS -->
+  <div style="margin-top: 40px; text-align: center;">
+    <span class="tag">#ServiceNow</span>
+    <span class="tag">#RESTAPI</span>
+    <span class="tag">#Integrations</span>
+    <span class="tag">#BusinessRule</span>
+    <span class="tag">#Slack</span>
+    <span class="tag">#Automation</span>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  Built for ServiceNow developers • REST API Integration Reference Guide
+</footer>
+
+</body>
+</html>
