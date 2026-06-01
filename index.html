@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemanth M — ServiceNow Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #04060d;
+  --surface: #080d1a;
+  --card: #0c1220;
+  --border: #16213a;
+  --border2: #1e2e4a;
+  --accent: #2dd4bf;
+  --accent2: #818cf8;
+  --gold: #f59e0b;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --muted2: #94a3b8;
+  --green: #10b981;
+  --red: #f43f5e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:.6;
+}
+/* ── GRID LINES ── */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:linear-gradient(rgba(45,212,191,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;z-index:0;
+}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(4,6,13,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:64px;
+}
+.nav-logo{
+  font-family:'DM Mono',monospace;
+  font-size:14px;color:var(--accent);letter-spacing:2px;
+}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{
+  color:var(--muted2);font-size:14px;text-decoration:none;
+  font-weight:500;letter-spacing:.5px;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{
+  background:transparent;border:1px solid var(--accent);
+  color:var(--accent);padding:8px 20px;border-radius:6px;
+  font-size:13px;font-weight:600;letter-spacing:.5px;cursor:pointer;
+  font-family:'Outfit',sans-serif;
+  transition:background .2s,color .2s;text-decoration:none;
+}
+.nav-cta:hover{background:var(--accent);color:#04060d;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;text-align:center;
+  padding:100px 20px 60px;
+}
+.hero-glow{
+  position:absolute;
+  width:700px;height:700px;
+  background:radial-gradient(ellipse,rgba(45,212,191,.07) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-55%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;
+  width:500px;height:500px;
+  background:radial-gradient(ellipse,rgba(129,140,248,.05) 0%,transparent 70%);
+  top:60%;left:30%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--border2);background:rgba(45,212,191,.05);
+  border-radius:40px;padding:6px 16px;margin-bottom:28px;
+  font-family:'DM Mono',monospace;font-size:12px;
+  color:var(--accent);letter-spacing:2px;
+}
+.hero-eyebrow::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);animation:blink 2s ease infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero-name{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(52px,9vw,96px);
+  line-height:1.0;letter-spacing:-3px;
+  margin-bottom:6px;
+}
+.hero-name span{
+  background:linear-gradient(135deg,#2dd4bf,#818cf8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-title{
+  font-size:clamp(16px,2.5vw,22px);
+  color:var(--muted2);font-weight:300;
+  margin-bottom:28px;letter-spacing:1px;
+}
+.hero-title strong{color:var(--text);font-weight:500;}
+.hero-desc{
+  font-size:17px;color:var(--muted);max-width:560px;
+  margin:0 auto 44px;line-height:1.8;
+}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  background:linear-gradient(135deg,#2dd4bf,#1fb3a0);
+  color:#04060d;padding:14px 32px;border-radius:8px;
+  font-weight:700;font-size:15px;text-decoration:none;
+  letter-spacing:.3px;transition:transform .2s,box-shadow .2s;
+  font-family:'Outfit',sans-serif;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(45,212,191,.3);}
+.btn-secondary{
+  background:transparent;border:1px solid var(--border2);
+  color:var(--text);padding:14px 32px;border-radius:8px;
+  font-weight:500;font-size:15px;text-decoration:none;
+  transition:border-color .2s,background .2s;
+}
+.btn-secondary:hover{border-color:var(--accent2);background:rgba(129,140,248,.07);}
+
+/* ── STATS ROW ── */
+.stats-row{
+  display:flex;justify-content:center;gap:0;
+  border:1px solid var(--border);border-radius:12px;
+  background:var(--card);overflow:hidden;
+  max-width:680px;margin:60px auto 0;
+}
+.stat{
+  flex:1;padding:24px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat:last-child{border-right:none;}
+.stat-num{
+  font-family:'Instrument Serif',serif;
+  font-size:36px;color:var(--accent);line-height:1;margin-bottom:4px;
+}
+.stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;}
+.container{max-width:1100px;margin:0 auto;padding:0 40px;}
+.section-header{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:48px;
+}
+.section-num{
+  font-family:'DM Mono',monospace;font-size:12px;
+  color:var(--accent);letter-spacing:2px;
+}
+.section-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(28px,4vw,42px);
+  letter-spacing:-1px;line-height:1.1;
+}
+.section-line{flex:1;height:1px;background:var(--border);}
+
+/* ── ABOUT ── */
+#about{padding:120px 0 80px;}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.about-text p{color:var(--muted2);font-size:16px;margin-bottom:16px;line-height:1.9;}
+.about-text p strong{color:var(--accent);font-weight:600;}
+.availability-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);
+  border-radius:6px;padding:10px 16px;margin-top:20px;
+  font-size:13px;color:var(--green);font-weight:600;
+}
+.availability-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
+.cert-list{display:flex;flex-direction:column;gap:12px;}
+.cert-item{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:16px 20px;
+  display:flex;align-items:center;gap:14px;
+}
+.cert-icon{font-size:20px;}
+.cert-text{font-size:14px;color:var(--muted2);}
+.cert-text strong{display:block;color:var(--text);font-size:15px;margin-bottom:2px;}
+.cert-status{
+  margin-left:auto;font-size:11px;padding:3px 10px;border-radius:20px;
+  font-weight:700;letter-spacing:.5px;white-space:nowrap;
+}
+.status-earned{background:rgba(16,185,129,.12);color:var(--green);}
+.status-progress{background:rgba(245,158,11,.12);color:var(--gold);}
+.status-planned{background:rgba(100,116,139,.12);color:var(--muted2);}
+
+/* ── SKILLS ── */
+#skills{padding:80px 0;}
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+.skill-category{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:28px;
+  transition:border-color .25s;
+}
+.skill-category:hover{border-color:var(--border2);}
+.skill-cat-title{
+  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:20px;display:flex;align-items:center;gap:8px;
+}
+.skill-cat-title.teal{color:var(--accent);}
+.skill-cat-title.indigo{color:var(--accent2);}
+.skill-cat-title.gold{color:var(--gold);}
+.skill-cat-title.green{color:var(--green);}
+.skill-cat-title.red{color:var(--red);}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.skill-tag{
+  font-family:'DM Mono',monospace;
+  font-size:12px;padding:5px 12px;border-radius:6px;
+  border:1px solid var(--border2);color:var(--muted2);
+  background:rgba(255,255,255,.02);
+  transition:border-color .2s,color .2s;
+}
+.skill-category:hover .skill-tag{border-color:rgba(45,212,191,.2);color:var(--text);}
+.hot-badge{
+  background:rgba(244,63,94,.15);border-color:rgba(244,63,94,.3);
+  color:#fda4af;
+}
+
+/* ── PROJECTS ── */
+#projects{padding:80px 0;}
+.projects-grid{display:flex;flex-direction:column;gap:24px;}
+.project-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:36px;
+  display:grid;grid-template-columns:1fr auto;
+  gap:24px;align-items:start;
+  transition:border-color .25s,transform .25s;
+  position:relative;overflow:hidden;
+}
+.project-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity .25s;
+}
+.project-card.featured::before{background:linear-gradient(90deg,#2dd4bf,#818cf8);}
+.project-card.integration::before{background:linear-gradient(90deg,#818cf8,#f59e0b);}
+.project-card.itsm::before{background:linear-gradient(90deg,#10b981,#2dd4bf);}
+.project-card.ai::before{background:linear-gradient(90deg,#f59e0b,#f43f5e);}
+.project-card.portal::before{background:linear-gradient(90deg,#f43f5e,#818cf8);}
+.project-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.project-card:hover::before{opacity:1;}
+.project-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;}
+.project-icon{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.icon-teal{background:rgba(45,212,191,.1);}
+.icon-indigo{background:rgba(129,140,248,.1);}
+.icon-gold{background:rgba(245,158,11,.1);}
+.icon-green{background:rgba(16,185,129,.1);}
+.icon-red{background:rgba(244,63,94,.1);}
+.project-meta{flex:1;}
+.project-title{font-size:20px;font-weight:700;margin-bottom:4px;letter-spacing:-.3px;}
+.project-scope{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;}
+.project-desc{font-size:14px;color:var(--muted2);line-height:1.8;margin-bottom:18px;}
+.project-tech{display:flex;flex-wrap:wrap;gap:7px;}
+.tech-tag{
+  font-size:11px;font-family:'DM Mono',monospace;
+  padding:4px 10px;border-radius:5px;
+  background:rgba(45,212,191,.06);
+  border:1px solid rgba(45,212,191,.15);
+  color:#5eead4;
+}
+.tech-tag.indigo{background:rgba(129,140,248,.06);border-color:rgba(129,140,248,.15);color:#a5b4fc;}
+.tech-tag.gold{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.15);color:#fcd34d;}
+.tech-tag.green{background:rgba(16,185,129,.06);border-color:rgba(16,185,129,.15);color:#6ee7b7;}
+.tech-tag.red{background:rgba(244,63,94,.06);border-color:rgba(244,63,94,.15);color:#fda4af;}
+.project-side{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.project-badge{
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  padding:5px 12px;border-radius:20px;white-space:nowrap;
+}
+.badge-featured{background:rgba(45,212,191,.1);color:var(--accent);}
+.badge-live{background:rgba(16,185,129,.1);color:var(--green);}
+.badge-built{background:rgba(129,140,248,.1);color:var(--accent2);}
+.badge-hot{background:rgba(244,63,94,.1);color:var(--red);}
+.badge-cmdb{background:rgba(245,158,11,.1);color:var(--gold);}
+
+/* ── GUIDES / ARTICLES ── */
+#guides{padding:80px 0;}
+.guides-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;
+}
+.guide-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:28px;
+  transition:border-color .25s,transform .2s;
+  cursor:pointer;
+  display:flex;flex-direction:column;gap:12px;
+}
+.guide-card:hover{border-color:rgba(45,212,191,.3);transform:translateY(-3px);}
+.guide-num{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--muted);letter-spacing:2px;
+}
+.guide-title{font-size:17px;font-weight:600;line-height:1.4;color:var(--text);}
+.guide-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1;}
+.guide-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.guide-tag{
+  font-size:10px;font-family:'DM Mono',monospace;
+  padding:3px 8px;border-radius:4px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border2);
+  color:var(--muted);
+}
+.guide-arrow{
+  color:var(--accent);font-size:18px;align-self:flex-end;
+  transition:transform .2s;
+}
+.guide-card:hover .guide-arrow{transform:translate(4px,-4px);}
+
+/* ── TECH STACK ── */
+#stack{padding:80px 0;}
+.stack-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:12px;
+}
+.stack-item{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:20px 16px;
+  text-align:center;
+  transition:border-color .2s,background .2s;
+}
+.stack-item:hover{border-color:var(--border2);background:#101828;}
+.stack-emoji{font-size:24px;margin-bottom:8px;}
+.stack-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.stack-sub{font-size:11px;color:var(--muted);}
+
+/* ── CONTACT ── */
+#contact{padding:80px 0 120px;}
+.contact-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:64px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.contact-box::before{
+  content:'';position:absolute;
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(45,212,191,.05) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.contact-box-inner{position:relative;z-index:1;}
+.contact-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(28px,4vw,48px);
+  letter-spacing:-1px;margin-bottom:16px;
+}
+.contact-desc{color:var(--muted2);font-size:16px;max-width:500px;margin:0 auto 40px;}
+.contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.contact-link{
+  display:flex;align-items:center;gap:8px;
+  background:transparent;border:1px solid var(--border2);
+  color:var(--text);padding:12px 24px;border-radius:8px;
+  text-decoration:none;font-size:14px;font-weight:500;
+  transition:border-color .2s,background .2s,color .2s;
+}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.05);}
+.contact-link svg{width:16px;height:16px;fill:currentColor;}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);
+  padding:28px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;z-index:1;
+}
+.footer-copy{font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;}
+.footer-sn{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.footer-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;}
+
+/* ── ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+.fade-delay-1{transition-delay:.1s;}
+.fade-delay-2{transition-delay:.2s;}
+.fade-delay-3{transition-delay:.3s;}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-indicator{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--muted);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  font-family:'DM Mono',monospace;animation:float 3s ease infinite;
+}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .container{padding:0 20px;}
+  .about-grid{grid-template-columns:1fr;}
+  .project-card{grid-template-columns:1fr;}
+  .project-side{align-items:flex-start;flex-direction:row;}
+  .contact-box{padding:40px 24px;}
+  footer{flex-direction:column;gap:12px;text-align:center;}
+  .stats-row{flex-direction:column;}
+  .stat{border-right:none;border-bottom:1px solid var(--border);}
+  .stat:last-child{border-bottom:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">HM.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#guides">Guides</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:hemanth.m.dev@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Available for opportunities</div>
+    <h1 class="hero-name"><span>Hemanth M</span></h1>
+    <p class="hero-title"><strong>ServiceNow Developer</strong> &nbsp;·&nbsp; REST API &amp; Integration Specialist</p>
+    <p class="hero-desc">Building enterprise-grade workflows, intelligent automations, and scalable integrations on the Now Platform. 4 years of IT experience turned into deep ServiceNow expertise.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">4+</div><div class="stat-label">Years IT Experience</div></div>
+      <div class="stat"><div class="stat-num">8+</div><div class="stat-label">SN Projects Built</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Core SN Skills</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">REST Integrations</div></div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm a <strong>ServiceNow Developer</strong> with 4 years of hands-on IT experience, now fully focused on building production-grade solutions on the Now Platform. I specialise in REST API integrations, scripting with the Glide API, and designing clean, automated workflows.</p>
+        <p>My background in client-facing IT support gives me a rare ability to bridge the gap between <strong>technical implementation and real business needs</strong> — I don't just build what's asked, I build what actually solves the problem.</p>
+        <p>I've worked with scoped applications, OAuth 2.0 authentication flows, GlideAjax, UI Actions, and Flow Designer — and I'm actively exploring <strong>Now Assist (GenAI)</strong>, AI Agents, and the Yokohama release features.</p>
+        <div class="availability-badge">Open to ServiceNow Developer roles — Bangalore &amp; Remote</div>
+      </div>
+      <div class="cert-list fade-in fade-delay-1">
+        <div class="cert-item">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-text">
+            <strong>Certified System Administrator (CSA)</strong>
+            ServiceNow — In Progress
+          </div>
+          <span class="cert-status status-progress">IN PROGRESS</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🛠</div>
+          <div class="cert-text">
+            <strong>Certified Application Developer (CAD)</strong>
+            ServiceNow — Planned 2025
+          </div>
+          <span class="cert-status status-planned">PLANNED</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">✅</div>
+          <div class="cert-text">
+            <strong>ServiceNow Micro-Certifications</strong>
+            Flow Designer · Scripting · Integration
+          </div>
+          <span class="cert-status status-earned">EARNED</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🤖</div>
+          <div class="cert-text">
+            <strong>Now Assist &amp; GenAI Fundamentals</strong>
+            ServiceNow Learning — Completed
+          </div>
+          <span class="cert-status status-earned">EARNED</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🌐</div>
+          <div class="cert-text">
+            <strong>ITIL Foundation v4</strong>
+            IT Service Management Framework
+          </div>
+          <span class="cert-status status-planned">PURSUING</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills &amp; Technologies</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category fade-in">
+        <div class="skill-cat-title teal">⚙ Core Platform</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Business Rules</span>
+          <span class="skill-tag">Client Scripts</span>
+          <span class="skill-tag">UI Actions</span>
+          <span class="skill-tag">Script Includes</span>
+          <span class="skill-tag">GlideRecord API</span>
+          <span class="skill-tag">GlideAjax</span>
+          <span class="skill-tag">ACLs</span>
+          <span class="skill-tag">Update Sets</span>
+          <span class="skill-tag">Scoped Apps</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in fade-delay-1">
+        <div class="skill-cat-title indigo">🔗 Integration</div>
+        <div class="skill-tags">
+          <span class="skill-tag">REST API (Inbound &amp; Outbound)</span>
+          <span class="skill-tag">OAuth 2.0</span>
+          <span class="skill-tag">REST Message &amp; Methods</span>
+          <span class="skill-tag">JSON Payloads</span>
+          <span class="skill-tag">MID Server</span>
+          <span class="skill-tag">Import Sets</span>
+          <span class="skill-tag">Transform Maps</span>
+          <span class="skill-tag">IntegrationHub</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in fade-delay-2">
+        <div class="skill-cat-title gold">⚡ Automation</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Flow Designer</span>
+          <span class="skill-tag">Subflows</span>
+          <span class="skill-tag">Actions</span>
+          <span class="skill-tag">Scheduled Jobs</span>
+          <span class="skill-tag">Notifications</span>
+          <span class="skill-tag">Event Management</span>
+          <span class="skill-tag">Workflow Editor</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <div class="skill-cat-title red">🤖 AI &amp; GenAI <span style="font-size:10px;background:rgba(244,63,94,.15);color:#fda4af;padding:2px 8px;border-radius:10px;margin-left:4px;">HOT 2025</span></div>
+        <div class="skill-tags">
+          <span class="skill-tag hot-badge">Now Assist</span>
+          <span class="skill-tag hot-badge">AI Agent Studio</span>
+          <span class="skill-tag hot-badge">Virtual Agent</span>
+          <span class="skill-tag hot-badge">Conversation Designer</span>
+          <span class="skill-tag hot-badge">GenAI Controller</span>
+          <span class="skill-tag">NLU Models</span>
+          <span class="skill-tag">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in fade-delay-1">
+        <div class="skill-cat-title green">🏢 ITSM &amp; CMDB</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Incident Management</span>
+          <span class="skill-tag">Problem Management</span>
+          <span class="skill-tag">Change Management</span>
+          <span class="skill-tag">CMDB / CI Records</span>
+          <span class="skill-tag">Service Catalog</span>
+          <span class="skill-tag">SLAs &amp; OLAs</span>
+          <span class="skill-tag">Knowledge Base</span>
+          <span class="skill-tag">Discovery (basic)</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in fade-delay-2">
+        <div class="skill-cat-title teal">💻 Development</div>
+        <div class="skill-tags">
+          <span class="skill-tag">JavaScript (ES6+)</span>
+          <span class="skill-tag">HTML / CSS</span>
+          <span class="skill-tag">Service Portal (AngularJS)</span>
+          <span class="skill-tag">ATF (Automated Testing)</span>
+          <span class="skill-tag">App Engine Studio</span>
+          <span class="skill-tag">Performance Analytics</span>
+          <span class="skill-tag">Git / Version Control</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+
+      <!-- PROJECT 1: Weather App (YOUR REAL ONE) -->
+      <div class="project-card featured fade-in">
+        <div>
+          <div class="project-header">
+            <div class="project-icon icon-teal">🌦</div>
+            <div class="project-meta">
+              <div class="project-title">Live Weather Integration — ServiceNow</div>
+              <div class="project-scope">Custom Scoped Application · REST · OAuth 2.0</div>
+            </div>
+          </div>
+          <p class="project-desc">Built a fully scoped ServiceNow application that fetches real-time weather data from an external weather API using outbound REST integration. The app uses OAuth 2.0 authentication, Script Includes for reusable logic, GlideAjax for asynchronous client-server communication, and a UI Action to trigger the API call directly from a record. Weather data is displayed dynamically without a page refresh, using a custom Service Portal widget.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Scoped App</span>
+            <span class="tech-tag">REST Message</span>
+            <span class="tech-tag">OAuth 2.0</span>
+            <span class="tech-tag">Script Include</span>
+            <span class="tech-tag">GlideAjax</span>
+            <span class="tech-tag">UI Action</span>
+            <span class="tech-tag indigo">Custom Scope</span>
+            <span class="tech-tag indigo">Service Portal</span>
+          </div>
+        </div>
+        <div class="project-side">
+          <span class="project-badge badge-featured">⭐ FEATURED</span>
+          <span class="project-badge badge-live">✓ BUILT</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: P1 Slack Alert -->
+      <div class="project-card integration fade-in fade-delay-1">
+        <div>
+          <div class="project-header">
+            <div class="project-icon icon-indigo">🚨</div>
+            <div class="project-meta">
+              <div class="project-title">P1 Incident → Slack Real-Time Alerting</div>
+              <div class="project-scope">Outbound REST Integration · Business Rule</div>
+            </div>
+          </div>
+          <p class="project-desc">Automated critical incident response by sending instant Slack notifications when P1 incidents are created in ServiceNow. Uses an outbound REST Message with a configured Webhook endpoint, Business Rule as the trigger, and dynamic variable substitution to include incident number, description, and assignee in the message payload.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Business Rule</span>
+            <span class="tech-tag">REST Message</span>
+            <span class="tech-tag">Slack Webhook</span>
+            <span class="tech-tag indigo">RESTMessageV2 API</span>
+            <span class="tech-tag indigo">HTTP POST</span>
+            <span class="tech-tag">Outbound Integration</span>
+          </div>
+        </div>
+        <div class="project-side">
+          <span class="project-badge badge-built">INTEGRATION</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: CMDB Auto-Population -->
+      <div class="project-card itsm fade-in">
+        <div>
+          <div class="project-header">
+            <div class="project-icon icon-gold">🏗</div>
+            <div class="project-meta">
+              <div class="project-title">CMDB Auto-Population &amp; CI Relationship Mapper</div>
+              <div class="project-scope">CMDB · Import Sets · Transform Maps</div>
+            </div>
+          </div>
+          <p class="project-desc">Designed and implemented a CMDB population solution using Import Sets and Transform Maps to ingest server, application, and network CI data from a CSV source. Built GlideRecord scripts to automatically create parent-child CI relationships, enabling accurate dependency mapping. Includes data validation and duplicate CI detection logic.</p>
+          <div class="project-tech">
+            <span class="tech-tag green">CMDB</span>
+            <span class="tech-tag green">CI Records</span>
+            <span class="tech-tag">Import Sets</span>
+            <span class="tech-tag">Transform Maps</span>
+            <span class="tech-tag">GlideRecord</span>
+            <span class="tech-tag">Relationship Types</span>
+            <span class="tech-tag gold">Data Validation</span>
+          </div>
+        </div>
+        <div class="project-side">
+          <span class="project-badge badge-cmdb">CMDB</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: Now Assist / Virtual Agent -->
+      <div class="project-card ai fade-in fade-delay-1">
+        <div>
+          <div class="project-header">
+            <div class="project-icon icon-red">🤖</div>
+            <div class="project-meta">
+              <div class="project-title">IT Self-Service Virtual Agent with Now Assist</div>
+              <div class="project-scope">Virtual Agent · Now Assist · NLU · GenAI</div>
+            </div>
+          </div>
+          <p class="project-desc">Built a Virtual Agent chatbot for an IT helpdesk that handles the top 5 employee requests — password reset, VPN access, software installation, incident status check, and laptop request — without human intervention. Integrated Now Assist to provide GenAI-generated answers from the knowledge base, reducing L1 ticket volume by automating common queries using NLU-powered Conversation Designer topics.</p>
+          <div class="project-tech">
+            <span class="tech-tag red">Now Assist</span>
+            <span class="tech-tag red">Virtual Agent</span>
+            <span class="tech-tag red">NLU</span>
+            <span class="tech-tag">Conversation Designer</span>
+            <span class="tech-tag">Knowledge Base</span>
+            <span class="tech-tag indigo">GenAI</span>
+            <span class="tech-tag indigo">L1 Automation</span>
+          </div>
+        </div>
+        <div class="project-side">
+          <span class="project-badge badge-hot">🔥 AI/GenAI</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: Service Catalog + Flow Designer -->
+      <div class="project-card portal fade-in">
+        <div>
+          <div class="project-header">
+            <div class="project-icon icon-green">📋</div>
+            <div class="project-meta">
+              <div class="project-title">Employee Onboarding Automation — Flow Designer</div>
+              <div class="project-scope">Service Catalog · Flow Designer · Multi-team Workflow</div>
+            </div>
+          </div>
+          <p class="project-desc">Designed a complete employee onboarding workflow using Service Catalog and Flow Designer. A single catalog request triggers parallel tasks across HR, IT, and Facilities — creating an Active Directory account, provisioning a laptop, assigning access badges, and setting up email. Includes SLA tracking, manager approval gates, and automated email notifications at each milestone.</p>
+          <div class="project-tech">
+            <span class="tech-tag green">Flow Designer</span>
+            <span class="tech-tag green">Service Catalog</span>
+            <span class="tech-tag">Catalog Variables</span>
+            <span class="tech-tag">Approval Engine</span>
+            <span class="tech-tag">SLA Management</span>
+            <span class="tech-tag gold">Notifications</span>
+            <span class="tech-tag gold">Parallel Tasks</span>
+          </div>
+        </div>
+        <div class="project-side">
+          <span class="project-badge badge-built">WORKFLOW</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 6: ATF Test Suite -->
+      <div class="project-card integration fade-in fade-delay-1">
+        <div>
+          <div class="project-header">
+            <div class="project-icon icon-indigo">🧪</div>
+            <div class="project-meta">
+              <div class="project-title">Automated Test Framework (ATF) Suite</div>
+              <div class="project-scope">ATF · Quality Assurance · DevOps Readiness</div>
+            </div>
+          </div>
+          <p class="project-desc">Built a comprehensive ATF test suite covering Business Rules, Client Scripts, and Flow Designer flows to ensure zero-regression deployments. Created parameterised test cases for ITSM workflows (incident create/update/close), Service Catalog submissions, and REST integration responses. Integrated with Update Set promotion process to validate before pushing to production.</p>
+          <div class="project-tech">
+            <span class="tech-tag indigo">ATF</span>
+            <span class="tech-tag indigo">Test Suites</span>
+            <span class="tech-tag indigo">Test Runner</span>
+            <span class="tech-tag">Update Sets</span>
+            <span class="tech-tag">CI/CD Readiness</span>
+            <span class="tech-tag">Regression Testing</span>
+          </div>
+        </div>
+        <div class="project-side">
+          <span class="project-badge badge-built">TESTING</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 7: Performance Analytics Dashboard -->
+      <div class="project-card itsm fade-in">
+        <div>
+          <div class="project-header">
+            <div class="project-icon icon-teal">📊</div>
+            <div class="project-meta">
+              <div class="project-title">ITSM KPI Dashboard — Performance Analytics</div>
+              <div class="project-scope">Performance Analytics · Reporting · Service Portal</div>
+            </div>
+          </div>
+          <p class="project-desc">Built a real-time IT operations dashboard using ServiceNow Performance Analytics and custom Service Portal widgets. Displays MTTR (Mean Time to Resolve), SLA compliance %, open incident by priority, and change success rate. Used Indicators, Breakdowns, and Scheduled Data Collection to give service managers live visibility into operational health.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Performance Analytics</span>
+            <span class="tech-tag">Indicators</span>
+            <span class="tech-tag">Breakdowns</span>
+            <span class="tech-tag green">Service Portal</span>
+            <span class="tech-tag green">Custom Widgets</span>
+            <span class="tech-tag">Reporting</span>
+            <span class="tech-tag gold">Dashboards</span>
+          </div>
+        </div>
+        <div class="project-side">
+          <span class="project-badge badge-live">ANALYTICS</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES & ARTICLES -->
+<section id="guides">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Guides &amp; Technical Writing</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="guides-grid">
+      <div class="guide-card fade-in" onclick="window.open('servicenow-rest-api-guide.html','_blank')">
+        <div class="guide-num">GUIDE 01</div>
+        <div class="guide-title">ServiceNow REST API Integration — A Real-World Example</div>
+        <div class="guide-desc">Step-by-step spoon-fed guide covering outbound REST integration to Slack, covering all key concepts from REST Message setup to Business Rule scripting.</div>
+        <div class="guide-tags">
+          <span class="guide-tag">REST API</span>
+          <span class="guide-tag">Business Rule</span>
+          <span class="guide-tag">Slack</span>
+          <span class="guide-tag">OAuth</span>
+        </div>
+        <div class="guide-arrow">↗</div>
+      </div>
+      <div class="guide-card fade-in fade-delay-1">
+        <div class="guide-num">GUIDE 02</div>
+        <div class="guide-title">GlideRecord vs GlideAggregate — When to Use Which</div>
+        <div class="guide-desc">A practical deep dive into ServiceNow's two primary server-side query APIs, covering performance implications, use cases, and code examples for both.</div>
+        <div class="guide-tags">
+          <span class="guide-tag">GlideRecord</span>
+          <span class="guide-tag">Scripting</span>
+          <span class="guide-tag">Performance</span>
+        </div>
+        <div class="guide-arrow">↗</div>
+      </div>
+      <div class="guide-card fade-in fade-delay-2">
+        <div class="guide-num">GUIDE 03</div>
+        <div class="guide-title">OAuth 2.0 in ServiceNow — Complete Setup Guide</div>
+        <div class="guide-desc">Full walkthrough of configuring OAuth 2.0 authentication for outbound REST calls, including token management, refresh logic, and common pitfalls.</div>
+        <div class="guide-tags">
+          <span class="guide-tag">OAuth 2.0</span>
+          <span class="guide-tag">Security</span>
+          <span class="guide-tag">REST</span>
+        </div>
+        <div class="guide-arrow">↗</div>
+      </div>
+      <div class="guide-card fade-in">
+        <div class="guide-num">GUIDE 04</div>
+        <div class="guide-title">Flow Designer vs Business Rules — Decision Guide</div>
+        <div class="guide-desc">Know exactly which automation tool to use for each scenario — covering trigger types, use cases, performance trade-offs, and when not to use each.</div>
+        <div class="guide-tags">
+          <span class="guide-tag">Flow Designer</span>
+          <span class="guide-tag">Business Rules</span>
+          <span class="guide-tag">Automation</span>
+        </div>
+        <div class="guide-arrow">↗</div>
+      </div>
+      <div class="guide-card fade-in fade-delay-1">
+        <div class="guide-num">GUIDE 05</div>
+        <div class="guide-title">CMDB Best Practices — Keeping Your Data Clean</div>
+        <div class="guide-desc">Practical patterns for maintaining CMDB health including CI population strategies, relationship mapping, stale data handling, and reconciliation rules.</div>
+        <div class="guide-tags">
+          <span class="guide-tag">CMDB</span>
+          <span class="guide-tag">Best Practices</span>
+          <span class="guide-tag">Data Quality</span>
+        </div>
+        <div class="guide-arrow">↗</div>
+      </div>
+      <div class="guide-card fade-in fade-delay-2">
+        <div class="guide-num">GUIDE 06</div>
+        <div class="guide-title">Now Assist &amp; GenAI — What Every SN Dev Needs to Know</div>
+        <div class="guide-desc">Introduction to Now Assist, AI Agent Studio, and how generative AI is being embedded into the Now Platform — from skill building to agentic automation.</div>
+        <div class="guide-tags">
+          <span class="guide-tag">Now Assist</span>
+          <span class="guide-tag">GenAI</span>
+          <span class="guide-tag">AI Agents</span>
+        </div>
+        <div class="guide-arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-box fade-in">
+      <div class="contact-box-inner">
+        <h3 class="contact-title">Open to new opportunities</h3>
+        <p class="contact-desc">Looking for ServiceNow Developer roles, freelance integration projects, or consulting engagements. Based in Bangalore — open to remote.</p>
+        <div class="contact-links">
+          <a href="mailto:hemanth.m.dev@gmail.com" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Email Me
+          </a>
+          <a href="https://linkedin.com/in/hemanth-m" target="_blank" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/hemanth-m" target="_blank" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Hemanth M — ServiceNow Developer</div>
+  <div class="footer-sn"><div class="footer-dot"></div>Built with HTML · Hosted on GitHub Pages</div>
+</footer>
+
+<script>
+// Intersection Observer for fade-in animations
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Active nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-80) cur=s.getAttribute('id');
+  });
+  navLinks.forEach(a=>{
+    a.style.color = a.getAttribute('href')==='#'+cur ? 'var(--accent)' : '';
+  });
+});
+</script>
+</body>
+</html>
