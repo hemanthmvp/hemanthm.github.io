@@ -309,6 +309,16 @@ section{position:relative;z-index:1;}
 .badge-built{background:rgba(129,140,248,.1);color:var(--accent2);}
 .badge-hot{background:rgba(244,63,94,.1);color:var(--red);}
 .badge-cmdb{background:rgba(245,158,11,.1);color:var(--gold);}
+.proj-link-btn{
+  display:block;text-align:center;
+  background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.25);
+  color:var(--accent);padding:7px 16px;border-radius:6px;
+  font-size:12px;font-weight:600;text-decoration:none;letter-spacing:.3px;
+  transition:background .2s,transform .2s;margin-top:4px;
+}
+.proj-link-btn:hover{background:rgba(45,212,191,.18);transform:translateY(-1px);}
+.proj-link-btn.dl{background:rgba(129,140,248,.08);border-color:rgba(129,140,248,.25);color:var(--accent2);}
+.proj-link-btn.dl:hover{background:rgba(129,140,248,.18);}
 
 /* ── GUIDES / ARTICLES ── */
 #guides{padding:80px 0;}
@@ -435,9 +445,130 @@ footer{
   .stat{border-right:none;border-bottom:1px solid var(--border);}
   .stat:last-child{border-bottom:none;}
 }
+
+/* ── SCROLL PROGRESS ── */
+#scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:200;transition:width .05s linear;
+  box-shadow:0 0 8px rgba(45,212,191,.6);
+}
+
+/* ── CURSOR GLOW ── */
+#cursor-glow{
+  position:fixed;pointer-events:none;z-index:9999;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(45,212,191,.04) 0%,transparent 70%);
+  transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease;
+}
+
+/* ── CANVAS PARTICLES ── */
+#particles-canvas{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+}
+
+/* ── COUNTER ANIMATION ── */
+.stat-num{transition:all .3s ease;}
+
+/* ── TYPED CURSOR ── */
+.typed-cursor{
+  color:var(--accent);animation:cursor-blink .7s ease infinite;
+}
+@keyframes cursor-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* ── HERO TEXT REVEAL ── */
+@keyframes heroReveal{
+  from{opacity:0;transform:translateY(30px) skewY(1deg);}
+  to{opacity:1;transform:translateY(0) skewY(0);}
+}
+.hero-name{animation:heroReveal .8s cubic-bezier(.16,1,.3,1) .1s both;}
+.hero-title{animation:heroReveal .8s cubic-bezier(.16,1,.3,1) .25s both;}
+.hero-desc{animation:heroReveal .8s cubic-bezier(.16,1,.3,1) .4s both;}
+.hero-btns{animation:heroReveal .8s cubic-bezier(.16,1,.3,1) .55s both;}
+.stats-row{animation:heroReveal .8s cubic-bezier(.16,1,.3,1) .7s both;}
+.hero-eyebrow{animation:heroReveal .8s cubic-bezier(.16,1,.3,1) 0s both;}
+
+/* ── CARD TILT ── */
+.project-card{transform-style:preserve-3d;will-change:transform;}
+
+/* ── SKILL TAG STAGGER ── */
+.skill-tag{
+  opacity:0;transform:translateY(10px);
+  transition:opacity .4s ease,transform .4s ease,border-color .2s,color .2s;
+}
+.skill-category.vis .skill-tag{opacity:1;transform:none;}
+.skill-category.vis .skill-tag:nth-child(1){transition-delay:.05s;}
+.skill-category.vis .skill-tag:nth-child(2){transition-delay:.10s;}
+.skill-category.vis .skill-tag:nth-child(3){transition-delay:.15s;}
+.skill-category.vis .skill-tag:nth-child(4){transition-delay:.20s;}
+.skill-category.vis .skill-tag:nth-child(5){transition-delay:.25s;}
+.skill-category.vis .skill-tag:nth-child(6){transition-delay:.30s;}
+.skill-category.vis .skill-tag:nth-child(7){transition-delay:.35s;}
+.skill-category.vis .skill-tag:nth-child(8){transition-delay:.40s;}
+
+/* ── GLOWING BORDER PULSE ── */
+@keyframes borderPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(45,212,191,.0);}
+  50%{box-shadow:0 0 0 4px rgba(45,212,191,.08);}
+}
+.project-card.featured{animation:borderPulse 3s ease infinite;}
+
+/* ── SECTION NUM REVEAL ── */
+.section-num{
+  position:relative;overflow:hidden;
+}
+.section-num::after{
+  content:'';position:absolute;inset:0;
+  background:var(--bg);
+  animation:none;
+}
+.fade-in.visible .section-num::after{
+  animation:revealNum .4s ease forwards;
+}
+@keyframes revealNum{
+  to{transform:translateX(110%);}
+}
+
+/* ── CONTACT BOX GLOW ── */
+@keyframes contactGlow{
+  0%,100%{box-shadow:0 0 40px rgba(45,212,191,.03);}
+  50%{box-shadow:0 0 80px rgba(45,212,191,.08),0 0 120px rgba(129,140,248,.05);}
+}
+.contact-box{animation:contactGlow 4s ease infinite;}
+
+/* ── GUIDE CARD SHIMMER ── */
+@keyframes shimmer{
+  0%{background-position:-200% center;}
+  100%{background-position:200% center;}
+}
+.guide-card:hover .guide-title{
+  background:linear-gradient(90deg,var(--text) 0%,var(--accent) 50%,var(--text) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:shimmer .8s linear;
+}
+
+/* ── AVAILABILITY PULSE ── */
+@keyframes availPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.3);}
+  50%{box-shadow:0 0 0 6px rgba(16,185,129,.0);}
+}
+.availability-badge{animation:availPulse 2s ease infinite;}
+
+/* ── FOOTER DOT ── */
+@keyframes footerPulse{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.5);opacity:.6;}
+}
+.footer-dot{animation:footerPulse 2s ease infinite;}
+
 </style>
 </head>
 <body>
+
+<div id="scroll-progress"></div>
+<div id="cursor-glow"></div>
+<canvas id="particles-canvas"></canvas>
 
 <!-- NAV -->
 <nav>
@@ -449,7 +580,7 @@ footer{
     <li><a href="#guides">Guides</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="mailto:hemanth.m.dev@gmail.com" class="nav-cta">Hire Me</a>
+  <a href="mailto:hemanthm216@gmail.com" class="nav-cta">Hire Me</a>
 </nav>
 
 <!-- HERO -->
@@ -459,17 +590,17 @@ footer{
   <div class="hero-inner">
     <div class="hero-eyebrow">Available for opportunities</div>
     <h1 class="hero-name"><span>Hemanth M</span></h1>
-    <p class="hero-title"><strong>ServiceNow Developer</strong> &nbsp;·&nbsp; REST API &amp; Integration Specialist</p>
+    <p class="hero-title"><strong>ServiceNow Developer</strong> &nbsp;·&nbsp; <span id="typed-role"></span><span class="typed-cursor">|</span></p>
     <p class="hero-desc">Building enterprise-grade workflows, intelligent automations, and scalable integrations on the Now Platform. 4 years of IT experience turned into deep ServiceNow expertise.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View My Work</a>
       <a href="#contact" class="btn-secondary">Get in Touch</a>
     </div>
     <div class="stats-row">
-      <div class="stat"><div class="stat-num">4+</div><div class="stat-label">Years IT Experience</div></div>
-      <div class="stat"><div class="stat-num">8+</div><div class="stat-label">SN Projects Built</div></div>
-      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Core SN Skills</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">REST Integrations</div></div>
+      <div class="stat"><div class="stat-num" data-target="4" data-suffix="+">0</div><div class="stat-label">Years IT Experience</div></div>
+      <div class="stat"><div class="stat-num" data-target="8" data-suffix="+">0</div><div class="stat-label">SN Projects Built</div></div>
+      <div class="stat"><div class="stat-num" data-target="15" data-suffix="+">0</div><div class="stat-label">Core SN Skills</div></div>
+      <div class="stat"><div class="stat-num" data-target="3" data-suffix="">0</div><div class="stat-label">REST Integrations</div></div>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -663,6 +794,8 @@ footer{
         <div class="project-side">
           <span class="project-badge badge-featured">⭐ FEATURED</span>
           <span class="project-badge badge-live">✓ BUILT</span>
+          <a href="weather-app-project.html" target="_blank" class="proj-link-btn">View Project →</a>
+          <a href="sys_remote_update_set_0badb1f4c3d90310233a973ed401319e.xml" download class="proj-link-btn dl">⬇ XML</a>
         </div>
       </div>
 
@@ -900,6 +1033,20 @@ footer{
         </div>
         <div class="guide-arrow">↗</div>
       </div>
+
+      <div class="guide-card fade-in" onclick="window.open('ldap-integration-guide.html','_blank')" style="border-color:rgba(45,212,191,.2);">
+        <div class="guide-num" style="color:var(--accent);">GUIDE 07 &nbsp;·&nbsp; HANDS-ON PDI</div>
+        <div class="guide-title">LDAP / Active Directory Integration with ServiceNow</div>
+        <div class="guide-desc">Complete step-by-step guide: connecting ServiceNow to an Active Directory (Azure AD, AWS, IBM) using LDAP — covering DC/OU/CN structure, server config, OU definitions, filters, Transform Maps, and automated sync. Practiced on ServiceNow PDI.</div>
+        <div class="guide-tags">
+          <span class="guide-tag">LDAP</span>
+          <span class="guide-tag">Active Directory</span>
+          <span class="guide-tag">Transform Map</span>
+          <span class="guide-tag">Import Sets</span>
+          <span class="guide-tag">PDI Practice</span>
+        </div>
+        <div class="guide-arrow">↗</div>
+      </div>
     </div>
   </div>
 </section>
@@ -917,7 +1064,7 @@ footer{
         <h3 class="contact-title">Open to new opportunities</h3>
         <p class="contact-desc">Looking for ServiceNow Developer roles, freelance integration projects, or consulting engagements. Based in Bangalore — open to remote.</p>
         <div class="contact-links">
-          <a href="mailto:hemanth.m.dev@gmail.com" class="contact-link">
+          <a href="mailto:hemanthm216@gmail.com" class="contact-link">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             Email Me
           </a>
@@ -942,24 +1089,282 @@ footer{
 </footer>
 
 <script>
-// Intersection Observer for fade-in animations
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
-},{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+/* ══════════════════════════════════════
+   1. SCROLL PROGRESS BAR
+══════════════════════════════════════ */
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  progressBar.style.width = pct + '%';
+}, { passive: true });
 
-// Active nav highlight
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{
-    if(window.scrollY>=s.offsetTop-80) cur=s.getAttribute('id');
+/* ══════════════════════════════════════
+   2. CURSOR GLOW
+══════════════════════════════════════ */
+const cursorGlow = document.getElementById('cursor-glow');
+window.addEventListener('mousemove', e => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top  = e.clientY + 'px';
+}, { passive: true });
+
+/* ══════════════════════════════════════
+   3. PARTICLES CANVAS
+══════════════════════════════════════ */
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  const COLORS = ['rgba(45,212,191,', 'rgba(129,140,248,', 'rgba(56,189,248,'];
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x    = rand(0, W);
+      this.y    = rand(0, H);
+      this.r    = rand(0.5, 1.8);
+      this.vx   = rand(-0.15, 0.15);
+      this.vy   = rand(-0.3, -0.05);
+      this.alpha= rand(0.1, 0.5);
+      this.col  = COLORS[Math.floor(rand(0, COLORS.length))];
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      this.alpha -= 0.0008;
+      if (this.alpha <= 0 || this.y < -5) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.col + this.alpha + ')';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+  // Draw connection lines between close particles
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 80) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          const opacity = (1 - dist / 80) * 0.06;
+          ctx.strokeStyle = 'rgba(45,212,191,' + opacity + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    drawConnections();
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ══════════════════════════════════════
+   4. TYPED ROLE EFFECT
+══════════════════════════════════════ */
+(function() {
+  const roles = [
+    'REST API Specialist',
+    'Integration Developer',
+    'GlideAjax Expert',
+    'Automation Builder',
+    'ITSM Practitioner',
+    'ServiceNow PDI Builder'
+  ];
+  const el = document.getElementById('typed-role');
+  if (!el) return;
+  let roleIdx = 0, charIdx = 0, deleting = false;
+
+  function type() {
+    const current = roles[roleIdx];
+    if (!deleting) {
+      el.textContent = current.slice(0, ++charIdx);
+      if (charIdx === current.length) {
+        deleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+      setTimeout(type, 60);
+    } else {
+      el.textContent = current.slice(0, --charIdx);
+      if (charIdx === 0) {
+        deleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+        setTimeout(type, 400);
+        return;
+      }
+      setTimeout(type, 35);
+    }
+  }
+  setTimeout(type, 1200);
+})();
+
+/* ══════════════════════════════════════
+   5. COUNTER ANIMATION (Stats)
+══════════════════════════════════════ */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const dur    = 1800;
+  const step   = 16;
+  const steps  = dur / step;
+  let current  = 0;
+  const inc    = target / steps;
+  const timer  = setInterval(() => {
+    current += inc;
+    if (current >= target) {
+      el.textContent = target + suffix;
+      clearInterval(timer);
+    } else {
+      el.textContent = Math.floor(current) + suffix;
+    }
+  }, step);
+}
+
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.target.dataset.target) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
   });
-  navLinks.forEach(a=>{
-    a.style.color = a.getAttribute('href')==='#'+cur ? 'var(--accent)' : '';
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObs.observe(el));
+
+/* ══════════════════════════════════════
+   6. FADE-IN + SKILL TAG STAGGER
+══════════════════════════════════════ */
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Also trigger skill category vis for tag stagger
+      if (e.target.classList.contains('skill-category')) {
+        e.target.classList.add('vis');
+      }
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+document.querySelectorAll('.skill-category').forEach(el => fadeObs.observe(el));
+
+/* ══════════════════════════════════════
+   7. 3D CARD TILT ON HOVER
+══════════════════════════════════════ */
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r    = card.getBoundingClientRect();
+    const x    = e.clientX - r.left;
+    const y    = e.clientY - r.top;
+    const rotX = ((y / r.height) - 0.5) * -6;
+    const rotY = ((x / r.width)  - 0.5) *  6;
+    card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
+    card.style.transition = 'transform 0.1s ease';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform 0.4s ease';
   });
 });
+
+/* ══════════════════════════════════════
+   8. ACTIVE NAV HIGHLIGHT ON SCROLL
+══════════════════════════════════════ */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 90) cur = s.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
+  });
+}, { passive: true });
+
+/* ══════════════════════════════════════
+   9. GUIDE CARD HOVER LIFT
+══════════════════════════════════════ */
+document.querySelectorAll('.guide-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.boxShadow = '0 20px 60px rgba(45,212,191,.08), 0 0 0 1px rgba(45,212,191,.15)';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.boxShadow = '';
+  });
+});
+
+/* ══════════════════════════════════════
+   10. SKILL CATEGORY HOVER GLOW
+══════════════════════════════════════ */
+document.querySelectorAll('.skill-category').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.boxShadow = '0 8px 40px rgba(45,212,191,.06)';
+    card.style.transition = 'box-shadow .3s ease, border-color .2s';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.boxShadow = '';
+  });
+});
+
+/* ══════════════════════════════════════
+   11. SMOOTH REVEAL FOR CERT ITEMS
+══════════════════════════════════════ */
+const certObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateX(0)';
+      }, i * 80);
+      certObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.cert-item').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateX(24px)';
+  el.style.transition = `opacity .5s ease ${i*0.08}s, transform .5s ease ${i*0.08}s`;
+  certObs.observe(el);
+});
+
+/* ══════════════════════════════════════
+   12. NAV SCROLL SHRINK
+══════════════════════════════════════ */
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navEl.style.height = '52px';
+    navEl.style.background = 'rgba(4,6,13,.97)';
+  } else {
+    navEl.style.height = '64px';
+    navEl.style.background = 'rgba(4,6,13,.85)';
+  }
+}, { passive: true });
 </script>
 </body>
 </html>

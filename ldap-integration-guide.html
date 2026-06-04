@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LDAP Integration with ServiceNow — Hemanth M</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f8f6f1;
+  --surface:#ffffff;
+  --card:#fdfcf9;
+  --border:#e8e3d9;
+  --border2:#d4ccba;
+  --ink:#1a1612;
+  --ink2:#3d3428;
+  --muted:#7a6e5f;
+  --muted2:#a09585;
+  --accent:#c84b00;
+  --accent2:#1a6b3c;
+  --blue:#1a4480;
+  --gold:#b8860b;
+  --tag-bg:#f0ebe0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:16px;
+  line-height:1.75;
+}
+/* grain texture */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;
+}
+
+/* ── TOP BAR ── */
+.topbar{
+  background:var(--ink);color:#f8f6f1;
+  padding:12px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.topbar-logo{
+  font-family:'DM Mono',monospace;font-size:13px;letter-spacing:2px;color:#c9b99a;
+}
+.topbar-nav{display:flex;gap:28px;list-style:none;}
+.topbar-nav a{color:#c9b99a;text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .2s;}
+.topbar-nav a:hover{color:#f8f6f1;}
+.topbar-back{
+  display:flex;align-items:center;gap:6px;
+  color:#c9b99a;text-decoration:none;font-size:13px;
+  transition:color .2s;
+}
+.topbar-back:hover{color:#f8f6f1;}
+
+/* ── HERO ── */
+.hero{
+  background:var(--ink);
+  padding:80px 48px 72px;
+  position:relative;overflow:hidden;
+}
+.hero-rule{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--accent),#ff8c42,var(--accent));
+}
+.hero-inner{max-width:900px;margin:0 auto;}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:3px;text-transform:uppercase;
+  color:#c9b99a;margin-bottom:24px;
+}
+.hero-kicker::before{content:'';width:24px;height:1px;background:var(--accent);}
+.hero-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(40px,6vw,80px);
+  font-weight:900;
+  color:#f8f6f1;
+  line-height:1.0;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+.hero-title em{font-style:italic;color:#ff8c42;}
+.hero-subtitle{
+  font-size:18px;color:#a09585;
+  max-width:600px;margin-bottom:40px;line-height:1.7;font-weight:300;
+}
+.hero-meta{
+  display:flex;gap:24px;flex-wrap:wrap;
+}
+.hero-chip{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:4px;padding:6px 14px;
+  font-size:12px;color:#c9b99a;font-family:'DM Mono',monospace;
+  letter-spacing:.5px;
+}
+.hero-chip span{color:#f8f6f1;}
+
+/* ── LAYOUT ── */
+.page-body{max-width:900px;margin:0 auto;padding:60px 48px 100px;}
+
+/* ── PROGRESS TRACKER ── */
+.progress-track{
+  display:flex;align-items:center;gap:0;
+  margin-bottom:60px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;
+}
+.progress-step{
+  flex:1;padding:16px 14px;text-align:center;
+  border-right:1px solid var(--border);
+  cursor:pointer;transition:background .2s;
+  position:relative;
+}
+.progress-step:last-child{border-right:none;}
+.progress-step:hover{background:#faf7f2;}
+.progress-step.active{background:var(--ink);}
+.progress-step-num{
+  font-family:'DM Mono',monospace;font-size:10px;
+  color:var(--muted2);letter-spacing:2px;margin-bottom:4px;
+}
+.progress-step.active .progress-step-num{color:#ff8c42;}
+.progress-step-label{font-size:12px;font-weight:600;color:var(--ink2);}
+.progress-step.active .progress-step-label{color:#f8f6f1;}
+
+/* ── SECTION ── */
+.guide-section{
+  margin-bottom:64px;
+  scroll-margin-top:80px;
+}
+.section-eyebrow{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;
+}
+.section-num-badge{
+  font-family:'DM Mono',monospace;font-size:11px;
+  background:var(--ink);color:#ff8c42;
+  padding:4px 10px;border-radius:3px;letter-spacing:2px;
+}
+.section-rule{flex:1;height:1px;background:var(--border2);}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(22px,3vw,32px);
+  font-weight:700;letter-spacing:-.5px;
+  margin-bottom:16px;line-height:1.2;
+  color:var(--ink);
+}
+.section-intro{
+  font-size:16px;color:var(--muted);
+  line-height:1.85;margin-bottom:28px;
+  max-width:760px;
+}
+
+/* ── ANALOGY BOX ── */
+.analogy-box{
+  background:linear-gradient(135deg,#fff9f0,#fff3e0);
+  border:1px solid #f0d9b0;border-left:4px solid var(--accent);
+  border-radius:8px;padding:24px 28px;margin-bottom:28px;
+}
+.analogy-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:10px;font-weight:500;
+}
+.analogy-text{font-size:15px;color:var(--ink2);line-height:1.8;}
+.analogy-text strong{color:var(--accent);}
+
+/* ── CONCEPT CARDS ── */
+.concept-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;margin-bottom:28px;
+}
+.concept-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:24px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.concept-card:hover{border-color:var(--border2);box-shadow:0 4px 20px rgba(0,0,0,.06);}
+.concept-letter{
+  font-family:'Fraunces',serif;font-size:48px;font-weight:900;
+  line-height:1;color:var(--accent);margin-bottom:8px;
+  opacity:.15;
+}
+.concept-name{font-size:16px;font-weight:700;margin-bottom:4px;color:var(--ink);}
+.concept-full{font-size:12px;font-family:'DM Mono',monospace;color:var(--muted2);margin-bottom:10px;letter-spacing:.5px;}
+.concept-desc{font-size:14px;color:var(--muted);line-height:1.7;}
+.concept-example{
+  margin-top:12px;background:var(--tag-bg);
+  border-radius:5px;padding:8px 12px;
+  font-family:'DM Mono',monospace;font-size:12px;
+  color:var(--accent);
+}
+
+/* ── LDAP PATH VISUALIZER ── */
+.path-viz{
+  background:var(--ink);border-radius:12px;
+  padding:32px;margin-bottom:28px;overflow-x:auto;
+}
+.path-viz-title{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:3px;color:#ff8c42;margin-bottom:20px;
+  text-transform:uppercase;
+}
+.path-tree{display:flex;flex-direction:column;gap:4px;}
+.path-node{
+  display:flex;align-items:center;gap:0;
+  font-family:'DM Mono',monospace;font-size:13px;
+}
+.path-indent{width:28px;flex-shrink:0;}
+.path-connector{color:#4a3f30;margin-right:8px;}
+.path-key{color:#ff8c42;font-weight:500;}
+.path-eq{color:#6b5c4a;}
+.path-val{color:#a8d8a8;}
+.path-comment{color:#6b5c4a;font-size:11px;margin-left:16px;font-style:italic;}
+.path-full{
+  margin-top:24px;padding-top:20px;
+  border-top:1px solid #2d2418;
+}
+.path-full-label{font-family:'DM Mono',monospace;font-size:10px;color:#6b5c4a;letter-spacing:2px;margin-bottom:8px;text-transform:uppercase;}
+.path-full-str{
+  font-family:'DM Mono',monospace;font-size:13px;
+  color:#c9b99a;line-height:1.6;word-break:break-all;
+}
+.path-full-str .hl-cn{color:#ff8c42;}
+.path-full-str .hl-ou{color:#7ec8e3;}
+.path-full-str .hl-dc{color:#a8d8a8;}
+
+/* ── STEP CARDS ── */
+.steps{display:flex;flex-direction:column;gap:2px;}
+.step{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:0;
+  overflow:hidden;
+  transition:border-color .2s;
+}
+.step:first-child{border-radius:10px 10px 0 0;}
+.step:last-child{border-radius:0 0 10px 10px;}
+.step:not(:last-child){border-bottom:none;}
+.step:hover{border-color:var(--border2);}
+.step-header{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 24px;cursor:pointer;
+}
+.step-num{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--ink);color:#ff8c42;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Mono',monospace;font-weight:500;font-size:13px;
+  flex-shrink:0;
+}
+.step-title{font-size:16px;font-weight:600;color:var(--ink);flex:1;}
+.step-tag{
+  font-size:11px;font-family:'DM Mono',monospace;
+  padding:3px 10px;border-radius:3px;
+  background:var(--tag-bg);color:var(--muted);letter-spacing:.5px;
+}
+.step-body{
+  padding:0 24px 28px 74px;
+  display:none;
+}
+.step.open .step-body{display:block;}
+.step-desc{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
+.how-to{
+  background:var(--tag-bg);border-radius:8px;padding:20px 22px;
+}
+.how-to-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:3px;color:var(--accent);
+  text-transform:uppercase;margin-bottom:12px;font-weight:500;
+}
+.how-to ol{padding-left:18px;display:flex;flex-direction:column;gap:8px;}
+.how-to li{font-size:14px;color:var(--ink2);line-height:1.75;}
+.how-to li code{
+  font-family:'DM Mono',monospace;font-size:12px;
+  background:rgba(0,0,0,.07);padding:1px 6px;border-radius:3px;
+  color:var(--accent);
+}
+.how-to li strong{color:var(--ink);}
+
+/* ── CODE BLOCK ── */
+.code-wrap{
+  background:var(--ink);border-radius:10px;
+  margin:16px 0;overflow:hidden;
+}
+.code-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 18px;background:#130f09;
+  border-bottom:1px solid #2d2418;
+}
+.code-label{font-family:'DM Mono',monospace;font-size:10px;color:#6b5c4a;letter-spacing:2px;text-transform:uppercase;}
+.code-dots{display:flex;gap:5px;}
+.code-dots span{width:9px;height:9px;border-radius:50%;}
+.d-r{background:#ff5f57;}.d-y{background:#febc2e;}.d-g{background:#28c840;}
+pre{
+  padding:20px 22px;
+  font-family:'DM Mono',monospace;font-size:12.5px;
+  color:#c9b99a;line-height:1.7;overflow-x:auto;
+}
+.k{color:#ff8c42;}.s{color:#a8d8a8;}.c{color:#5a4f40;font-style:italic;}
+.p{color:#7ec8e3;}.n{color:#ffd27f;}.v{color:#c9b99a;}
+
+/* ── FIELD TABLE ── */
+.field-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+.field-table th{
+  text-align:left;padding:10px 16px;
+  background:var(--ink);color:#c9b99a;
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;font-weight:500;
+}
+.field-table td{
+  padding:12px 16px;border-bottom:1px solid var(--border);
+  color:var(--ink2);vertical-align:top;
+}
+.field-table tr:last-child td{border-bottom:none;}
+.field-table tr:hover td{background:#faf7f2;}
+.field-name{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);font-weight:500;}
+.field-val{font-family:'DM Mono',monospace;font-size:12px;color:var(--blue);}
+.field-imp{font-size:11px;padding:2px 8px;background:rgba(200,75,0,.08);color:var(--accent);border-radius:3px;border:1px solid rgba(200,75,0,.2);}
+
+/* ── PORT TABLE ── */
+.port-row{
+  display:grid;grid-template-columns:auto 1fr auto;
+  gap:0;
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;margin-bottom:10px;
+}
+.port-num{
+  padding:16px 20px;
+  background:var(--ink);
+  font-family:'DM Mono',monospace;font-size:18px;font-weight:500;
+  color:#ff8c42;display:flex;align-items:center;
+}
+.port-info{padding:16px 20px;}
+.port-info strong{display:block;font-size:14px;color:var(--ink);margin-bottom:2px;}
+.port-info span{font-size:13px;color:var(--muted);}
+.port-badge{
+  padding:16px 20px;display:flex;align-items:center;
+  font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1px;
+  font-weight:600;
+}
+.pb-std{color:var(--accent2);}
+.pb-sec{color:var(--blue);}
+
+/* ── INFO BOX ── */
+.info-box{
+  background:#eff7ff;border:1px solid #c2d9f5;
+  border-left:4px solid var(--blue);
+  border-radius:8px;padding:18px 22px;margin:16px 0;
+}
+.info-box.warn{background:#fff9f0;border-color:#f0d9b0;border-left-color:var(--accent);}
+.info-box.success{background:#f0faf5;border-color:#b3e0c9;border-left-color:var(--accent2);}
+.info-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:6px;font-weight:600;
+}
+.info-box .info-label{color:var(--blue);}
+.info-box.warn .info-label{color:var(--accent);}
+.info-box.success .info-label{color:var(--accent2);}
+.info-text{font-size:14px;color:var(--ink2);line-height:1.75;}
+.info-text code{font-family:'DM Mono',monospace;font-size:12px;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:3px;}
+.info-text strong{color:var(--ink);}
+
+/* ── FILTER BREAKDOWN ── */
+.filter-breakdown{
+  background:var(--ink);border-radius:10px;
+  padding:28px;margin:16px 0;
+}
+.fb-title{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:3px;color:#ff8c42;margin-bottom:18px;text-transform:uppercase;
+}
+.fb-filter{
+  font-family:'DM Mono',monospace;font-size:13px;
+  color:#c9b99a;margin-bottom:20px;word-break:break-all;line-height:1.7;
+}
+.fb-filter .op{color:#ff8c42;}
+.fb-filter .cls{color:#7ec8e3;}
+.fb-filter .val{color:#a8d8a8;}
+.fb-parts{display:flex;flex-direction:column;gap:10px;}
+.fb-part{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:12px 16px;background:rgba(255,255,255,.04);
+  border-radius:6px;
+}
+.fb-part-code{
+  font-family:'DM Mono',monospace;font-size:12px;color:#ff8c42;
+  flex-shrink:0;width:220px;
+}
+.fb-part-meaning{font-size:13px;color:#a09585;line-height:1.6;}
+.fb-summary{
+  margin-top:20px;padding-top:16px;border-top:1px solid #2d2418;
+  font-size:14px;color:#c9b99a;line-height:1.7;
+}
+.fb-summary strong{color:#ff8c42;}
+
+/* ── FLOW DIAGRAM ── */
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:24px 0;}
+.flow-node{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:14px 28px;
+  text-align:center;width:100%;max-width:400px;
+  transition:border-color .2s;
+}
+.flow-node:hover{border-color:var(--border2);}
+.flow-node-label{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted2);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.flow-node-title{font-size:15px;font-weight:600;color:var(--ink);}
+.flow-arrow{font-size:20px;color:var(--muted2);margin:4px 0;}
+.flow-node.highlight{
+  background:var(--ink);border-color:var(--accent);
+}
+.flow-node.highlight .flow-node-label{color:#ff8c42;}
+.flow-node.highlight .flow-node-title{color:#f8f6f1;}
+
+/* ── RECAP ── */
+.recap-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px;margin-top:20px;
+}
+.recap-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:18px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.recap-icon{font-size:20px;margin-top:2px;}
+.recap-text{font-size:13px;color:var(--muted);line-height:1.6;}
+.recap-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:3px;}
+
+/* ── TAGS ── */
+.tags-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:32px;border-top:1px solid var(--border);}
+.tag{
+  font-family:'DM Mono',monospace;font-size:11px;
+  padding:5px 12px;border-radius:3px;
+  background:var(--tag-bg);border:1px solid var(--border2);
+  color:var(--muted);letter-spacing:.5px;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--muted2);margin-bottom:40px;
+  font-family:'DM Mono',monospace;
+}
+.breadcrumb a{color:var(--muted2);text-decoration:none;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb-sep{color:var(--border2);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);padding:32px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-copy{font-family:'DM Mono',monospace;font-size:12px;color:#6b5c4a;}
+.footer-back{
+  display:flex;align-items:center;gap:6px;
+  color:#c9b99a;text-decoration:none;font-size:13px;
+  transition:color .2s;
+}
+.footer-back:hover{color:#f8f6f1;}
+
+/* ── FADE IN ── */
+.fi{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.fi.vis{opacity:1;transform:none;}
+.fd1{transition-delay:.08s;}.fd2{transition-delay:.16s;}.fd3{transition-delay:.24s;}
+
+@media(max-width:700px){
+  .topbar,.hero,.page-body,footer{padding-left:20px;padding-right:20px;}
+  .progress-track{display:none;}
+  .step-body{padding-left:24px;}
+  .port-row{grid-template-columns:auto 1fr;}
+  .port-badge{display:none;}
+  .fb-part{flex-direction:column;}
+  .fb-part-code{width:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="topbar-logo">HM.DEV</div>
+  <a href="index.html" class="topbar-back">← Back to Portfolio</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-rule"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">Technical Guide · ServiceNow Integration</div>
+    <h1 class="hero-title">LDAP Integration<br><em>with ServiceNow</em></h1>
+    <p class="hero-subtitle">How to automatically sync users &amp; groups from Active Directory (Azure AD, AWS, IBM) into ServiceNow — no manual entry needed.</p>
+    <div class="hero-meta">
+      <div class="hero-chip">Level: <span>Beginner → Intermediate</span></div>
+      <div class="hero-chip">Practiced on: <span>ServiceNow PDI</span></div>
+      <div class="hero-chip">Topics: <span>LDAP · Transform Map · Import Sets</span></div>
+      <div class="hero-chip">Author: <span>Hemanth M</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS TRACKER -->
+<div class="page-body">
+  <div class="progress-track fi">
+    <div class="progress-step active" onclick="scrollTo('s1',this)">
+      <div class="progress-step-num">01</div>
+      <div class="progress-step-label">What &amp; Why</div>
+    </div>
+    <div class="progress-step" onclick="scrollTo('s2',this)">
+      <div class="progress-step-num">02</div>
+      <div class="progress-step-label">LDAP Basics</div>
+    </div>
+    <div class="progress-step" onclick="scrollTo('s3',this)">
+      <div class="progress-step-num">03</div>
+      <div class="progress-step-label">DC · OU · CN</div>
+    </div>
+    <div class="progress-step" onclick="scrollTo('s4',this)">
+      <div class="progress-step-num">04</div>
+      <div class="progress-step-label">Create Server</div>
+    </div>
+    <div class="progress-step" onclick="scrollTo('s5',this)">
+      <div class="progress-step-num">05</div>
+      <div class="progress-step-label">OU + Import</div>
+    </div>
+    <div class="progress-step" onclick="scrollTo('s6',this)">
+      <div class="progress-step-num">06</div>
+      <div class="progress-step-label">Transform Map</div>
+    </div>
+    <div class="progress-step" onclick="scrollTo('s7',this)">
+      <div class="progress-step-num">07</div>
+      <div class="progress-step-label">Recap</div>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb fi">
+    <a href="index.html">Portfolio</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="index.html#guides">Guides</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>LDAP Integration</span>
+  </div>
+
+  <!-- ═══ SECTION 1 ═══ -->
+  <div class="guide-section fi" id="s1">
+    <div class="section-eyebrow">
+      <span class="section-num-badge">01</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title">What is Active Directory &amp; Why Does ServiceNow Need It?</h2>
+    <p class="section-intro">When you join a company, the IT team creates your profile — name, email, department, role — on a central server. ServiceNow also needs this same data to assign you tickets, give you access, and place you in the right team.</p>
+
+    <div class="flow">
+      <div class="flow-node highlight">
+        <div class="flow-node-label">Your Company's Server</div>
+        <div class="flow-node-title">Active Directory (Azure AD / AWS / IBM)</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">
+        <div class="flow-node-label">Two Options</div>
+        <div class="flow-node-title">Manual Entry &nbsp;vs&nbsp; <strong>Auto Sync (LDAP) ✓</strong></div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node highlight">
+        <div class="flow-node-label">Destination</div>
+        <div class="flow-node-title">ServiceNow User Table (sys_user)</div>
+      </div>
+    </div>
+
+    <div class="info-box success">
+      <div class="info-label">Key Insight</div>
+      <div class="info-text">Different companies use different platforms — <strong>Azure AD, AWS Directory Service, IBM Cloud Directory</strong> — but the LDAP integration process in ServiceNow works <strong>exactly the same way for all of them.</strong></div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2 ═══ -->
+  <div class="guide-section fi" id="s2">
+    <div class="section-eyebrow">
+      <span class="section-num-badge">02</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title">What is LDAP?</h2>
+    <p class="section-intro">LDAP stands for <strong>Lightweight Directory Access Protocol</strong>. It is the language/protocol that ServiceNow uses to talk to your Active Directory and fetch user and group information from it.</p>
+
+    <div class="analogy-box">
+      <div class="analogy-label">📚 Analogy — Think of it this way</div>
+      <div class="analogy-text">
+        Your company's Active Directory is like a <strong>huge library</strong>. Every user record (name, email, department, role) is a book stored on different shelves.<br><br>
+        ServiceNow wants to read those books — but to do that, it needs to know: <strong>how to enter the library, where the shelves are, and how to search for the right book.</strong><br><br>
+        That set of rules — the language ServiceNow uses to communicate with the directory — is called <strong>LDAP</strong>.
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:14px;color:var(--ink);">LDAP Ports</h3>
+    <div class="port-row">
+      <div class="port-num">389</div>
+      <div class="port-info"><strong>Standard LDAP</strong><span>Default port for unencrypted LDAP connections. Used in development &amp; testing.</span></div>
+      <div class="port-badge pb-std">STANDARD</div>
+    </div>
+    <div class="port-row">
+      <div class="port-num">636</div>
+      <div class="port-info"><strong>LDAPS (Secure)</strong><span>SSL-encrypted LDAP. Always use this in production environments.</span></div>
+      <div class="port-badge pb-sec">SECURE</div>
+    </div>
+    <div class="info-box warn" style="margin-top:16px;">
+      <div class="info-label">⚠ Production Rule</div>
+      <div class="info-text">In a real organisation, your AD/IT team will give you the server URL, port, login DN, and password. <strong>Always enable SSL (port 636) in production.</strong> Never use port 389 in live environments.</div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3 ═══ -->
+  <div class="guide-section fi" id="s3">
+    <div class="section-eyebrow">
+      <span class="section-num-badge">03</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title">Understanding LDAP Structure: DC · OU · CN</h2>
+    <p class="section-intro">This is what confuses every beginner. LDAP is not a flat list of users — it's a <strong>tree structure</strong>, just like your company's org chart. Once you understand these 3 terms, everything else clicks.</p>
+
+    <div class="concept-grid">
+      <div class="concept-card fi fd1">
+        <div class="concept-letter">DC</div>
+        <div class="concept-name">Domain Component</div>
+        <div class="concept-full">ROOT OF THE TREE</div>
+        <div class="concept-desc">The name of your organisation's domain. The very top of the LDAP tree. Every domain is split into parts separated by dots.</div>
+        <div class="concept-example">glidescript.com →<br>DC=glidescript, DC=com</div>
+      </div>
+      <div class="concept-card fi fd2">
+        <div class="concept-letter">OU</div>
+        <div class="concept-name">Organisational Unit</div>
+        <div class="concept-full">DEPARTMENT / FOLDER</div>
+        <div class="concept-desc">Think of these as departments or folders inside your org — HR, Engineering, Finance, IT, Support. OUs sit below DC and group users together.</div>
+        <div class="concept-example">OU=finance → folder<br>containing all finance users</div>
+      </div>
+      <div class="concept-card fi fd3">
+        <div class="concept-letter">CN</div>
+        <div class="concept-name">Common Name</div>
+        <div class="concept-full">INDIVIDUAL OBJECT</div>
+        <div class="concept-desc">The natural name of a specific user or group. This is the leaf node — the actual person or group object at the bottom of the tree.</div>
+        <div class="concept-example">CN=Anjeli Sharma<br>CN=IT-Team (a group)</div>
+      </div>
+    </div>
+
+    <div class="path-viz">
+      <div class="path-viz-title">LDAP Tree Structure — Visual</div>
+      <div class="path-tree">
+        <div class="path-node"><span class="path-key">DC</span><span class="path-eq">=glidescript, </span><span class="path-key">DC</span><span class="path-eq">=com</span><span class="path-comment">← Root (domain)</span></div>
+        <div class="path-node"><span class="path-indent">│</span></div>
+        <div class="path-node"><span class="path-indent">├──</span><span class="path-key"> OU</span><span class="path-eq">=employees</span><span class="path-comment">← Department folder</span></div>
+        <div class="path-node"><span class="path-indent">│&nbsp;&nbsp;&nbsp;│</span></div>
+        <div class="path-node"><span class="path-indent">│&nbsp;&nbsp;&nbsp;├──</span><span class="path-key"> OU</span><span class="path-eq">=it</span><span class="path-comment">← Sub-department</span></div>
+        <div class="path-node"><span class="path-indent">│&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;│</span></div>
+        <div class="path-node"><span class="path-indent">│&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└──</span><span class="path-key"> CN</span><span class="path-eq">=Anjeli Sharma</span><span class="path-comment">← Individual user</span></div>
+        <div class="path-node"><span class="path-indent">│</span></div>
+        <div class="path-node"><span class="path-indent">└──</span><span class="path-key"> OU</span><span class="path-eq">=finance</span><span class="path-comment">← Another department</span></div>
+        <div class="path-node"><span class="path-indent">&nbsp;&nbsp;&nbsp;&nbsp;└──</span><span class="path-key"> CN</span><span class="path-eq">=Rahul Sharma</span><span class="path-comment">← Finance user</span></div>
+      </div>
+      <div class="path-full">
+        <div class="path-full-label">Full Distinguished Name (DN) — Read RIGHT to LEFT</div>
+        <div class="path-full-str">
+          <span class="hl-cn">CN=Anjeli Sharma</span>, <span class="hl-ou">OU=employees</span>, <span class="hl-ou">OU=it</span>, <span class="hl-dc">DC=glidescript</span>, <span class="hl-dc">DC=com</span>
+        </div>
+        <div style="margin-top:10px;font-family:'DM Mono',monospace;font-size:12px;color:#6b5c4a;">
+          Reading it: domain glidescript.com → go into IT dept → employees → find user Anjeli Sharma
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4 ═══ -->
+  <div class="guide-section fi" id="s4">
+    <div class="section-eyebrow">
+      <span class="section-num-badge">04</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title">Step-by-Step: Creating the LDAP Server in ServiceNow</h2>
+    <p class="section-intro">We are using the free online LDAP test server at <strong>ldap.forumsys.com</strong> — the only publicly available LDAP server for testing. It has real users, real groups, and real data.</p>
+
+    <div class="info-box">
+      <div class="info-label">🔍 Finding the Test Server</div>
+      <div class="info-text">Search Google for <code>"LDAP forumsys"</code> → Open the first result (Online LDAP Test Server). You will find the server URL, login DN, and password there. In a real organisation, your IT/AD team provides these credentials.</div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step open">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">1</div>
+          <div class="step-title">Navigate to LDAP in ServiceNow</div>
+          <span class="step-tag">NAVIGATION</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">In ServiceNow, you create LDAP server records under the System LDAP application. This introduces the external Active Directory to ServiceNow.</div>
+          <div class="how-to">
+            <div class="how-to-label">How to do it</div>
+            <ol>
+              <li>Go to the <strong>Filter Navigator</strong> (top-left search bar)</li>
+              <li>Type <code>ldap</code></li>
+              <li>Under <strong>System LDAP</strong>, click <strong>New Server</strong></li>
+              <li>Or click <strong>LDAP Servers</strong> to see existing ones</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">2</div>
+          <div class="step-title">Fill in the LDAP Server Form</div>
+          <span class="step-tag">CONFIGURATION</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">This form is your way of introducing the LDAP server to ServiceNow — "Hey ServiceNow, here is the server you need to connect to."</div>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Value</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td><span class="field-name">Type</span></td><td><span class="field-val">Active Directory</span></td><td>Select the directory type</td></tr>
+              <tr><td><span class="field-name">Server Name</span></td><td><span class="field-val">LDAP_Server</span></td><td>Display name — can be anything</td></tr>
+              <tr><td><span class="field-name">Server URL</span></td><td><span class="field-val">ldap.forumsys.com:389</span></td><td>Host + port (389 for standard)</td></tr>
+              <tr><td><span class="field-name">Starting Search Dir</span></td><td><span class="field-val">DC=example,DC=com</span></td><td>Where ServiceNow begins searching</td></tr>
+              <tr><td><span class="field-name">Login DN</span></td><td><span class="field-val">CN=read-only-admin,...</span></td><td>Full DN path to login user</td></tr>
+              <tr><td><span class="field-name">Password</span></td><td><span class="field-val">password</span></td><td>From the test server page</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box warn">
+            <div class="info-label">Login DN Format</div>
+            <div class="info-text">The Login DN is NOT a simple username like "admin". In LDAP, usernames are written as a full path called a <strong>Distinguished Name (DN)</strong>. Example: <code>CN=read-only-admin,DC=example,DC=com</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">3</div>
+          <div class="step-title">Configure Advanced Options</div>
+          <span class="step-tag">SETTINGS</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">These settings control how ServiceNow connects to and reads from the LDAP server.</div>
+          <table class="field-table">
+            <thead><tr><th>Option</th><th>Value</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><span class="field-name">Connection Timeout</span></td><td><span class="field-val">5 seconds</span></td><td>How long SN waits before giving up on connecting</td></tr>
+              <tr><td><span class="field-name">Read Timeout</span></td><td><span class="field-val">10 seconds</span></td><td>How long SN waits to receive data back</td></tr>
+              <tr><td><span class="field-name">SSL</span></td><td><span class="field-val">✓ (in production)</span></td><td><span class="field-imp">ALWAYS enable in live org</span></td></tr>
+              <tr><td><span class="field-name">Listener</span></td><td><span class="field-val">ON (recommended)</span></td><td>AD pushes changes to SN automatically</td></tr>
+              <tr><td><span class="field-name">Listener Interval</span></td><td><span class="field-val">5–60 mins</span></td><td>How often SN checks for new updates</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box success" style="margin-top:12px;">
+            <div class="info-label">✓ Listener Feature</div>
+            <div class="info-text">When the <strong>Listener</strong> is ON, the moment a new user is created in Active Directory, ServiceNow is automatically notified and updated. No scheduled job needed — it's real-time!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">4</div>
+          <div class="step-title">Test the Connection</div>
+          <span class="step-tag">VERIFICATION</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">After saving the LDAP server record, always test the connection before moving forward.</div>
+          <div class="how-to">
+            <div class="how-to-label">How to test</div>
+            <ol>
+              <li>Save the LDAP server record</li>
+              <li>Click <strong>"Test Connection"</strong> button on the form</li>
+              <li>You should see: <code>Connection successfully established</code></li>
+              <li>If it fails → check the Server URL, port, Login DN, and password</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5 ═══ -->
+  <div class="guide-section fi" id="s5">
+    <div class="section-eyebrow">
+      <span class="section-num-badge">05</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title">LDAP OU Definition &amp; Importing Users</h2>
+    <p class="section-intro">After creating the server, you need to tell ServiceNow <em>where</em> inside the LDAP tree to look for users and groups. This is the LDAP OU Definition.</p>
+
+    <div class="steps">
+
+      <div class="step open">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">5</div>
+          <div class="step-title">Configure the LDAP OU Definition (Users)</div>
+          <span class="step-tag">OU CONFIG</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">Once the server is saved, scroll down to the <strong>LDAP OU Definitions</strong> related list. Open "Users". This tells ServiceNow exactly which branch of the LDAP tree contains your users.</div>
+          <table class="field-table">
+            <thead><tr><th>Field</th><th>Value</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><span class="field-name">Name</span></td><td><span class="field-val">Users</span></td><td>Label for this OU definition</td></tr>
+              <tr><td><span class="field-name">RDN</span></td><td><span class="field-val">CN=users</span></td><td>Where users are stored in the tree</td></tr>
+              <tr><td><span class="field-name">Query Field</span></td><td><span class="field-val">sAMAccountName</span></td><td><span class="field-imp">CRITICAL — unique ID field</span></td></tr>
+              <tr><td><span class="field-name">Target Table</span></td><td><span class="field-val">sys_user</span></td><td>Auto-selected: ServiceNow Users table</td></tr>
+              <tr><td><span class="field-name">Active</span></td><td><span class="field-val">true</span></td><td>Enable this OU definition</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box warn" style="margin-top:12px;">
+            <div class="info-label">⚠ Query Field is Critical</div>
+            <div class="info-text">The <strong>Query Field (sAMAccountName)</strong> tells ServiceNow which LDAP attribute to use to uniquely identify and search users. It stores the Windows login username (e.g., <code>rSharma</code> for Rahul Sharma).<br><br>If this field is wrong → users may not import properly, duplicates may be created, and authentication may fail.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">6</div>
+          <div class="step-title">Understanding the LDAP Filter</div>
+          <span class="step-tag">FILTERS</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">The filter controls exactly which users get imported. You can import all users, or filter by name, status, type, etc.</div>
+          <div class="filter-breakdown">
+            <div class="fb-title">Default LDAP Filter — Decoded</div>
+            <div class="fb-filter">
+              <span class="op">(&</span><span class="op">(</span><span class="cls">objectClass</span><span class="op">=</span><span class="val">person</span><span class="op">)</span><span class="op">(</span><span class="cls">sn</span><span class="op">=</span><span class="val">*</span><span class="op">)</span><span class="op">(!</span><span class="op">(</span><span class="cls">objectClass</span><span class="op">=</span><span class="val">computer</span><span class="op">))</span><span class="op">(!</span><span class="op">(</span><span class="cls">userAccountControl</span><span class="op">:=</span><span class="val">2</span><span class="op">)))</span>
+            </div>
+            <div class="fb-parts">
+              <div class="fb-part">
+                <div class="fb-part-code">objectClass=person</div>
+                <div class="fb-part-meaning">Only bring objects that are <strong>people/users</strong>. Do not bring printers, devices, or other objects.</div>
+              </div>
+              <div class="fb-part">
+                <div class="fb-part-code">sn=*</div>
+                <div class="fb-part-meaning">User must have a <strong>surname value</strong> (sn = surname). Ensures only valid user records with last names are included.</div>
+              </div>
+              <div class="fb-part">
+                <div class="fb-part-code">!(objectClass=computer)</div>
+                <div class="fb-part-meaning"><strong>Exclude computer objects</strong>. LDAP also stores machine and server records — we only want human users.</div>
+              </div>
+              <div class="fb-part">
+                <div class="fb-part-code">!(userAccountControl:=2)</div>
+                <div class="fb-part-meaning"><strong>Exclude disabled accounts</strong>. Only import active, enabled users into ServiceNow.</div>
+              </div>
+            </div>
+            <div class="fb-summary"><strong>In plain English:</strong> "Bring only active human users with a surname. Ignore computers, printers, and disabled accounts."</div>
+          </div>
+
+          <div class="how-to" style="margin-top:16px;">
+            <div class="how-to-label">Custom Filter Example (from the demo)</div>
+            <ol>
+              <li>To get only users whose name starts with <strong>E</strong>: <code>(uid=E*)</code></li>
+              <li>To get users starting with <strong>G</strong>: <code>(uid=G*)</code></li>
+              <li>In the OU Definition form → clear the default filter → type your custom filter → Save</li>
+              <li>Click <strong>Browse</strong> to preview which users match</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">7</div>
+          <div class="step-title">Load Records via Data Source</div>
+          <span class="step-tag">DATA IMPORT</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">ServiceNow uses a Data Source record to pull data from the LDAP server into a staging table, before the Transform Map maps it to the actual user table.</div>
+          <div class="how-to">
+            <div class="how-to-label">Steps</div>
+            <ol>
+              <li>In the OU Definition, scroll to the related list → click <strong>LDAP Server User</strong> (Data Source)</li>
+              <li>Click <strong>Load All Records</strong></li>
+              <li>Wait for the job to complete</li>
+              <li>Check: <code>State = Complete</code>, <code>Completion Code = Success</code></li>
+              <li>Verify counts: <strong>Process X, Inserts X, Updates 0, Errors 0</strong></li>
+            </ol>
+          </div>
+          <div class="info-box success" style="margin-top:12px;">
+            <div class="info-label">✓ In the Demo</div>
+            <div class="info-text">After loading with filter <code>uid=E*</code> — Process: 3, Inserts: 3, Updates: 0, Errors: 0. Three users whose names start with E (including Einstein) were successfully loaded into the staging table.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6 ═══ -->
+  <div class="guide-section fi" id="s6">
+    <div class="section-eyebrow">
+      <span class="section-num-badge">06</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title">Creating the Transform Map</h2>
+    <p class="section-intro">The Transform Map tells ServiceNow: "This LDAP field maps to <em>this</em> ServiceNow field." It bridges the staging import table with the actual <code>sys_user</code> table.</p>
+
+    <div class="steps">
+
+      <div class="step open">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">8</div>
+          <div class="step-title">Create &amp; Configure the Transform Map</div>
+          <span class="step-tag">MAPPING</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">A Transform Map is how data from the staging import table gets written into the real ServiceNow table. You match each LDAP attribute to its corresponding ServiceNow field.</div>
+          <div class="how-to">
+            <div class="how-to-label">How to create it</div>
+            <ol>
+              <li>Navigate to <strong>System Import Sets → Transform Maps → New</strong></li>
+              <li>Set <strong>Target Table</strong> to <code>sys_user</code> (User table)</li>
+              <li>Click <strong>Auto Map Matching Fields</strong> — SN will auto-match obvious fields</li>
+              <li>Then click <strong>Map Assist</strong> to manually map remaining fields</li>
+              <li>Save → Click <strong>Transform</strong> to run it</li>
+            </ol>
+          </div>
+
+          <h4 style="font-size:14px;font-weight:700;margin:20px 0 12px;color:var(--ink);">Field Mapping Reference</h4>
+          <table class="field-table">
+            <thead><tr><th>LDAP Attribute (Source)</th><th>ServiceNow Field (Target)</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td><span class="field-name">CN</span></td><td><span class="field-val">name</span></td><td>Full name — Albert Einstein</td></tr>
+              <tr><td><span class="field-name">mail</span></td><td><span class="field-val">email</span></td><td>User's email address</td></tr>
+              <tr><td><span class="field-name">telephoneNumber</span></td><td><span class="field-val">mobile_phone</span></td><td>Phone number</td></tr>
+              <tr><td><span class="field-name">uid</span></td><td><span class="field-val">user_name</span></td><td><span class="field-imp">Unique identifier — most important</span></td></tr>
+              <tr><td><span class="field-name">sn</span></td><td><span class="field-val">last_name</span></td><td>Surname / last name</td></tr>
+              <tr><td><span class="field-name">givenName</span></td><td><span class="field-val">first_name</span></td><td>First name</td></tr>
+            </tbody>
+          </table>
+
+          <div class="info-box success" style="margin-top:16px;">
+            <div class="info-label">✓ Result in the Demo</div>
+            <div class="info-text">After running the transform, three users (including Einstein) appeared in the <code>sys_user</code> (User) table in ServiceNow. The LDAP data was fully mapped and imported successfully.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header" onclick="toggle(this)">
+          <div class="step-num">9</div>
+          <div class="step-title">Automate with Scheduled Job</div>
+          <span class="step-tag">AUTOMATION</span>
+        </div>
+        <div class="step-body">
+          <div class="step-desc">In production, you don't manually run the import every time. Create a Scheduled Job to automate it — daily, hourly, or at any defined interval.</div>
+          <div class="how-to">
+            <div class="how-to-label">How to set it up</div>
+            <ol>
+              <li>Navigate to <strong>System Definition → Scheduled Jobs → New</strong></li>
+              <li>Name it: <code>LDAP User Sync - Daily</code></li>
+              <li>Set the <strong>Run</strong> frequency — Daily, Hourly, Weekly, etc.</li>
+              <li>In the script, reference the LDAP Data Source and trigger the import</li>
+              <li>Save → Activate</li>
+            </ol>
+          </div>
+          <div class="info-box">
+            <div class="info-label">💡 Or Use the Listener</div>
+            <div class="info-text">If you enable the <strong>Listener</strong> on the LDAP Server record, changes in Active Directory push to ServiceNow automatically in real-time — no scheduled job needed for user updates.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 7 ═══ -->
+  <div class="guide-section fi" id="s7">
+    <div class="section-eyebrow">
+      <span class="section-num-badge">07</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title">Full Recap — What We Did &amp; How It Works in Real Life</h2>
+    <p class="section-intro">This is exactly what happens in a real organisation when your manager says "set up LDAP integration" — now you know how to do every single step.</p>
+
+    <div class="recap-grid">
+      <div class="recap-card fi fd1">
+        <div class="recap-icon">🏛</div>
+        <div class="recap-text"><strong>Free Test Server</strong>Used ldap.forumsys.com to simulate a real company's Active Directory. This is the only publicly available LDAP server for testing.</div>
+      </div>
+      <div class="recap-card fi fd2">
+        <div class="recap-icon">🔌</div>
+        <div class="recap-text"><strong>LDAP Server Record</strong>Created a server record in ServiceNow — Name, URL, Port 389, Login DN, Password, Starting Search Directory.</div>
+      </div>
+      <div class="recap-card fi fd3">
+        <div class="recap-icon">📂</div>
+        <div class="recap-text"><strong>OU Definition</strong>Told ServiceNow where inside the LDAP tree to look for users and groups. Configured query field and filter.</div>
+      </div>
+      <div class="recap-card fi fd1">
+        <div class="recap-icon">📥</div>
+        <div class="recap-text"><strong>Data Source Import</strong>Loaded LDAP user records into ServiceNow's staging table using the Data Source linked to the OU definition.</div>
+      </div>
+      <div class="recap-card fi fd2">
+        <div class="recap-icon">🗺</div>
+        <div class="recap-text"><strong>Transform Map</strong>Mapped LDAP attributes (CN, mail, uid, sn) to the ServiceNow sys_user fields (name, email, user_name, last_name).</div>
+      </div>
+      <div class="recap-card fi fd3">
+        <div class="recap-icon">⏰</div>
+        <div class="recap-text"><strong>Automation</strong>In real projects — use Scheduled Jobs or enable the Listener for real-time, automatic syncing. No manual re-imports.</div>
+      </div>
+    </div>
+
+    <div class="analogy-box" style="margin-top:28px;">
+      <div class="analogy-label">🏢 Real World Note</div>
+      <div class="analogy-text">
+        In a real organisation, your AD/IT team gives you: <strong>the server URL, port, Login DN, and password</strong>. You will also use a <strong>MID Server</strong> (installed on-premise) so ServiceNow can reach the internal Active Directory securely. The process is identical to what we did — just with real credentials and a MID Server in the mix.
+      </div>
+    </div>
+
+    <div class="tags-row">
+      <span class="tag">LDAP</span>
+      <span class="tag">Active Directory</span>
+      <span class="tag">Azure AD</span>
+      <span class="tag">ServiceNow PDI</span>
+      <span class="tag">Transform Map</span>
+      <span class="tag">Import Sets</span>
+      <span class="tag">sys_user</span>
+      <span class="tag">DC · OU · CN</span>
+      <span class="tag">sAMAccountName</span>
+      <span class="tag">MID Server</span>
+      <span class="tag">Scheduled Jobs</span>
+      <span class="tag">Integration</span>
+    </div>
+  </div>
+
+</div><!-- /page-body -->
+
+<footer>
+  <div class="footer-copy">© 2025 Hemanth M · LDAP Integration Guide</div>
+  <a href="index.html" class="footer-back">← Back to Portfolio</a>
+</footer>
+
+<script>
+// Toggle steps
+function toggle(header){
+  const step = header.closest('.step');
+  step.classList.toggle('open');
+}
+
+// Progress tracker scroll
+function scrollTo(id, el){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.progress-step').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Fade-in on scroll
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// Update progress tracker on scroll
+const sectionIds=['s1','s2','s3','s4','s5','s6','s7'];
+const steps = document.querySelectorAll('.progress-step');
+window.addEventListener('scroll',()=>{
+  let cur=0;
+  sectionIds.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(el && window.scrollY>=el.offsetTop-120) cur=i;
+  });
+  steps.forEach((s,i)=>{
+    s.classList.toggle('active',i===cur);
+  });
+});
+</script>
+</body>
+</html>

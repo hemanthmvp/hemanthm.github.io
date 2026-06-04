@@ -1,0 +1,1883 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2026-06-03 09:35:19">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>To get weather details from API through intergartion </description>
+<inserted/>
+<name>Weather Details</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>a1589168c3b00310233a973ed4013110</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:17</sys_created_on>
+<sys_id>0badb1f4c3d90310233a973ed401319e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:17</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_air_quality_pm_2_5</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_air_quality_pm_2_5" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Air Quality (PM 2.5)&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_air_quality_pm_2_5&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:04&lt;/sys_created_on&gt;&lt;sys_id&gt;8ae7968083700310b294c310feaad3fc&lt;/sys_id&gt;&lt;sys_name&gt;Air Quality (PM 2.5)&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_air_quality_pm_2_5&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:04&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>51142228</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>03adb1f4c3d90310233a973ed40131a1</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102a20000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Air Quality (PM 2.5)</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>e7581e84ad700310997031dc8b61723e</update_guid>
+<update_guid_history>e7581e84ad700310997031dc8b61723e:51142228,d758da8444700310c2d5515960db90c0:51142228</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_weather_condition</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_weather_condition" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Weather Condition&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_weather_condition&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value=""&gt;string_full_utf8&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;255&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 06:49:55&lt;/sys_created_on&gt;&lt;sys_id&gt;e794960c83300310b294c310feaad3f9&lt;/sys_id&gt;&lt;sys_name&gt;Weather Condition&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_weather_condition&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 06:49:55&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1561416985</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>03adb930c31d0310233a973ed401312d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102440000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Weather Condition</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>29e4de4c333003109ab14466d600f5b0</update_guid>
+<update_guid_history>29e4de4c333003109ab14466d600f5b0:1561416985,9de4de4c8f300310d0650d42cdef8e8d:1561416985,f4b01128737003107e0b131d38e239a7:-1009895378,46dc0decb1300310b8395aacf74c6d6e:-444373150</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app__en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="" label="Weather App" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element/><help/><hint/><label>Weather App</label><language>en</language><name>u_weather_app</name><plural>Weather Apps</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:50</sys_created_on><sys_id>3eb356c883300310b294c310feaad350</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Weather App</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app__en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:50</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-2094723261</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>03adb930c31d0310233a973ed4013132</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841020e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>cbb356c8613003100f146043d81fef77</update_guid>
+<update_guid_history>cbb356c8613003100f146043d81fef77:-2094723261,1ba09de43e7003101bc4f328514af819:108038387,821d63c81930031056119aa68d001289:-2094723261</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_26b316c883300310b294c310feaad37a</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>26b316c883300310b294c310feaad37a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app.u_weather_app_user</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="u_weather_app">a2b316c883300310b294c310feaad374</sys_security_acl><sys_update_name>sys_security_acl_role_26b316c883300310b294c310feaad37a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><sys_user_role display_value="u_weather_app_user" name="u_weather_app_user">1eb3d2c883300310b294c310feaad388</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>818578352</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>03adb930c31d0310233a973ed4013137</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101fd0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app.u_weather_app_user</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>aeb316c8ec30031048f4d447219829cc</update_guid>
+<update_guid_history>aeb316c8ec30031048f4d447219829cc:818578352</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_humidity</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_humidity" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Humidity&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_humidity&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:04&lt;/sys_created_on&gt;&lt;sys_id&gt;5ad7968083700310b294c310feaad3fa&lt;/sys_id&gt;&lt;sys_name&gt;Humidity&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_humidity&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:04&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>530052964</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>07adb1f4c3d90310233a973ed40131a2</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102990000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Humidity</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>ab581e84f570031092975b60000c9b3b</update_guid>
+<update_guid_history>ab581e84f570031092975b60000c9b3b:530052964,0b58da846f700310384eed1a97d352b1:530052964</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_country_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_country" label="Country" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_country</element><help/><hint/><label>Country</label><language>en</language><name>u_weather_app</name><plural>Countries</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>97581e8483700310b294c310feaad317</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Country</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_country_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>555093698</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>07adb930c31d0310233a973ed401312e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102c60000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Country</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>27581e841e7003101dadbdef5a0c3f4f</update_guid>
+<update_guid_history>27581e841e7003101dadbdef5a0c3f4f:555093698,90b0dde43a7003107f2cc66dba9a4eca:316554266,82dc0dec9c30031012ec061311ba217e:555093698</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_d3fad20c83700310b294c310feaad3e5</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="INSERT_OR_UPDATE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content/><function_name>Default GET</function_name><http_method>get</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name>Weather API [ Default GET ]</qualified_name><rest_endpoint>http://api.weatherapi.com/v1/current.json</rest_endpoint><rest_message display_value="Weather API">619a96c883700310b294c310feaad3b9</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:16:33</sys_created_on><sys_id>d3fad20c83700310b294c310feaad3e5</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Default GET</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_d3fad20c83700310b294c310feaad3e5</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:16:33</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+<payload_hash>1136168323</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>07adb930c31d0310233a973ed4013133</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103110000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>Default GET</target_name>
+<type>HTTP Method</type>
+<update_domain>global</update_domain>
+<update_guid>dbfad20c367003105398e1d109b3fee9</update_guid>
+<update_guid_history>dbfad20c367003105398e1d109b3fee9:1136168323</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_aeb316c883300310b294c310feaad359</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>aeb316c883300310b294c310feaad359</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app.u_weather_app_user</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="u_weather_app">66b316c883300310b294c310feaad347</sys_security_acl><sys_update_name>sys_security_acl_role_aeb316c883300310b294c310feaad359</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><sys_user_role display_value="u_weather_app_user" name="u_weather_app_user">1eb3d2c883300310b294c310feaad388</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>1215878619</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>07adb930c31d0310233a973ed4013138</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101d70000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app.u_weather_app_user</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>aeb316c8d730031066a8d2e912637261</update_guid>
+<update_guid_history>aeb316c8d730031066a8d2e912637261:1215878619</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_local_date_time_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_local_date_time" label="Local Date Time" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_local_date_time</element><help/><hint/><label>Local Date Time</label><language>en</language><name>u_weather_app</name><plural>Local Date Times</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>93581e8483700310b294c310feaad304</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Local Date Time</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_local_date_time_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>268211133</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>0badb930c31d0310233a973ed401312f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102be0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Local Date Time</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>a7581e845570031009735e24c72c864c</update_guid>
+<update_guid_history>a7581e845570031009735e24c72c864c:268211133</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_8e97845883fc0310b294c310feaad3c3</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.WeatherAPIHelper&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;mobile_callable&gt;false&lt;/mobile_callable&gt;&lt;name&gt;WeatherAPIHelper&lt;/name&gt;&lt;sandbox_callable&gt;false&lt;/sandbox_callable&gt;&lt;script&gt;&lt;![CDATA[var WeatherAPIHelper = Class.create();
+WeatherAPIHelper.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+
+    getWeatherData: function() {
+        var cityName = this.getParameter('sysparm_city');
+        var apiKey = gs.getProperty('weather_api_key'); // Fetching from Sys Property
+        var result = {};
+
+        try {
+            var rm = new sn_ws.RESTMessageV2('Weather API', 'get_current_weather');
+            rm.setStringParameterNoEscape('api_key', apiKey);
+            rm.setStringParameterNoEscape('city', cityName);
+
+            var response = rm.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+
+            if (httpStatus == 200) {
+                var weatherData = JSON.parse(responseBody);
+                result.status = "success";
+                result.city = weatherData.location.name;
+                result.time_zone = weatherData.location.tz_id;
+                result.time = weatherData.location.localtime;
+                result.country = weatherData.location.country;
+                result.region = weatherData.location.region;
+                result.temp = weatherData.current.temp_c + "°C";
+                result.humidity = weatherData.current.humidity + "%";
+                result.condition = weatherData.current.condition.text;
+                result.pm25 = weatherData.current.air_quality.pm2_5;
+				result.uv = weatherData.current.uv;
+				result.feelslike = weatherData.current.feelslike_c;
+				result.wind_speed = weatherData.current.wind_kph;
+                result.lat_long = weatherData.location.lat + " / " + weatherData.location.lon;
+            } else {
+                result.status = "error";
+                result.message = "HTTP Status: " + httpStatus;
+            }
+        } catch (ex) {
+            result.status = "error";
+            result.message = ex.message;
+        }
+        return JSON.stringify(result);
+    },
+
+    type: 'WeatherAPIHelper'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 15:14:45&lt;/sys_created_on&gt;&lt;sys_id&gt;8e97845883fc0310b294c310feaad3c3&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;WeatherAPIHelper&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_8e97845883fc0310b294c310feaad3c3&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 15:58:30&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;8e97845883fc0310b294c310feaad3c3&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 15:14:45&lt;/sys_created_on&gt;&lt;sys_id&gt;9478001c83fc0310b294c310feaad36a&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 15:14:45&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_include&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-603229883</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>0badb930c31d0310233a973ed4013134</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103730000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>WeatherAPIHelper</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>55729854033043109d849befb19801ea</update_guid>
+<update_guid_history>55729854033043109d849befb19801ea:-603229883,2c78801ce5fc0310c659255f07fc2ceb:1032304731</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_application_12b3d2c883300310b294c310feaad3ef</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_application"><sys_ui_application action="INSERT_OR_UPDATE"><active>true</active><hint/><name>Weather App</name><order/><roles>u_weather_app_user</roles><sys_class_name>sys_ui_application</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:48</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>12b3d2c883300310b294c310feaad3ef</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Weather App</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_ui_application_12b3d2c883300310b294c310feaad3ef</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:48</sys_updated_on></sys_ui_application></record_update>]]></payload>
+<payload_hash>666775093</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>0badb930c31d0310233a973ed4013139</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101af0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>Weather App</target_name>
+<type>Application Menu</type>
+<update_domain>global</update_domain>
+<update_guid>eab3d2c8073003104a9e8310ef4103f2</update_guid>
+<update_guid_history>eab3d2c8073003104a9e8310ef4103f2:666775093</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_region</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_region" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Region&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_region&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:03&lt;/sys_created_on&gt;&lt;sys_id&gt;e6b7dec083700310b294c310feaad370&lt;/sys_id&gt;&lt;sys_name&gt;Region&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_region&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:03&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1153024774</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>0fadb930c31d0310233a973ed401312b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102850000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Region</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>23581e84007003105710bca86725b636</update_guid>
+<update_guid_history>23581e84007003105710bca86725b636:1153024774,8358da84b1700310046dbb3fa15e777b:1153024774,6cb011286c700310870529bf5de68069:927541802,8adc0dec603003101a5b72d9bd619951:94787422</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_time_zone_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_time_zone" label="Time Zone" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_time_zone</element><help/><hint/><label>Time Zone</label><language>en</language><name>u_weather_app</name><plural>Time Zones</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>9b581e8483700310b294c310feaad314</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Time Zone</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_time_zone_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>1462064445</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>0fadb930c31d0310233a973ed4013130</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102b70000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Time Zone</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>2b581e84aa700310a73f797152731549</update_guid>
+<update_guid_history>2b581e84aa700310a73f797152731549:1462064445,8cb0dde4c27003108e234c5a7bab588d:702211493,06dc0dec353003104dbde222ecccd67b:1462064445</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_aeb3d2c883300310b294c310feaad3fb</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description>Default access control on u_weather_app</description><local_or_existing>Existing</local_or_existing><name>u_weather_app</name><operation display_value="create">create</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>aeb3d2c883300310b294c310feaad3fb</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_aeb3d2c883300310b294c310feaad3fb</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><type display_value="record">record</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>2011531047</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>0fadb930c31d0310233a973ed4013135</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101bf0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>26b316c870300310d7b342aaf78dcb1d</update_guid>
+<update_guid_history>26b316c870300310d7b342aaf78dcb1d:2011531047</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_section_c23d67c8c3300310233a973ed401316e</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section caption="" section_id="c23d67c8c3300310233a973ed401316e" sys_domain="global" table="u_weather_app" version="3" view=""><sys_ui_element action="INSERT_OR_UPDATE"><element>u_city</element><position>0</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 12:10:13</sys_created_on><sys_id>913e538483b80310b294c310feaad36b</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section display_value="">c23d67c8c3300310233a973ed401316e</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 12:10:13</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption/><header>false</header><name>u_weather_app</name><roles/><sys_class_name>sys_ui_section</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:47:08</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>c23d67c8c3300310233a973ed401316e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_ui_section_c23d67c8c3300310233a973ed401316e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:47:08</sys_updated_on><sys_user/><title>true</title><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_section></sys_ui_section></record_update>]]></payload>
+<payload_hash>1553546050</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>0fadb930c31d0310233a973ed401313a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841033c0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App</target_name>
+<type>Form Layout</type>
+<update_domain>global</update_domain>
+<update_guid>d53e538453b803109f4fe881b09ba46e</update_guid>
+<update_guid_history>d53e538453b803109f4fe881b09ba46e:1553546050,3f0916083170031023899242212cefde:974325558,df58da84667003100001b66da6235ef6:1840110503,9b58da84487003105f82ed7492e223e7:-2076614026,1358da8489700310b682aa626f5b54cc:353208217,df58da84b570031033c807545e7a3bbc:773454525,0358da843c7003104912518367db34ae:-681585509,c358da84bb7003109170b93f74c6d39f:1490281247,8b58da84b2700310e8255465cf775277:-76346841,4358da8474700310df0c7975d08f4c69:-560912304,8b58da84f07003108cb1d842e1eaa05a:-2071382716,fa58da84d2700310c60823af0055e93f:959575373,6a67dac0dd7003108ee8d389a4cd14e2:-787096117,91e4de4c9a30031026683ec8634f238a:-1544143484,d1e4d6483230031030b96bc4b778aa6f:974325558,2c445a0cb9300310716c37da189cfcbe:-477319836,ac445a0c0530031080aa9963d46194a9:-1223091721,b3a0dde4697003109244e29824857841:-447491973,b17d816041700310325d62afe3437046:1548548482,0edc0decb2300310332608541fd07aa2:-100578810,8a3d67c8593003105656d8729c17ed74:-1746868871</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_application_96b3d2c883300310b294c310feaad3d1</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application"><sys_app_application action="INSERT_OR_UPDATE"><active>true</active><category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category><description/><device_type>browser</device_type><hint/><name>Weather App</name><order>100</order><roles>u_weather_app_user</roles><sys_class_name>sys_app_application</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:48</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>96b3d2c883300310b294c310feaad3d1</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Weather App</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_app_application_96b3d2c883300310b294c310feaad3d1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:48</sys_updated_on><title>Weather App</title><view_name/></sys_app_application></record_update>]]></payload>
+<payload_hash>-1185757584</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>43adb1f4c3d90310233a973ed401319f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841019e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>Weather App</target_name>
+<type>Application Menu</type>
+<update_domain>global</update_domain>
+<update_guid>96b3d2c80e30031034fed05eadc74ad7</update_guid>
+<update_guid_history>96b3d2c80e30031034fed05eadc74ad7:-1185757584</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_module_5ab3d2c883300310b294c310feaad3d9</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Weather App">96b3d2c883300310b294c310feaad3d1</application><assessment/><device_type/><filter/><hint/><homepage/><image/><link_type>LIST</link_type><map_page/><mobile_title>Weather Apps</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>u_weather_app</name><order/><override_menu_roles>false</override_menu_roles><query/><report/><require_confirmation>true</require_confirmation><roles>u_weather_app_user</roles><route/><screen/><sys_class_name>sys_app_module</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:48</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>5ab3d2c883300310b294c310feaad3d9</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Weather Apps</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_app_module_5ab3d2c883300310b294c310feaad3d9</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:48</sys_updated_on><timeline_page/><title>Weather Apps</title><uncancelable>false</uncancelable><ux_list/><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+<payload_hash>-1155266722</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>43adb1f4c3d90310233a973ed40131a0</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101a50000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather Apps</target_name>
+<type>Module</type>
+<update_domain>global</update_domain>
+<update_guid>9ab3d2c8a5300310fa9bebf953e372ec</update_guid>
+<update_guid_history>9ab3d2c8a5300310fa9bebf953e372ec:-1155266722</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_temperature_c</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT_OR_UPDATE" element="u_temperature_c" table="u_weather_app"><active>true</active><array>false</array><attributes>edge_encryption_enabled=true</attributes><audit>false</audit><calculation/><choice>0</choice><choice_field/><choice_table/><column_label>Temperature (°C)</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><dependent_on_field/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><dynamic_default_value/><dynamic_ref_qual/><element>u_temperature_c</element><element_reference>false</element_reference><foreign_database/><formula/><function_definition/><function_field>false</function_field><internal_type display_value="String">string</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_weather_app</name><next_element/><primary>false</primary><read_only>false</read_only><read_only_option/><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_qual_condition/><reference_type/><spell_check>false</spell_check><staged>false</staged><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:00:53</sys_created_on><sys_id>8267dac083700310b294c310feaad36f</sys_id><sys_name>Temperature (°C)</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_dictionary_u_weather_app_u_temperature_c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:00:53</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><use_dependent_field>false</use_dependent_field><use_dynamic_default>false</use_dynamic_default><use_reference_qualifier>simple</use_reference_qualifier><virtual>false</virtual><virtual_type>script</virtual_type><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary></record_update>]]></payload>
+<payload_hash>-1293415122</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>43adb930c31d0310233a973ed401312c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102590000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Temperature (°C)</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>ea67dac052700310f9f1a73bffcffbd8</update_guid>
+<update_guid_history>ea67dac052700310f9f1a73bffcffbd8:-1293415122</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_uv_index_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_uv_index" label="UV Index" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_uv_index</element><help/><hint/><label>UV Index</label><language>en</language><name>u_weather_app</name><plural>UV Indexes</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>97581e8483700310b294c310feaad301</sys_id><sys_mod_count>0</sys_mod_count><sys_name>UV Index</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_uv_index_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-607448728</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>43adb930c31d0310233a973ed4013131</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102ea0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.UV Index</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>ab581e842b700310caafb4171082b75d</update_guid>
+<update_guid_history>ab581e842b700310caafb4171082b75d:-607448728,dcb0dde4677003109aa1584562a7e4ad:-1469923072,0adc0dec3a3003100db8d6f2c936628c:-607448728</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_d72f47c483380310b294c310feaad3ba</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description/><local_or_existing>Existing</local_or_existing><name>WeatherAPI</name><operation display_value="execute">execute</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 11:04:33</sys_created_on><sys_id>d72f47c483380310b294c310feaad3ba</sys_id><sys_mod_count>0</sys_mod_count><sys_name>WeatherAPI</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_d72f47c483380310b294c310feaad3ba</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 11:04:33</sys_updated_on><type display_value="client_callable_script_include">client_callable_script_include</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>-610940374</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>43adb930c31d0310233a973ed4013136</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841032a0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>WeatherAPI</table>
+<target_name>WeatherAPI</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>5b2f47c44d3803100985e884c54136c0</update_guid>
+<update_guid_history>5b2f47c44d3803100985e884c54136c0:-610940374</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_user_role_051daf88c3300310233a973ed4013130</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><federated_id/><grantable>true</grantable><includes_roles/><name>u_weather_app_user</name><scoped_admin>false</scoped_admin><suffix/><sys_class_name>sys_user_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:48</sys_created_on><sys_id>051daf88c3300310233a973ed4013130</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app_user</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_user_role_051daf88c3300310233a973ed4013130</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:48</sys_updated_on></sys_user_role></record_update>]]></payload>
+<payload_hash>-1835735870</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>43adb930c31d0310233a973ed401313b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101930000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>u_weather_app_user</target_name>
+<type>Role</type>
+<update_domain>global</update_domain>
+<update_guid>9eb3d2c852300310cc54bc6c4ea5d8c7</update_guid>
+<update_guid_history>9eb3d2c852300310cc54bc6c4ea5d8c7:-1835735870,cd1d23c855300310702a343552867e2d:-1835735870</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_city</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_city" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;City&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_city&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value=""&gt;string_full_utf8&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;255&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 06:49:55&lt;/sys_created_on&gt;&lt;sys_id&gt;6094164c83300310b294c310feaad370&lt;/sys_id&gt;&lt;sys_name&gt;City&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_city&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 06:49:55&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1305256191</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>47adb1f4c3d90310233a973ed40131a1</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841023d0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.City</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>69e4de4ca630031089ba95b4fc5a45ad</update_guid>
+<update_guid_history>69e4de4ca630031089ba95b4fc5a45ad:-1305256191,d9e4de4c0f3003100ea592ebe1e8fe7f:-1305256191,89b01128937003101b17c9ab03466ad4:-1943487126,f9dc0decaa300310f4edc8a80b2e133a:-909091170</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_wind_speed_kph</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_wind_speed_kph" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Wind Speed (Kph)&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_wind_speed_kph&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:04&lt;/sys_created_on&gt;&lt;sys_id&gt;7908de4483700310b294c310feaad309&lt;/sys_id&gt;&lt;sys_name&gt;Wind Speed (Kph)&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_wind_speed_kph&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:04&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>773866022</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>47adb930c31d0310233a973ed401312d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102b20000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Wind Speed (Kph)</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>63581e84bc700310e0be3de442ebac44</update_guid>
+<update_guid_history>63581e84bc700310e0be3de442ebac44:773866022,9358da848f700310abf2ceef74832feb:773866022</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_number_47b356c883300310b294c310feaad37d</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number"><sys_number action="INSERT_OR_UPDATE"><category display_value="" name="u_weather_app">u_weather_app</category><maximum_digits>7</maximum_digits><number>1000</number><prefix>WEA</prefix><sys_class_name>sys_number</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:51</sys_created_on><sys_id>47b356c883300310b294c310feaad37d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>WEA</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_number_47b356c883300310b294c310feaad37d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:51</sys_updated_on></sys_number></record_update>]]></payload>
+<payload_hash>-1592096904</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>47adb930c31d0310233a973ed4013132</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102350000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>WEA</target_name>
+<type>Number</type>
+<update_domain>global</update_domain>
+<update_guid>07b356c8df300310ab14fbfd6198b2ba</update_guid>
+<update_guid_history>07b356c8df300310ab14fbfd6198b2ba:-1592096904</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_2ab316c883300310b294c310feaad31f</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>2ab316c883300310b294c310feaad31f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app.u_weather_app_user</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="u_weather_app">aeb3d2c883300310b294c310feaad3fb</sys_security_acl><sys_update_name>sys_security_acl_role_2ab316c883300310b294c310feaad31f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><sys_user_role display_value="u_weather_app_user" name="u_weather_app_user">1eb3d2c883300310b294c310feaad388</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>1224654229</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>47adb930c31d0310233a973ed4013137</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101c70000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app.u_weather_app_user</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>aeb316c8a3300310d41bfbab323c8044</update_guid>
+<update_guid_history>aeb316c8a3300310d41bfbab323c8044:1224654229</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_fells_like_c_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_fells_like_c" label="Fells Like (°C)" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_fells_like_c</element><help/><hint/><label>Fells Like (°C)</label><language>en</language><name>u_weather_app</name><plural>Fells Like (°C)</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>93581e8483700310b294c310feaad30f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Fells Like (°C)</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_fells_like_c_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-1744145888</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>4badb930c31d0310233a973ed401312e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102d60000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Fells Like (°C)</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>23581e8454700310842cc55bf6cfa255</update_guid>
+<update_guid_history>23581e8454700310842cc55bf6cfa255:-1744145888</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_parameters_209c1ecc83700310b294c310feaad343</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters"><sys_rest_message_fn_parameters action="INSERT_OR_UPDATE"><name>api_key</name><rest_message_function display_value="Get_Current_Weather">182b5a0c83700310b294c310feaad31b</rest_message_function><sys_class_name>sys_rest_message_fn_parameters</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:23:27</sys_created_on><sys_id>209c1ecc83700310b294c310feaad343</sys_id><sys_mod_count>1</sys_mod_count><sys_name>api_key</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_parameters_209c1ecc83700310b294c310feaad343</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:23:47</sys_updated_on><type>string</type><value>92f8f6bf06ac410a9bf70955260705</value></sys_rest_message_fn_parameters></record_update>]]></payload>
+<payload_hash>1327251635</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>4badb930c31d0310233a973ed4013133</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841031e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>api_key</target_name>
+<type>Variable Substitutions</type>
+<update_domain>global</update_domain>
+<update_guid>19ac1ecc007003109a8f0d5deae911ac</update_guid>
+<update_guid_history>19ac1ecc007003109a8f0d5deae911ac:1327251635,ec9c1eccb7700310e5e73b4b87989a44:1856053154</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_e078801c83fc0310b294c310feaad3e3</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 15:14:46</sys_created_on><sys_id>e078801c83fc0310b294c310feaad3e3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>WeatherAPIHelper.itil</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="WeatherAPIHelper">e478801c83fc0310b294c310feaad3db</sys_security_acl><sys_update_name>sys_security_acl_role_e078801c83fc0310b294c310feaad3e3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 15:14:46</sys_updated_on><sys_user_role display_value="itil" name="itil">282bf1fac6112285017366cb5f867469</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>451584284</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>4badb930c31d0310233a973ed4013138</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103570000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>WeatherAPIHelper</table>
+<target_name>WeatherAPIHelper.itil</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>6478801cb5fc031032840b7ad52349e8</update_guid>
+<update_guid_history>6478801cb5fc031032840b7ad52349e8:451584284</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_number_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_number" label="Number" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_number</element><help/><hint/><label>Number</label><language>en</language><name>u_weather_app</name><plural>Numbers</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:51</sys_created_on><sys_id>03b356c883300310b294c310feaad39c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Number</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_number_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:51</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>365814495</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>4fadb930c31d0310233a973ed401312f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841022c0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Number</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>cbb356c8d63003109da4163b3656b0b6</update_guid>
+<update_guid_history>cbb356c8d63003109da4163b3656b0b6:365814495</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_bc0f0f8483380310b294c310feaad31f</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.WeatherAPI&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;mobile_callable&gt;false&lt;/mobile_callable&gt;&lt;name&gt;WeatherAPI&lt;/name&gt;&lt;sandbox_callable&gt;false&lt;/sandbox_callable&gt;&lt;script&gt;&lt;![CDATA[var WeatherAPI = Class.create();
+WeatherAPI.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+    getWeatherData: function() {
+        var cityName = this.getParameter('sysparm_city'); //Get the city name passed the client side
+
+        var r = new sn_ws.RESTMessageV2('Weather API', 'Get_Current_Weather');
+        r.setStringParameterNoEscape('api_key', '92f8f6bf06ac410a9bf70955260705');
+        r.setStringParameterNoEscape('city_name', cityName);
+		//var apiKey = gs.getProperty('weatherapi_key');
+		//r.setStringParameterNoEscape('api_key',apiKey);
+
+
+        var response = r.execute();
+        var responseBody = response.getBody();
+        var httpStatus = response.getStatusCode();
+
+        if (httpStatus == 200) {
+            var weatherData = JSON.parse(responseBody);
+            var result = {};
+            result.status = 'success';
+            result.city = weatherData.location.name;
+            result.timeZone = weatherData.location.tz_id;
+            result.time = weatherData.location.localtime;
+            result.country = weatherData.location.country;
+            result.region = weatherData.location.region;
+            result.temp = weatherData.current.temp_c;
+            result.fellslike = weatherData.current.feelslike_c;
+            result.humidity = weatherData.current.humidity;
+            result.air_quality = weatherData.current.air_quality.pm2_5;
+            result.uv = weatherData.current.uv;
+            result.weather_condition = weatherData.current.condition.text;
+            result.wind_speed = weatherData.current.wind_kph;
+            result.lattitude = weatherData.location.lat;
+            result.longitude = weatherData.location.lon;
+
+            return JSON.stringify(result);
+        } else {
+            var errorResult = {
+                status: 'error',
+                message: 'HTTP Status' + ' ' + httpStatus,
+                body: responseBody
+            };
+            return JSON.stringify(errorResult);
+        }
+    },
+
+    type: 'WeatherAPI'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 11:04:33&lt;/sys_created_on&gt;&lt;sys_id&gt;bc0f0f8483380310b294c310feaad31f&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;WeatherAPI&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_bc0f0f8483380310b294c310feaad31f&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 12:19:03&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;bc0f0f8483380310b294c310feaad31f&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 11:04:32&lt;/sys_created_on&gt;&lt;sys_id&gt;432f03c483380310b294c310feaad337&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 11:04:32&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_include&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-236475031</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>4fadb930c31d0310233a973ed4013134</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103450000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>WeatherAPI</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>aa30a78856b803105277fa4805415ca5</update_guid>
+<update_guid_history>aa30a78856b803105277fa4805415ca5:-236475031,f2efd748d8b80310c0b51d4988e75681:1234128521,5575d388cf380310d1c4f34eb8b196c5:1836731488,232f47c4583803105dcbea9f83fb7eda:-1368811458</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_form_sections_317d8160c3700310233a973ed401311d</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_form_sections form_id="317d8160c3700310233a973ed401311d" sys_domain="global" table="u_weather_app" version="3"><sys_ui_form_section action="INSERT_OR_UPDATE"><position>0</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>bf09160883700310b294c310feaad3c4</sys_id><sys_mod_count>0</sys_mod_count><sys_overrides/><sys_ui_form display_value="">317d8160c3700310233a973ed401311d</sys_ui_form><sys_ui_section display_value="">2c445a0c83300310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on></sys_ui_form_section><sys_ui_form_section action="INSERT_OR_UPDATE"><position>1</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>f709160883700310b294c310feaad3c6</sys_id><sys_mod_count>0</sys_mod_count><sys_overrides/><sys_ui_form display_value="">317d8160c3700310233a973ed401311d</sys_ui_form><sys_ui_section display_value="">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on></sys_ui_form_section><sys_ui_form action="INSERT_OR_UPDATE"><name>u_weather_app</name><roles/><sys_class_name>sys_ui_form</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:06</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>317d8160c3700310233a973ed401311d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_ui_form_sections_317d8160c3700310233a973ed401311d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:06</sys_updated_on><sys_user/><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_form></sys_ui_form_sections></record_update>]]></payload>
+<payload_hash>1356282352</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>4fadb930c31d0310233a973ed4013139</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103020000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App</target_name>
+<type>Form Sections</type>
+<update_domain>global</update_domain>
+<update_guid>f3091608ba7003101e743f4ec5abaec9</update_guid>
+<update_guid_history>f3091608ba7003101e743f4ec5abaec9:1356282352,bb091608737003100096d9774dde8ba9:-244908599,7ba09de4927003109b1a8aa5034f36ea:1090106366,797d8160c4700310d38c292b29d45227:1727977103,797d81600870031091065fa6892fdb20:-1829753230</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_local_date_time</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_local_date_time" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Local Date Time&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_local_date_time&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:03&lt;/sys_created_on&gt;&lt;sys_id&gt;d6a79e0483700310b294c310feaad311&lt;/sys_id&gt;&lt;sys_name&gt;Local Date Time&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_local_date_time&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:03&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>834604442</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>83adb930c31d0310233a973ed401312b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102750000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Local Date Time</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>a7581e84e3700310b8c84a49a4ac8830</update_guid>
+<update_guid_history>a7581e84e3700310b8c84a49a4ac8830:834604442,8358da84177003101b663583f8e5225e:834604442</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_region_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_region" label="Region" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_region</element><help/><hint/><label>Region</label><language>en</language><name>u_weather_app</name><plural>Regions</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>9b58da8483700310b294c310feaad3fe</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Region</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_region_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-1130075767</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>83adb930c31d0310233a973ed4013130</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102ce0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Region</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>a3581e846b700310d3ddcf1565a43e52</update_guid>
+<update_guid_history>a3581e846b700310d3ddcf1565a43e52:-1130075767,08b0dde4197003107d9df3a966584a61:-82882639,02dc0dec1c30031059f11c0a62a8f381:-1130075767</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_66b316c883300310b294c310feaad347</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description>Default access control on u_weather_app</description><local_or_existing>Existing</local_or_existing><name>u_weather_app</name><operation display_value="read">read</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>66b316c883300310b294c310feaad347</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_66b316c883300310b294c310feaad347</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><type display_value="record">record</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>-475477389</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>83adb930c31d0310233a973ed4013135</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101cf0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>22b316c82a300310d9cdfae13eee9658</update_guid>
+<update_guid_history>22b316c82a300310d9cdfae13eee9658:-475477389</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_module_eab3d2c883300310b294c310feaad3f4</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module"><sys_ui_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Weather App">12b3d2c883300310b294c310feaad3ef</application><filter/><name>Weather Apps</name><order/><path/><path_relative_to_root>false</path_relative_to_root><roles>u_weather_app_user</roles><sys_class_name>sys_ui_module</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:48</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>eab3d2c883300310b294c310feaad3f4</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Weather Apps</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_ui_module_eab3d2c883300310b294c310feaad3f4</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:48</sys_updated_on><table>u_weather_app</table><uncancelable>false</uncancelable><view_name/></sys_ui_module></record_update>]]></payload>
+<payload_hash>1777631740</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>83adb930c31d0310233a973ed401313a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101b80000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather Apps</target_name>
+<type>Module</type>
+<update_domain>global</update_domain>
+<update_guid>e2b3d2c86c30031092e47b74fc5eebf9</update_guid>
+<update_guid_history>e2b3d2c86c30031092e47b74fc5eebf9:1777631740</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_db_object_9ffceb88c3300310233a973ed401318f</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object"><sys_db_object action="INSERT_OR_UPDATE"><access>public</access><actions_access>false</actions_access><alter_access>false</alter_access><caller_access/><client_scripts_access>false</client_scripts_access><configuration_access>false</configuration_access><create_access>false</create_access><create_access_controls>true</create_access_controls><delete_access>false</delete_access><filter_extension/><is_data_interface>false</is_data_interface><is_df_table>false</is_df_table><is_extendable>false</is_extendable><label>Weather App</label><live_feed_enabled>false</live_feed_enabled><name>u_weather_app</name><number_ref display_value="">47b356c883300310b294c310feaad37d</number_ref><provider_class/><read_access>true</read_access><scriptable_table>false</scriptable_table><super_class/><sys_class_name>sys_db_object</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:48</sys_created_on><sys_id>9ffceb88c3300310233a973ed401318f</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Weather App</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_db_object_9ffceb88c3300310233a973ed401318f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:51</sys_updated_on><update_access>false</update_access><user_role display_value="u_weather_app_user" name="u_weather_app_user">051daf88c3300310233a973ed4013130</user_role><ws_access>true</ws_access></sys_db_object></record_update>]]></payload>
+<payload_hash>69461878</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>87adb1f4c3d90310233a973ed40131a0</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102180000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App</target_name>
+<type>Table</type>
+<update_domain>global</update_domain>
+<update_guid>8bb356c895300310345c85eaeff3f586</update_guid>
+<update_guid_history>8bb356c895300310345c85eaeff3f586:69461878,0fb356c8ca300310a65c89527068fb7a:2055181062,1db051287970031058345ddefe5f7b72:1023765957,c21d63c85d3003108cea45b16b55e98c:769972409</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_time_zone</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_time_zone" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Time Zone&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_time_zone&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:03&lt;/sys_created_on&gt;&lt;sys_id&gt;8e7716c083700310b294c310feaad30e&lt;/sys_id&gt;&lt;sys_name&gt;Time Zone&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_time_zone&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:03&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1045300946</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>87adb930c31d0310233a973ed401312c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102690000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Time Zone</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>6b581e8469700310b2474c1327e6212d</update_guid>
+<update_guid_history>6b581e8469700310b2474c1327e6212d:1045300946,7e58da846170031053f5c72bfea9384f:1045300946,78b01128fa700310b4dba9adcb1c2486:467832942,cadc0dec66300310ee666b7674d03a3e:-1048473694</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_weather_condition_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_weather_condition" label="Weather Condition" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_weather_condition</element><help/><hint/><label>Weather Condition</label><language>en</language><name>u_weather_app</name><plural>Weather Conditions</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:49:56</sys_created_on><sys_id>6de4de4c83300310b294c310feaad393</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Weather Condition</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_weather_condition_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:49:56</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-196544899</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>87adb930c31d0310233a973ed4013131</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102510000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Weather Condition</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>21e4de4cda30031003c6832561de1fb6</update_guid>
+<update_guid_history>21e4de4cda30031003c6832561de1fb6:-196544899,48b0dde45f700310ac59ca5cf831ad7d:-441879451,86dc0dec193003106315bcd07b55ee8f:-196544899</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_e478801c83fc0310b294c310feaad3db</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description/><local_or_existing>Existing</local_or_existing><name>WeatherAPIHelper</name><operation display_value="execute">execute</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 15:14:46</sys_created_on><sys_id>e478801c83fc0310b294c310feaad3db</sys_id><sys_mod_count>0</sys_mod_count><sys_name>WeatherAPIHelper</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_e478801c83fc0310b294c310feaad3db</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 15:14:46</sys_updated_on><type display_value="client_callable_script_include">client_callable_script_include</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>-1591139890</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>87adb930c31d0310233a973ed4013136</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841034f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>WeatherAPIHelper</table>
+<target_name>WeatherAPIHelper</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>a078801c45fc0310575034babffc71e1</update_guid>
+<update_guid_history>a078801c45fc0310575034babffc71e1:-1591139890</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_country</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_country" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Country&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_country&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:03&lt;/sys_created_on&gt;&lt;sys_id&gt;a4b7dec083700310b294c310feaad36e&lt;/sys_id&gt;&lt;sys_name&gt;Country&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_country&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:03&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1761459518</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>8badb1f4c3d90310233a973ed40131a1</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841027e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Country</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>e3581e8407700310cfbe8ee993f24e33</update_guid>
+<update_guid_history>e3581e8407700310cfbe8ee993f24e33:-1761459518,4b58da8484700310d385451c7953fb6c:-1761459518,41b0112803700310d17aa0b873a218e5:-1058237106,86dc0dec6b300310716a5e977314bb4e:-1782052734</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_air_quality_pm_2_5_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_air_quality_pm_2_5" label="Air Quality (PM 2.5)" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_air_quality_pm_2_5</element><help/><hint/><label>Air Quality (PM 2.5)</label><language>en</language><name>u_weather_app</name><plural>Air Quality (PM 2.5)</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>9f581e8483700310b294c310feaad311</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Air Quality (PM 2.5)</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_air_quality_pm_2_5_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>128474394</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>8badb930c31d0310233a973ed401312d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102e30000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Air Quality (PM 2.5)</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>2f581e8429700310552881598cabfa5a</update_guid>
+<update_guid_history>2f581e8429700310552881598cabfa5a:128474394</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_619a96c883700310b294c310feaad3b9</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message"><sys_rest_message action="INSERT_OR_UPDATE"><access>package_private</access><authentication_type>no_authentication</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><description>REST Message to fetch current weather data from weatherapi.com</description><name>Weather API</name><oauth2_profile/><protocol_name/><rest_endpoint>http://api.weatherapi.com/v1/current.json</rest_endpoint><sys_class_name>sys_rest_message</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:16:32</sys_created_on><sys_id>619a96c883700310b294c310feaad3b9</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Weather API</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_619a96c883700310b294c310feaad3b9</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:16:32</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mutual_auth>false</use_mutual_auth></sys_rest_message></record_update>]]></payload>
+<payload_hash>-1620381588</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>8badb930c31d0310233a973ed4013132</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103180000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>Weather API</target_name>
+<type>REST Message</type>
+<update_domain>global</update_domain>
+<update_guid>1ffad20c7f70031068441b556f7f6eec</update_guid>
+<update_guid_history>1ffad20c7f70031068441b556f7f6eec:-1620381588</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_532f47c483380310b294c310feaad3c3</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 11:04:34</sys_created_on><sys_id>532f47c483380310b294c310feaad3c3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>WeatherAPI.admin</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="WeatherAPI">d72f47c483380310b294c310feaad3ba</sys_security_acl><sys_update_name>sys_security_acl_role_532f47c483380310b294c310feaad3c3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 11:04:34</sys_updated_on><sys_user_role display_value="admin" name="admin">2831a114c611228501d4ea6c309d626d</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>1193478013</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>8badb930c31d0310233a973ed4013137</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103340000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>WeatherAPI</table>
+<target_name>WeatherAPI.admin</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>272f47c4203803102af1e2e14f978bd6</update_guid>
+<update_guid_history>272f47c4203803102af1e2e14f978bd6:1193478013</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_humidity_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_humidity" label="Humidity" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_humidity</element><help/><hint/><label>Humidity</label><language>en</language><name>u_weather_app</name><plural>Humidities</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>9b581e8483700310b294c310feaad309</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Humidity</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_humidity_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>252181112</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>8fadb930c31d0310233a973ed401312e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102dc0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Humidity</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>af581e8444700310c5b07235e55b5457</update_guid>
+<update_guid_history>af581e8444700310c5b07235e55b5457:252181112</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_parameters_ac9c1ecc83700310b294c310feaad33d</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters"><sys_rest_message_fn_parameters action="INSERT_OR_UPDATE"><name>city_name</name><rest_message_function display_value="Get_Current_Weather">182b5a0c83700310b294c310feaad31b</rest_message_function><sys_class_name>sys_rest_message_fn_parameters</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:23:27</sys_created_on><sys_id>ac9c1ecc83700310b294c310feaad33d</sys_id><sys_mod_count>1</sys_mod_count><sys_name>city_name</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_parameters_ac9c1ecc83700310b294c310feaad33d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:23:58</sys_updated_on><type>string</type><value>Bangalore</value></sys_rest_message_fn_parameters></record_update>]]></payload>
+<payload_hash>1296095610</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>8fadb930c31d0310233a973ed4013133</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103250000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>city_name</target_name>
+<type>Variable Substitutions</type>
+<update_domain>global</update_domain>
+<update_guid>48bc9eccbf700310d39b02462ae4b3f0</update_guid>
+<update_guid_history>48bc9eccbf700310d39b02462ae4b3f0:1296095610,249c1eccb87003102306460c29cccb41:106622828</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_action_1ab84c1c83fc0310b294c310feaad377</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_ui_action"&gt;&lt;sys_ui_action action="INSERT_OR_UPDATE"&gt;&lt;action_name&gt;get_weather_btn&lt;/action_name&gt;&lt;active&gt;true&lt;/active&gt;&lt;client&gt;true&lt;/client&gt;&lt;client_script_v2&gt;&lt;![CDATA[function onClick(g_form) {
+
+}]]&gt;&lt;/client_script_v2&gt;&lt;comments/&gt;&lt;condition/&gt;&lt;form_action&gt;true&lt;/form_action&gt;&lt;form_button&gt;true&lt;/form_button&gt;&lt;form_button_icon/&gt;&lt;form_button_v2&gt;false&lt;/form_button_v2&gt;&lt;form_context_menu&gt;false&lt;/form_context_menu&gt;&lt;form_link&gt;false&lt;/form_link&gt;&lt;form_menu_button_v2&gt;false&lt;/form_menu_button_v2&gt;&lt;form_style&gt;destructive&lt;/form_style&gt;&lt;format_for_configurable_workspace&gt;false&lt;/format_for_configurable_workspace&gt;&lt;hint/&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;list_action&gt;false&lt;/list_action&gt;&lt;list_banner_button&gt;false&lt;/list_banner_button&gt;&lt;list_button&gt;false&lt;/list_button&gt;&lt;list_button_icon/&gt;&lt;list_choice&gt;false&lt;/list_choice&gt;&lt;list_context_menu&gt;false&lt;/list_context_menu&gt;&lt;list_link&gt;false&lt;/list_link&gt;&lt;list_save_with_form_button&gt;false&lt;/list_save_with_form_button&gt;&lt;list_style/&gt;&lt;messages/&gt;&lt;name&gt;Get Weather&lt;/name&gt;&lt;onclick&gt;fetchWeather()&lt;/onclick&gt;&lt;order&gt;100&lt;/order&gt;&lt;script&gt;&lt;![CDATA[function fetchWeather() {
+    var cityName = g_form.getValue('u_city');
+
+    if (!cityName || cityName.trim() == "") {
+        alert("Please enter a city name first");
+        return;
+    }
+
+    g_form.addInfoMessage("Fetching weather data for " + cityName + "... please wait.");
+
+    var ga = new GlideAjax('WeatherAPIHelper');
+    ga.addParam('sysparm_name', 'getWeatherData');
+    ga.addParam('sysparm_city', cityName);
+    ga.getXML(weatherCallback);
+}
+
+function weatherCallback(response) {
+    var answer = response.responseXML.documentElement.getAttribute("answer");
+    var weatherData = JSON.parse(answer);
+
+    g_form.clearMessages();
+
+    if (weatherData.status == "success") {
+        g_form.setValue('u_city', weatherData.city);
+        g_form.setValue('u_time_zone', weatherData.time_zone);
+        g_form.setValue('u_local_date_time', weatherData.time);
+        g_form.setValue('u_country', weatherData.country);
+        g_form.setValue('u_region', weatherData.region);
+        g_form.setValue('u_temperature_c', weatherData.temp);
+		g_form.setValue('u_fells_like_c', weatherData.feelslike);
+        g_form.setValue('u_humidity', weatherData.humidity);
+        g_form.setValue('u_weather_condition', weatherData.condition);
+        g_form.setValue('u_air_quality_pm_2_5', weatherData.pm25);
+        g_form.setValue('u_lat_long', weatherData.lat_long);
+		g_form.setValue('u_uv_index',weatherData.uv);
+		g_form.setValue('u_wind_speed_kph',weatherData.wind_speed);
+		g_form.setValue('u_lat_lon',weatherData.lat_long);
+
+
+        g_form.setSectionDisplay('weather_details', true);
+        g_form.addInfoMessage("Weather data loaded for " + weatherData.city + " successfully.");
+    } else {
+        g_form.addErrorMessage("Error while fetching weather: " + weatherData.message);
+    }
+}
+
+
+]]&gt;&lt;/script&gt;&lt;show_form_icon_only&gt;false&lt;/show_form_icon_only&gt;&lt;show_insert&gt;true&lt;/show_insert&gt;&lt;show_list_icon_only&gt;false&lt;/show_list_icon_only&gt;&lt;show_multiple_update&gt;false&lt;/show_multiple_update&gt;&lt;show_query&gt;false&lt;/show_query&gt;&lt;show_update&gt;true&lt;/show_update&gt;&lt;sys_class_name&gt;sys_ui_action&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 15:18:15&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;1ab84c1c83fc0310b294c310feaad377&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Get Weather&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_action_1ab84c1c83fc0310b294c310feaad377&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 15:59:27&lt;/sys_updated_on&gt;&lt;table&gt;u_weather_app&lt;/table&gt;&lt;ui11_compatible&gt;true&lt;/ui11_compatible&gt;&lt;ui16_compatible&gt;false&lt;/ui16_compatible&gt;&lt;/sys_ui_action&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-907829869</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>8fadb930c31d0310233a973ed4013138</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841039b0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Get Weather</target_name>
+<type>UI Action</type>
+<update_domain>global</update_domain>
+<update_guid>07a294504e704310ae1eb5dbdce9db2c</update_guid>
+<update_guid_history>07a294504e704310ae1eb5dbdce9db2c:-907829869,cf729c102a704310da57091499356db7:1899184829,7f39401813bc0310a25edbc1edcd9f03:-308350572</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_lat_lon_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_lat_lon" label="Lat/Lon" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_lat_lon</element><help/><hint/><label>Lat/Lon</label><language>en</language><name>u_weather_app</name><plural>Lat/Lons</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>97581e8483700310b294c310feaad30c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Lat/Lon</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_lat_lon_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-1396841955</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>c3adb930c31d0310233a973ed401312f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102fa0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Lat/Lon</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>a7581e84ab70031014262766bf0c6c63</update_guid>
+<update_guid_history>a7581e84ab70031014262766bf0c6c63:-1396841955,84b0dde46f7003100a9e19e85a04b169:1676310853,82dc0dec49300310995b89c0cdab9e95:-1396841955</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_client_752d9fc083b80310b294c310feaad368</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description/&gt;&lt;field/&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;Hide Weather Details onLoad&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onLoad() {
+   //Type appropriate comment here, and begin script below
+   if(g_form.isNewRecord()){
+	g_form.setSectionDisplay('weather_details',false);
+   }
+   else{
+	var city = g_form.getValue('u_city');
+	if(city){
+		g_form.setSectionDisplay('weather_details',true);
+	}else{
+		g_form.setSectionDisplay('weather_details',false);
+	}
+   }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 12:09:29&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;752d9fc083b80310b294c310feaad368&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Hide Weather Details onLoad&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_752d9fc083b80310b294c310feaad368&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 16:00:06&lt;/sys_updated_on&gt;&lt;table&gt;u_weather_app&lt;/table&gt;&lt;type&gt;onLoad&lt;/type&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-66122597</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>c3adb930c31d0310233a973ed4013134</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103d40000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Hide Weather Details onLoad</target_name>
+<type>Client Script</type>
+<update_domain>global</update_domain>
+<update_guid>acd21c501e70431081aff69d02a712b9</update_guid>
+<update_guid_history>acd21c501e70431081aff69d02a712b9:-66122597,abc0ebc83cb803105af0a3cd129e8396:1431199144,920e9b447bb803100e858bd3f51eef7b:-66122597</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>DELETE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_action_d7855b0483780310b294c310feaad364</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_ui_action"&gt;&lt;sys_ui_action action="DELETE"&gt;&lt;action_name&gt;get_weather&lt;/action_name&gt;&lt;active&gt;true&lt;/active&gt;&lt;client&gt;true&lt;/client&gt;&lt;client_script_v2&gt;&lt;![CDATA[function onClick(g_form) {
+
+}]]&gt;&lt;/client_script_v2&gt;&lt;comments/&gt;&lt;condition/&gt;&lt;form_action&gt;true&lt;/form_action&gt;&lt;form_button&gt;true&lt;/form_button&gt;&lt;form_button_icon/&gt;&lt;form_button_v2&gt;false&lt;/form_button_v2&gt;&lt;form_context_menu&gt;false&lt;/form_context_menu&gt;&lt;form_link&gt;false&lt;/form_link&gt;&lt;form_menu_button_v2&gt;false&lt;/form_menu_button_v2&gt;&lt;form_style&gt;destructive&lt;/form_style&gt;&lt;format_for_configurable_workspace&gt;false&lt;/format_for_configurable_workspace&gt;&lt;hint/&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;list_action&gt;false&lt;/list_action&gt;&lt;list_banner_button&gt;false&lt;/list_banner_button&gt;&lt;list_button&gt;false&lt;/list_button&gt;&lt;list_button_icon/&gt;&lt;list_choice&gt;false&lt;/list_choice&gt;&lt;list_context_menu&gt;false&lt;/list_context_menu&gt;&lt;list_link&gt;false&lt;/list_link&gt;&lt;list_save_with_form_button&gt;false&lt;/list_save_with_form_button&gt;&lt;list_style/&gt;&lt;messages/&gt;&lt;name&gt;Get Weather&lt;/name&gt;&lt;onclick&gt;get_weather&lt;/onclick&gt;&lt;order&gt;100&lt;/order&gt;&lt;script&gt;&lt;![CDATA[function get_weather(){
+	var cityName = g_form.getValue('u_city');
+	if (!cityName || cityName.trim() == ''){
+		alert('Please enter the city')
+		return;
+	}
+	g_from.addInfoMessage('Fetcing the weather details Please Wait......');
+
+	var ga = new GlideAjax('WeatherAPI');
+	ga.addParam('sysparm_name','getWeatherData');
+	ga.addParam('sysparm_city',cityName);
+
+	ga.getXML(function(response){
+		var answer = response.responseXML.documentElement.getAttribute('answer');
+		var weatherData = JSON.parse(answer);
+
+		if (weatherData.status == 'success'){
+			g_form.setValue('u_city',weatherData.city);
+			g_form.setValue('u_time_zone',weatherData.timeZone);
+			g_form.setValue('u_local_date_time',weatherData.time);
+			g_form.setValue('u_country',weatherData.country);
+			g_form.setValue('u_region',weatherData.region);
+			g_form.setValue('u_temperature_c',weatherData.temp);
+			g_form.setValue('u_fells_like_c',weatherData.fellslike);
+			g_form.setValue('u_humidity',weatherData.humidity);
+			g_form.setValue('u_air_quality_pm_2_5',weatherData.air_quality);
+			g_form.setValue('u_uv_index',weatherData.uv);
+			g_form.setValue('u_weather_condition',weatherData.weather_condition);
+			g_form.setValue('u_wind_speed_kph',weatherData.wind_speed);
+			g_form.setValue('u_lat_lon',weatherData.latitude + ' | ' + weatherData.longitude);
+
+			g_form.setSectionDisply('weather_details', true);
+
+			g_form.clearMessage();
+			g_form.addInfoMessage('Weather data loaded for ' + '' + weatherData.city+ ''+ ' successfully');
+
+			
+
+		}else{
+			g_form.clearMessage();
+			g_form.addInfoMessage('Error while fetching detils' + weatherData.message);
+		}
+		return false;
+	});
+}]]&gt;&lt;/script&gt;&lt;show_form_icon_only&gt;false&lt;/show_form_icon_only&gt;&lt;show_insert&gt;true&lt;/show_insert&gt;&lt;show_list_icon_only&gt;false&lt;/show_list_icon_only&gt;&lt;show_multiple_update&gt;false&lt;/show_multiple_update&gt;&lt;show_query&gt;false&lt;/show_query&gt;&lt;show_update&gt;true&lt;/show_update&gt;&lt;sys_class_name&gt;sys_ui_action&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 12:02:58&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;d7855b0483780310b294c310feaad364&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Get Weather&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_action_d7855b0483780310b294c310feaad364&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 12:19:26&lt;/sys_updated_on&gt;&lt;table&gt;u_weather_app&lt;/table&gt;&lt;ui11_compatible&gt;true&lt;/ui11_compatible&gt;&lt;ui16_compatible&gt;true&lt;/ui16_compatible&gt;&lt;/sys_ui_action&gt;&lt;/record_update&gt;</payload>
+<payload_hash>828150504</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>c3adb930c31d0310233a973ed4013139</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103600000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Get Weather</target_name>
+<type>UI Action</type>
+<update_domain>global</update_domain>
+<update_guid>89b80c1c4bfc0310b897dc8f59562473</update_guid>
+<update_guid_history>89b80c1c4bfc0310b897dc8f59562473:828150504,5450ab88fbb80310d90975c344569394:-549402532,838c5b807ab8031038b08c366af0b6ff:-475686181</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_number</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_number" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes&gt;ignore_filter_on_new=true&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Number&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value&gt;javascript:global.getNextObjNumberPadded();&lt;/default_value&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_number&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 06:44:51&lt;/sys_created_on&gt;&lt;sys_id&gt;8fb356c883300310b294c310feaad389&lt;/sys_id&gt;&lt;sys_name&gt;Number&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_number&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 06:44:51&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-476260866</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>c7adb930c31d0310233a973ed401312b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102220000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Number</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>4fb356c8d5300310d3546de07a661ba6</update_guid>
+<update_guid_history>4fb356c8d5300310d3546de07a661ba6:-476260866</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_temperature_c_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_temperature_c" label="Temperature (°C)" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_temperature_c</element><help/><hint/><label>Temperature (°C)</label><language>en</language><name>u_weather_app</name><plural>Temperature (°C)</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:00:54</sys_created_on><sys_id>8267dac083700310b294c310feaad373</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Temperature (°C)</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_temperature_c_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:00:54</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-1018343722</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>c7adb930c31d0310233a973ed4013130</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102600000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Temperature (°C)</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>2e67dac095700310e6bd1a69ce04cbdb</update_guid>
+<update_guid_history>2e67dac095700310e6bd1a69ce04cbdb:-1018343722</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_a2b316c883300310b294c310feaad374</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description>Default access control on u_weather_app</description><local_or_existing>Existing</local_or_existing><name>u_weather_app</name><operation display_value="delete">delete</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>a2b316c883300310b294c310feaad374</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_a2b316c883300310b294c310feaad374</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><type display_value="record">record</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>-208923127</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>c7adb930c31d0310233a973ed4013135</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101f30000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>a6b316c84230031081018e2c59292a78</update_guid>
+<update_guid_history>a6b316c84230031081018e2c59292a78:-208923127</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_section_b709160883700310b294c310feaad3a3</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section caption="Weather Details" section_id="b709160883700310b294c310feaad3a3" sys_domain="global" table="u_weather_app" version="3" view=""><sys_ui_element action="INSERT_OR_UPDATE"><element>u_time_zone</element><position>0</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>f709160883700310b294c310feaad3e9</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_local_date_time</element><position>1</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>b309160883700310b294c310feaad3ea</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_country</element><position>2</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>7f09160883700310b294c310feaad3ea</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_region</element><position>3</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>3b09160883700310b294c310feaad3eb</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_temperature_c</element><position>4</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>f309160883700310b294c310feaad3ec</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_fells_like_c</element><position>5</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>bf09160883700310b294c310feaad3ec</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>.split</element><position>6</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>7b09160883700310b294c310feaad3ed</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type>.split</type></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_humidity</element><position>7</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>3709160883700310b294c310feaad3ee</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_air_quality_pm_2_5</element><position>8</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>cc19160883700310b294c310feaad3ee</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_uv_index</element><position>9</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>8819160883700310b294c310feaad3ef</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_weather_condition</element><position>10</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>4419160883700310b294c310feaad3f0</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_wind_speed_kph</element><position>11</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>0019160883700310b294c310feaad3f1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>u_lat_lon</element><position>12</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:07</sys_created_on><sys_id>c819160883700310b294c310feaad3f1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Weather Details" display_value="Weather Details" name="u_weather_app" sys_domain="global" view="Default view">b709160883700310b294c310feaad3a3</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:07</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption>Weather Details</caption><header>false</header><name>u_weather_app</name><roles/><sys_class_name>sys_ui_section</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:08:06</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>b709160883700310b294c310feaad3a3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app</sys_name><sys_overrides/><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_ui_section_b709160883700310b294c310feaad3a3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:08:06</sys_updated_on><sys_user/><title>false</title><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_section></sys_ui_section></record_update>]]></payload>
+<payload_hash>919535297</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>c7adb930c31d0310233a973ed401313a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841030a0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App</target_name>
+<type>Form Layout</type>
+<update_domain>global</update_domain>
+<update_guid>881916081d700310920a51f00b15baf5</update_guid>
+<update_guid_history>881916081d700310920a51f00b15baf5:919535297</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_null</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes&gt;enforce_dot_walk_cross_scope_access=true&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element/&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="Collection"&gt;collection&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 06:44:49&lt;/sys_created_on&gt;&lt;sys_id&gt;aeb316c883300310b294c310feaad3ce&lt;/sys_id&gt;&lt;sys_name&gt;u_weather_app&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_null&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 06:44:49&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-191444296</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cbadb1f4c3d90310233a973ed40131a0</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102050000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>07b356c8543003105c4fa4384420ad74</update_guid>
+<update_guid_history>07b356c8543003105c4fa4384420ad74:-191444296,2cb01128ea7003100d0c5c6aed9eea06:1844118892,ca1d63c8ed3003109d6906a48ca9e785:-191444296</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_uv_index</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_uv_index" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;UV Index&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_uv_index&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:04&lt;/sys_created_on&gt;&lt;sys_id&gt;dbf7968083700310b294c310feaad3fe&lt;/sys_id&gt;&lt;sys_name&gt;UV Index&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_uv_index&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:04&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1180985562</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cbadb930c31d0310233a973ed401312c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102a90000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.UV Index</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>27581e8464700310b79cebe09465e041</update_guid>
+<update_guid_history>27581e8464700310b79cebe09465e041:-1180985562,1b58da84667003100e5e122112b660cf:-1180985562,01b05128c2700310e37e21efcd4b3927:139515978,42dc0dec47300310f48111dab3e2256b:1326944638</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_wind_speed_kph_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_wind_speed_kph" label="Wind Speed (Kph)" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_wind_speed_kph</element><help/><hint/><label>Wind Speed (Kph)</label><language>en</language><name>u_weather_app</name><plural>Wind Speed (Kph)</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:05:05</sys_created_on><sys_id>9f581e8483700310b294c310feaad306</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Wind Speed (Kph)</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_wind_speed_kph_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 07:05:05</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>1706114618</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cbadb930c31d0310233a973ed4013131</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084102f40000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Wind Speed (Kph)</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>2b581e8448700310788fc6f79bcea660</update_guid>
+<update_guid_history>2b581e8448700310788fc6f79bcea660:1706114618</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_eeb316c883300310b294c310feaad363</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description>Default access control on u_weather_app</description><local_or_existing>Existing</local_or_existing><name>u_weather_app</name><operation display_value="write">write</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>eeb316c883300310b294c310feaad363</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_eeb316c883300310b294c310feaad363</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><type display_value="record">record</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>-1870989833</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cbadb930c31d0310233a973ed4013136</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101df0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>e2b316c89a300310512b703fc551e868</update_guid>
+<update_guid_history>e2b316c89a300310512b703fc551e868:-1870989833</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_weather_app_u_fells_like_c</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update&gt;&lt;sys_dictionary action="INSERT_OR_UPDATE" element="u_fells_like_c" table="u_weather_app"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;attributes/&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Fells Like (°C)&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;u_fells_like_c&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;name&gt;u_weather_app&lt;/name&gt;&lt;next_element/&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_dictionary&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-05-07 07:05:03&lt;/sys_created_on&gt;&lt;sys_id&gt;d2c7564483700310b294c310feaad311&lt;/sys_id&gt;&lt;sys_name&gt;Fells Like (°C)&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_dictionary_u_weather_app_u_fells_like_c&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-05-07 07:05:03&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_dictionary&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1699479688</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cfadb1f4c3d90310233a973ed40131a1</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841028f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.Fells Like (°C)</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_guid>6f581e8458700310466a914c726dc638</update_guid>
+<update_guid_history>6f581e8458700310466a914c726dc638:1699479688,cb58da846d7003101d0cfdaad917c7a2:1699479688</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_weather_app_u_city_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_city" label="City" language="en" table="u_weather_app"><sys_documentation action="INSERT_OR_UPDATE"><element>u_city</element><help/><hint/><label>City</label><language>en</language><name>u_weather_app</name><plural>Cities</plural><sys_class_name>sys_documentation</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:49:56</sys_created_on><sys_id>61e4de4c83300310b294c310feaad391</sys_id><sys_mod_count>0</sys_mod_count><sys_name>City</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_documentation_u_weather_app_u_city_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:49:56</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation></record_update>]]></payload>
+<payload_hash>-1608521864</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cfadb930c31d0310233a973ed401312d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e0841024b0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>Weather App.City</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_guid>a1e4de4cb83003107de2a6277dd6f6b3</update_guid>
+<update_guid_history>a1e4de4cb83003107de2a6277dd6f6b3:-1608521864,98b0dde4a5700310e33ae6042c71229d:903870544,82dc0dec18300310de17452eaabf4578:-1608521864</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_182b5a0c83700310b294c310feaad31b</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="INSERT_OR_UPDATE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content/><function_name>Get_Current_Weather</function_name><http_method>get</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name>Weather API [ Get_Current_Weather ]</qualified_name><rest_endpoint>http://api.weatherapi.com/v1/current.json?key=${api_key}&amp;q=${city}&amp;aqi=yes</rest_endpoint><rest_message display_value="Weather API">619a96c883700310b294c310feaad3b9</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 07:23:18</sys_created_on><sys_id>182b5a0c83700310b294c310feaad31b</sys_id><sys_mod_count>6</sys_mod_count><sys_name>Get_Current_Weather</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_182b5a0c83700310b294c310feaad31b</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 15:38:10</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+<payload_hash>43854638</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cfadb930c31d0310233a973ed4013132</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084103670000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table/>
+<target_name>Get_Current_Weather</target_name>
+<type>HTTP Method</type>
+<update_domain>global</update_domain>
+<update_guid>5fcd48d4b8304310af9d2e8d92027f18</update_guid>
+<update_guid_history>5fcd48d4b8304310af9d2e8d92027f18:43854638,19cc8454603043104b4e0372fa3638e4:-340623644,ddac805493304310c3048390b107f9c5:-1072812836,da9a84585dfc03100b1759b9244bd67d:43854638,0ccf37881cbc0310cd4950ecb10d60de:-340623644,bcdf6f48e83c0310d9d83d61707634e2:-1072812836,568c9a80dc7003108c4f5643421b82ef:-340623644</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_62b316c883300310b294c310feaad36a</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-05-07 06:44:49</sys_created_on><sys_id>62b316c883300310b294c310feaad36a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_weather_app.u_weather_app_user</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="u_weather_app">eeb316c883300310b294c310feaad363</sys_security_acl><sys_update_name>sys_security_acl_role_62b316c883300310b294c310feaad36a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-05-07 06:44:49</sys_updated_on><sys_user_role display_value="u_weather_app_user" name="u_weather_app_user">1eb3d2c883300310b294c310feaad388</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>-1052859775</payload_hash>
+<remote_update_set display_value="Weather Details">0badb1f4c3d90310233a973ed401319e</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-06-03 09:35:18</sys_created_on>
+<sys_id>cfadb930c31d0310233a973ed4013137</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19e084101e70000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-06-03 09:35:18</sys_updated_on>
+<table>u_weather_app</table>
+<target_name>u_weather_app.u_weather_app_user</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>62b316c87f300310900de17e04570772</update_guid>
+<update_guid_history>62b316c87f300310900de17e04570772:-1052859775</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>

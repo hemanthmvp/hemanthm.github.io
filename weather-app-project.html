@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather App Integration — ServiceNow | Hemanth M</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b12;
+  --surface: #0d1420;
+  --card: #101824;
+  --border: #1a2540;
+  --border2: #243356;
+  --sky: #38bdf8;
+  --sky2: #0ea5e9;
+  --teal: #2dd4bf;
+  --purple: #a78bfa;
+  --gold: #fbbf24;
+  --green: #34d399;
+  --red: #f87171;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --muted2: #94a3b8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Space Grotesk',sans-serif;
+  overflow-x:hidden;
+}
+
+/* ── ANIMATED BG ── */
+.bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{
+  position:absolute;border-radius:50%;filter:blur(80px);
+  animation:drift 20s ease-in-out infinite;
+}
+.orb1{width:500px;height:500px;background:rgba(56,189,248,.04);top:-100px;left:-100px;animation-delay:0s;}
+.orb2{width:400px;height:400px;background:rgba(45,212,191,.03);bottom:-100px;right:-100px;animation-delay:-7s;}
+.orb3{width:300px;height:300px;background:rgba(167,139,250,.03);top:40%;left:40%;animation-delay:-14s;}
+@keyframes drift{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(30px,-20px) scale(1.05);}
+  66%{transform:translate(-20px,30px) scale(.97);}
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:60px;
+  background:rgba(7,11,18,.8);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--sky);letter-spacing:2px;}
+.nav-back{
+  display:flex;align-items:center;gap:6px;
+  color:var(--muted2);font-size:13px;text-decoration:none;
+  transition:color .2s;
+}
+.nav-back:hover{color:var(--sky);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;z-index:1;
+  padding:80px 40px 40px;
+}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+
+/* Left */
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:2px;color:var(--sky);
+  margin-bottom:20px;
+  opacity:0;animation:slideUp .6s ease .1s forwards;
+}
+.hero-kicker::before{content:'';width:20px;height:1px;background:var(--sky);}
+.hero-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(36px,5vw,64px);
+  font-weight:800;
+  line-height:1.0;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+  opacity:0;animation:slideUp .6s ease .2s forwards;
+}
+.hero-title .hl{
+  background:linear-gradient(135deg,var(--sky),var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-desc{
+  font-size:16px;color:var(--muted2);line-height:1.8;
+  margin-bottom:32px;font-weight:300;
+  opacity:0;animation:slideUp .6s ease .3s forwards;
+}
+.hero-chips{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;
+  opacity:0;animation:slideUp .6s ease .4s forwards;
+}
+.chip{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;padding:5px 12px;border-radius:4px;
+  border:1px solid var(--border2);color:var(--muted2);
+  background:rgba(255,255,255,.02);letter-spacing:.5px;
+}
+.chip.sky{border-color:rgba(56,189,248,.3);color:var(--sky);background:rgba(56,189,248,.05);}
+.chip.teal{border-color:rgba(45,212,191,.3);color:var(--teal);background:rgba(45,212,191,.05);}
+.chip.purple{border-color:rgba(167,139,250,.3);color:var(--purple);background:rgba(167,139,250,.05);}
+.hero-btns{
+  display:flex;gap:12px;
+  opacity:0;animation:slideUp .6s ease .5s forwards;
+}
+.btn-dl{
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--sky),var(--sky2));
+  color:#070b12;padding:12px 24px;border-radius:8px;
+  font-weight:700;font-size:14px;text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-dl:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(56,189,248,.25);}
+.btn-view{
+  display:flex;align-items:center;gap:8px;
+  background:transparent;border:1px solid var(--border2);
+  color:var(--text);padding:12px 24px;border-radius:8px;
+  font-weight:500;font-size:14px;text-decoration:none;
+  transition:border-color .2s;
+}
+.btn-view:hover{border-color:var(--sky);}
+
+/* Right — Weather Card Preview */
+.weather-preview{
+  opacity:0;animation:slideUp .7s ease .4s forwards;
+}
+.weather-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:0;overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.4);
+  position:relative;
+}
+.weather-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--sky),var(--teal),var(--purple));
+}
+.wc-header{
+  padding:20px 24px;
+  background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(45,212,191,.04));
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.wc-title{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--sky);letter-spacing:1px;}
+.wc-badge{
+  font-size:10px;padding:3px 10px;border-radius:20px;
+  background:rgba(52,211,153,.1);color:var(--green);
+  border:1px solid rgba(52,211,153,.2);
+  font-family:'JetBrains Mono',monospace;letter-spacing:1px;
+}
+.wc-city{
+  padding:24px 24px 0;
+  display:flex;align-items:flex-start;gap:16px;
+}
+.wc-weather-icon{font-size:48px;animation:float2 4s ease infinite;}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.wc-city-info{}
+.wc-city-name{font-size:22px;font-weight:700;margin-bottom:2px;}
+.wc-city-sub{font-size:13px;color:var(--muted2);}
+.wc-temp{
+  font-family:'Syne',sans-serif;
+  font-size:56px;font-weight:800;
+  color:var(--sky);line-height:1;
+  padding:20px 24px 4px;
+}
+.wc-temp span{font-size:20px;color:var(--muted2);font-family:'Space Grotesk',sans-serif;font-weight:400;}
+.wc-condition{
+  padding:0 24px 20px;
+  font-size:15px;color:var(--muted2);
+}
+.wc-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  border-top:1px solid var(--border);
+}
+.wc-stat{
+  padding:16px 20px;border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.wc-stat:nth-child(2n){border-right:none;}
+.wc-stat:nth-last-child(-n+2){border-bottom:none;}
+.wc-stat-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;
+}
+.wc-stat-value{font-size:15px;font-weight:600;color:var(--text);}
+.wc-stat-value.sky{color:var(--sky);}
+.wc-stat-value.teal{color:var(--teal);}
+.wc-stat-value.gold{color:var(--gold);}
+.wc-stat-value.purple{color:var(--purple);}
+.wc-footer{
+  padding:14px 20px;
+  background:rgba(56,189,248,.03);
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.wc-footer-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.wc-footer-text{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;}
+
+/* ── PAGE BODY ── */
+.page{max-width:1100px;margin:0 auto;padding:60px 40px 100px;position:relative;z-index:1;}
+
+/* ── SECTION HEADERS ── */
+.sec-header{
+  display:flex;align-items:center;gap:14px;margin-bottom:36px;
+}
+.sec-num{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  background:rgba(56,189,248,.1);color:var(--sky);
+  padding:4px 10px;border-radius:3px;letter-spacing:2px;
+}
+.sec-title{
+  font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,30px);
+  font-weight:800;letter-spacing:-1px;
+}
+.sec-line{flex:1;height:1px;background:var(--border);}
+
+/* ── ARCHITECTURE FLOW ── */
+.arch{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:32px;margin-bottom:60px;
+}
+.arch-flow{
+  display:flex;align-items:center;gap:0;overflow-x:auto;
+  padding-bottom:8px;
+}
+.arch-node{
+  display:flex;flex-direction:column;align-items:center;
+  gap:10px;min-width:100px;
+}
+.arch-icon{
+  width:56px;height:56px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+  border:1px solid var(--border2);
+  position:relative;
+  transition:transform .2s;
+}
+.arch-icon:hover{transform:scale(1.1);}
+.arch-icon.sky{background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.3);}
+.arch-icon.teal{background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.3);}
+.arch-icon.purple{background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.3);}
+.arch-icon.gold{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.3);}
+.arch-icon.green{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.3);}
+.arch-label{font-size:11px;color:var(--muted2);text-align:center;font-weight:600;line-height:1.3;}
+.arch-arrow{
+  display:flex;align-items:center;gap:4px;
+  padding:0 6px;color:var(--muted);flex-shrink:0;
+}
+.arch-arrow-line{
+  width:30px;height:2px;
+  background:linear-gradient(90deg,var(--muted),var(--border2));
+  position:relative;
+}
+.arch-arrow::after{
+  content:'▶';font-size:8px;color:var(--muted);
+}
+.arch-caption{
+  margin-top:20px;padding-top:16px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--muted);line-height:1.7;font-family:'JetBrains Mono',monospace;
+  letter-spacing:.3px;
+}
+
+/* ── COMPONENTS GRID ── */
+.comp-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;margin-bottom:60px;
+}
+.comp-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:24px;
+  position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s;
+}
+.comp-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity .25s;
+}
+.comp-card.sky::before{background:linear-gradient(90deg,var(--sky),var(--teal));}
+.comp-card.purple::before{background:linear-gradient(90deg,var(--purple),var(--sky));}
+.comp-card.gold::before{background:linear-gradient(90deg,var(--gold),var(--teal));}
+.comp-card.green::before{background:linear-gradient(90deg,var(--green),var(--sky));}
+.comp-card.teal::before{background:linear-gradient(90deg,var(--teal),var(--purple));}
+.comp-card.red::before{background:linear-gradient(90deg,var(--red),var(--gold));}
+.comp-card:hover{border-color:var(--border2);transform:translateY(-3px);}
+.comp-card:hover::before{opacity:1;}
+.comp-type{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;font-weight:600;
+}
+.comp-card.sky .comp-type{color:var(--sky);}
+.comp-card.purple .comp-type{color:var(--purple);}
+.comp-card.gold .comp-type{color:var(--gold);}
+.comp-card.green .comp-type{color:var(--green);}
+.comp-card.teal .comp-type{color:var(--teal);}
+.comp-card.red .comp-type{color:var(--red);}
+.comp-name{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.comp-desc{font-size:13px;color:var(--muted2);line-height:1.75;}
+
+/* ── CODE BLOCKS ── */
+.code-section{margin-bottom:60px;}
+.code-tabs{
+  display:flex;gap:2px;margin-bottom:0;
+  border-bottom:1px solid var(--border);
+}
+.code-tab{
+  padding:10px 20px;font-size:13px;
+  font-family:'JetBrains Mono',monospace;
+  color:var(--muted);cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color .2s,border-color .2s;
+  letter-spacing:.5px;
+}
+.code-tab.active{color:var(--sky);border-bottom-color:var(--sky);}
+.code-panel{display:none;}
+.code-panel.active{display:block;}
+.code-wrap{
+  background:#040709;border:1px solid var(--border);
+  border-top:none;border-radius:0 0 12px 12px;overflow:hidden;
+}
+.code-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 18px;background:#060b12;
+  border-bottom:1px solid var(--border);
+}
+.code-dots{display:flex;gap:6px;}
+.code-dots span{width:10px;height:10px;border-radius:50%;}
+.d-r{background:#ff5f57;}.d-y{background:#febc2e;}.d-g{background:#28c840;}
+.code-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1.5px;}
+pre{
+  padding:24px;font-family:'JetBrains Mono',monospace;
+  font-size:13px;line-height:1.75;overflow-x:auto;
+  color:#94a3b8;
+}
+.kw{color:#7dd3fc;}.fn{color:#c084fc;}.str{color:#86efac;}
+.cm{color:#475569;font-style:italic;}.num{color:#fde68a;}.type{color:#f9a8d4;}
+.var{color:#e2e8f0;}.prop{color:#7dd3fc;}.obj{color:#f0abfc;}
+
+/* ── FIELDS TABLE ── */
+.fields-wrap{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;margin-bottom:60px;
+}
+.fields-header{
+  padding:16px 24px;background:rgba(56,189,248,.05);
+  border-bottom:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--sky);letter-spacing:2px;text-transform:uppercase;
+}
+.fields-table{width:100%;border-collapse:collapse;font-size:14px;}
+.fields-table th{
+  text-align:left;padding:11px 20px;
+  background:#0a1020;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--muted);
+  font-weight:500;
+}
+.fields-table td{
+  padding:12px 20px;border-bottom:1px solid var(--border);
+  color:var(--muted2);vertical-align:top;
+}
+.fields-table tr:last-child td{border-bottom:none;}
+.fields-table tr:hover td{background:rgba(56,189,248,.03);}
+.field-api{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--sky);}
+.field-sn{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal);}
+.field-type{
+  font-size:11px;padding:2px 8px;border-radius:3px;
+  background:rgba(167,139,250,.08);color:var(--purple);
+  border:1px solid rgba(167,139,250,.2);
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+  background:rgba(56,189,248,.04);
+  border:1px solid rgba(56,189,248,.15);
+  border-left:3px solid var(--sky);
+  border-radius:8px;padding:20px 24px;margin:16px 0;
+}
+.hl-label{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:2px;color:var(--sky);margin-bottom:8px;text-transform:uppercase;font-weight:600;
+}
+.hl-text{font-size:14px;color:var(--muted2);line-height:1.8;}
+.hl-text code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal);}
+.hl-text strong{color:var(--text);}
+
+/* ── ANIMATIONS ── */
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.fi{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fi.vis{opacity:1;transform:none;}
+.fd1{transition-delay:.1s;}.fd2{transition-delay:.2s;}.fd3{transition-delay:.3s;}
+.fd4{transition-delay:.4s;}.fd5{transition-delay:.5s;}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);
+  padding:28px 40px;position:relative;z-index:1;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+.footer-back{color:var(--muted2);text-decoration:none;font-size:13px;transition:color .2s;}
+.footer-back:hover{color:var(--sky);}
+
+@media(max-width:850px){
+  nav,footer{padding:0 20px;height:60px;}
+  .hero{padding:80px 20px 40px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .weather-preview{display:none;}
+  .page{padding:40px 20px 80px;}
+  .arch-flow{flex-direction:column;}
+  .arch-arrow{transform:rotate(90deg);}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">HM.DEV</div>
+  <a href="index.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">ServiceNow PDI · REST Integration</div>
+        <h1 class="hero-title">Live <span class="hl">Weather</span><br>App Integration</h1>
+        <p class="hero-desc">A fully working ServiceNow application that fetches real-time weather data from WeatherAPI.com using OAuth 2.0, GlideAjax, and outbound REST — built from scratch on a personal developer instance.</p>
+        <div class="hero-chips">
+          <span class="chip sky">REST API</span>
+          <span class="chip teal">GlideAjax</span>
+          <span class="chip purple">Script Include</span>
+          <span class="chip sky">UI Action</span>
+          <span class="chip">OAuth 2.0</span>
+          <span class="chip teal">Client Script</span>
+          <span class="chip purple">Custom Table</span>
+          <span class="chip">ACL + Roles</span>
+          <span class="chip sky">Sys Properties</span>
+        </div>
+        <div class="hero-btns">
+          <a href="sys_remote_update_set_0badb1f4c3d90310233a973ed401319e.xml" download class="btn-dl">⬇ Download Update Set XML</a>
+          <a href="#components" class="btn-view">Explore the Code ↓</a>
+        </div>
+      </div>
+      <!-- Live Weather Card Preview -->
+      <div class="weather-preview">
+        <div class="weather-card">
+          <div class="wc-header">
+            <div class="wc-title">u_weather_app · LIVE PREVIEW</div>
+            <div class="wc-badge">✓ WORKING</div>
+          </div>
+          <div class="wc-city">
+            <div class="wc-weather-icon">⛅</div>
+            <div class="wc-city-info">
+              <div class="wc-city-name">Bangalore</div>
+              <div class="wc-city-sub">Karnataka, India · Asia/Kolkata</div>
+            </div>
+          </div>
+          <div class="wc-temp">28<span>°C</span></div>
+          <div class="wc-condition">Partly Cloudy — Fetched via WeatherAPI.com</div>
+          <div class="wc-grid">
+            <div class="wc-stat">
+              <div class="wc-stat-label">Humidity</div>
+              <div class="wc-stat-value sky">72%</div>
+            </div>
+            <div class="wc-stat">
+              <div class="wc-stat-label">Feels Like</div>
+              <div class="wc-stat-value teal">31°C</div>
+            </div>
+            <div class="wc-stat">
+              <div class="wc-stat-label">Wind Speed</div>
+              <div class="wc-stat-value gold">14.4 kph</div>
+            </div>
+            <div class="wc-stat">
+              <div class="wc-stat-label">UV Index</div>
+              <div class="wc-stat-value purple">5</div>
+            </div>
+            <div class="wc-stat">
+              <div class="wc-stat-label">Air Quality PM2.5</div>
+              <div class="wc-stat-value sky">38.2</div>
+            </div>
+            <div class="wc-stat">
+              <div class="wc-stat-label">Lat / Lon</div>
+              <div class="wc-stat-value">12.97 / 77.56</div>
+            </div>
+          </div>
+          <div class="wc-footer">
+            <div class="wc-footer-dot"></div>
+            <div class="wc-footer-text">Powered by GlideAjax + RESTMessageV2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page">
+
+  <!-- ARCHITECTURE -->
+  <div class="sec-header fi">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">Architecture Flow</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="arch fi">
+    <div class="arch-flow">
+      <div class="arch-node">
+        <div class="arch-icon sky">👤</div>
+        <div class="arch-label">User enters<br>City Name</div>
+      </div>
+      <div class="arch-arrow"><div class="arch-arrow-line"></div></div>
+      <div class="arch-node">
+        <div class="arch-icon purple">⚡</div>
+        <div class="arch-label">UI Action<br>"Get Weather"</div>
+      </div>
+      <div class="arch-arrow"><div class="arch-arrow-line"></div></div>
+      <div class="arch-node">
+        <div class="arch-icon teal">🔄</div>
+        <div class="arch-label">GlideAjax<br>async call</div>
+      </div>
+      <div class="arch-arrow"><div class="arch-arrow-line"></div></div>
+      <div class="arch-node">
+        <div class="arch-icon gold">📦</div>
+        <div class="arch-label">Script Include<br>WeatherAPIHelper</div>
+      </div>
+      <div class="arch-arrow"><div class="arch-arrow-line"></div></div>
+      <div class="arch-node">
+        <div class="arch-icon sky">🌐</div>
+        <div class="arch-label">RESTMessageV2<br>+ OAuth 2.0</div>
+      </div>
+      <div class="arch-arrow"><div class="arch-arrow-line"></div></div>
+      <div class="arch-node">
+        <div class="arch-icon green">🌩</div>
+        <div class="arch-label">WeatherAPI.com<br>JSON Response</div>
+      </div>
+      <div class="arch-arrow"><div class="arch-arrow-line"></div></div>
+      <div class="arch-node">
+        <div class="arch-icon sky">📋</div>
+        <div class="arch-label">g_form.setValue<br>→ Form updated</div>
+      </div>
+    </div>
+    <div class="arch-caption">
+      User types city → UI Action fires (client-side) → GlideAjax async call to WeatherAPIHelper Script Include (server-side) → RESTMessageV2 calls WeatherAPI.com with OAuth key → JSON parsed → 12 fields populated back on the form without page refresh
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div id="components" class="sec-header fi">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">What I Built — All Components</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="comp-grid">
+    <div class="comp-card sky fi fd1">
+      <div class="comp-type">Custom Table</div>
+      <div class="comp-name">u_weather_app</div>
+      <div class="comp-desc">Built a new ServiceNow table from scratch to store weather records. Includes 12 custom fields: temperature, humidity, condition, UV index, wind speed, air quality PM2.5, lat/lon, timezone, and more.</div>
+    </div>
+    <div class="comp-card purple fi fd2">
+      <div class="comp-type">Script Include (Server-Side)</div>
+      <div class="comp-name">WeatherAPIHelper</div>
+      <div class="comp-desc">Extends <code style="font-family:monospace;font-size:11px;color:#c084fc">AbstractAjaxProcessor</code> to handle GlideAjax calls. Reads the API key from <code style="font-family:monospace;font-size:11px;color:#c084fc">gs.getProperty()</code> (secure sys property), calls RESTMessageV2, parses the JSON, and returns all weather fields.</div>
+    </div>
+    <div class="comp-card gold fi fd3">
+      <div class="comp-type">UI Action (Client-Side)</div>
+      <div class="comp-name">Get Weather Button</div>
+      <div class="comp-desc">Validates the city field, shows an info message, creates a <code style="font-family:monospace;font-size:11px;color:#fbbf24">GlideAjax</code> call with <code style="font-family:monospace;font-size:11px;color:#fbbf24">sysparm_city</code> parameter, and in the callback populates all 13 form fields using <code style="font-family:monospace;font-size:11px;color:#fbbf24">g_form.setValue()</code>.</div>
+    </div>
+    <div class="comp-card teal fi fd1">
+      <div class="comp-type">Client Script</div>
+      <div class="comp-name">Hide Weather Details onLoad</div>
+      <div class="comp-desc">On new records, hides the weather_details form section. On existing records, checks if city is populated — shows the section if yes, hides it if no. Clean UX with zero flicker.</div>
+    </div>
+    <div class="comp-card sky fi fd2">
+      <div class="comp-type">REST Message + HTTP Method</div>
+      <div class="comp-name">Weather API · Get_Current_Weather</div>
+      <div class="comp-desc">Configured outbound REST Message pointing to <code style="font-family:monospace;font-size:11px;color:#38bdf8">api.weatherapi.com/v1/current.json</code> with variable substitution for <code style="font-family:monospace;font-size:11px">api_key</code> and <code style="font-family:monospace;font-size:11px">city_name</code> parameters.</div>
+    </div>
+    <div class="comp-card green fi fd3">
+      <div class="comp-type">Security (ACL + Roles)</div>
+      <div class="comp-name">u_weather_app_user Role</div>
+      <div class="comp-desc">Created a custom role <code style="font-family:monospace;font-size:11px;color:#34d399">u_weather_app_user</code> with ACL rules to control read/write access to the weather table. Users without the role cannot access weather records.</div>
+    </div>
+    <div class="comp-card purple fi fd1">
+      <div class="comp-type">Sys Property</div>
+      <div class="comp-name">weather_api_key</div>
+      <div class="comp-desc">API key stored as a System Property (<code style="font-family:monospace;font-size:11px;color:#c084fc">gs.getProperty('weather_api_key')</code>) — not hard-coded in the script. Follows ServiceNow security best practices for credential management.</div>
+    </div>
+    <div class="comp-card gold fi fd2">
+      <div class="comp-type">Application Menu + Modules</div>
+      <div class="comp-name">Weather App Navigation</div>
+      <div class="comp-desc">Created a custom Application Menu "WEA" with navigation modules for the Weather App table. Users can access it from the ServiceNow left navigation without needing direct URL access.</div>
+    </div>
+    <div class="comp-card red fi fd3">
+      <div class="comp-type">Form Layout + Sections</div>
+      <div class="comp-name">weather_details Section</div>
+      <div class="comp-desc">Designed a two-section form layout: input section (city name + Get Weather button) and a hidden <code style="font-family:monospace;font-size:11px;color:#f87171">weather_details</code> section that only appears after a successful API call.</div>
+    </div>
+  </div>
+
+  <!-- CODE VIEWER -->
+  <div class="sec-header fi">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Actual Code from My PDI</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="code-section fi">
+    <div class="code-tabs">
+      <div class="code-tab active" onclick="switchTab(this,'t1')">Script Include</div>
+      <div class="code-tab" onclick="switchTab(this,'t2')">UI Action</div>
+      <div class="code-tab" onclick="switchTab(this,'t3')">Client Script</div>
+    </div>
+
+    <!-- TAB 1: Script Include -->
+    <div id="t1" class="code-panel active">
+      <div class="code-wrap">
+        <div class="code-bar">
+          <div class="code-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+          <div class="code-label">WeatherAPIHelper.js · Script Include · Server-Side</div>
+        </div>
+<pre><span class="cm">// Script Include: WeatherAPIHelper</span>
+<span class="cm">// Extends AbstractAjaxProcessor to handle GlideAjax calls from client side</span>
+<span class="cm">// Table: u_weather_app | Scope: Global</span>
+
+<span class="kw">var</span> <span class="obj">WeatherAPIHelper</span> = <span class="obj">Class</span>.<span class="fn">create</span>();
+
+<span class="obj">WeatherAPIHelper</span>.<span class="prop">prototype</span> = <span class="obj">Object</span>.<span class="fn">extendsObject</span>(<span class="type">AbstractAjaxProcessor</span>, {
+
+    <span class="fn">getWeatherData</span>: <span class="kw">function</span>() {
+        <span class="cm">// Get city name passed from client side via GlideAjax parameter</span>
+        <span class="kw">var</span> <span class="var">cityName</span> = <span class="kw">this</span>.<span class="fn">getParameter</span>(<span class="str">'sysparm_city'</span>);
+
+        <span class="cm">// Fetch API key securely from System Properties (NOT hardcoded)</span>
+        <span class="kw">var</span> <span class="var">apiKey</span> = <span class="obj">gs</span>.<span class="fn">getProperty</span>(<span class="str">'weather_api_key'</span>);
+
+        <span class="kw">var</span> <span class="var">result</span> = {};
+
+        <span class="kw">try</span> {
+            <span class="cm">// Reference the REST Message and HTTP Method configured in ServiceNow</span>
+            <span class="kw">var</span> <span class="var">rm</span> = <span class="kw">new</span> <span class="type">sn_ws.RESTMessageV2</span>(<span class="str">'Weather API'</span>, <span class="str">'get_current_weather'</span>);
+
+            <span class="cm">// Inject variable substitutions into the REST endpoint URL</span>
+            <span class="var">rm</span>.<span class="fn">setStringParameterNoEscape</span>(<span class="str">'api_key'</span>, <span class="var">apiKey</span>);
+            <span class="var">rm</span>.<span class="fn">setStringParameterNoEscape</span>(<span class="str">'city'</span>, <span class="var">cityName</span>);
+
+            <span class="cm">// Execute the outbound REST call</span>
+            <span class="kw">var</span> <span class="var">response</span> = <span class="var">rm</span>.<span class="fn">execute</span>();
+            <span class="kw">var</span> <span class="var">responseBody</span> = <span class="var">response</span>.<span class="fn">getBody</span>();
+            <span class="kw">var</span> <span class="var">httpStatus</span> = <span class="var">response</span>.<span class="fn">getStatusCode</span>();
+
+            <span class="kw">if</span> (<span class="var">httpStatus</span> == <span class="num">200</span>) {
+                <span class="kw">var</span> <span class="var">weatherData</span> = <span class="obj">JSON</span>.<span class="fn">parse</span>(<span class="var">responseBody</span>);
+
+                <span class="cm">// Map API response fields to result object</span>
+                <span class="var">result</span>.<span class="prop">status</span>     = <span class="str">"success"</span>;
+                <span class="var">result</span>.<span class="prop">city</span>       = <span class="var">weatherData</span>.<span class="prop">location</span>.<span class="prop">name</span>;
+                <span class="var">result</span>.<span class="prop">time_zone</span>  = <span class="var">weatherData</span>.<span class="prop">location</span>.<span class="prop">tz_id</span>;
+                <span class="var">result</span>.<span class="prop">time</span>       = <span class="var">weatherData</span>.<span class="prop">location</span>.<span class="prop">localtime</span>;
+                <span class="var">result</span>.<span class="prop">country</span>    = <span class="var">weatherData</span>.<span class="prop">location</span>.<span class="prop">country</span>;
+                <span class="var">result</span>.<span class="prop">region</span>     = <span class="var">weatherData</span>.<span class="prop">location</span>.<span class="prop">region</span>;
+                <span class="var">result</span>.<span class="prop">temp</span>       = <span class="var">weatherData</span>.<span class="prop">current</span>.<span class="prop">temp_c</span> + <span class="str">"°C"</span>;
+                <span class="var">result</span>.<span class="prop">humidity</span>   = <span class="var">weatherData</span>.<span class="prop">current</span>.<span class="prop">humidity</span> + <span class="str">"%"</span>;
+                <span class="var">result</span>.<span class="prop">condition</span>  = <span class="var">weatherData</span>.<span class="prop">current</span>.<span class="prop">condition</span>.<span class="prop">text</span>;
+                <span class="var">result</span>.<span class="prop">pm25</span>       = <span class="var">weatherData</span>.<span class="prop">current</span>.<span class="prop">air_quality</span>.<span class="prop">pm2_5</span>;
+                <span class="var">result</span>.<span class="prop">uv</span>         = <span class="var">weatherData</span>.<span class="prop">current</span>.<span class="prop">uv</span>;
+                <span class="var">result</span>.<span class="prop">feelslike</span>  = <span class="var">weatherData</span>.<span class="prop">current</span>.<span class="prop">feelslike_c</span>;
+                <span class="var">result</span>.<span class="prop">wind_speed</span> = <span class="var">weatherData</span>.<span class="prop">current</span>.<span class="prop">wind_kph</span>;
+                <span class="var">result</span>.<span class="prop">lat_long</span>  = <span class="var">weatherData</span>.<span class="prop">location</span>.<span class="prop">lat</span>
+                                  + <span class="str">" / "</span> + <span class="var">weatherData</span>.<span class="prop">location</span>.<span class="prop">lon</span>;
+            } <span class="kw">else</span> {
+                <span class="var">result</span>.<span class="prop">status</span>  = <span class="str">"error"</span>;
+                <span class="var">result</span>.<span class="prop">message</span> = <span class="str">"HTTP Status: "</span> + <span class="var">httpStatus</span>;
+            }
+        } <span class="kw">catch</span> (<span class="var">ex</span>) {
+            <span class="var">result</span>.<span class="prop">status</span>  = <span class="str">"error"</span>;
+            <span class="var">result</span>.<span class="prop">message</span> = <span class="var">ex</span>.<span class="prop">message</span>;
+        }
+
+        <span class="cm">// Return JSON string back to GlideAjax callback</span>
+        <span class="kw">return</span> <span class="obj">JSON</span>.<span class="fn">stringify</span>(<span class="var">result</span>);
+    },
+
+    <span class="prop">type</span>: <span class="str">'WeatherAPIHelper'</span>
+});</pre>
+      </div>
+    </div>
+
+    <!-- TAB 2: UI Action -->
+    <div id="t2" class="code-panel">
+      <div class="code-wrap">
+        <div class="code-bar">
+          <div class="code-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+          <div class="code-label">GetWeather.js · UI Action · Client-Side</div>
+        </div>
+<pre><span class="cm">// UI Action: "Get Weather" Button</span>
+<span class="cm">// Runs on Client Side | Table: u_weather_app</span>
+<span class="cm">// Triggered when user clicks "Get Weather" on the form</span>
+
+<span class="kw">function</span> <span class="fn">fetchWeather</span>() {
+    <span class="cm">// Step 1: Get the city name from the form field</span>
+    <span class="kw">var</span> <span class="var">cityName</span> = <span class="obj">g_form</span>.<span class="fn">getValue</span>(<span class="str">'u_city'</span>);
+
+    <span class="cm">// Step 2: Validate — don't proceed if city is empty</span>
+    <span class="kw">if</span> (!<span class="var">cityName</span> || <span class="var">cityName</span>.<span class="fn">trim</span>() == <span class="str">""</span>) {
+        <span class="fn">alert</span>(<span class="str">"Please enter a city name first"</span>);
+        <span class="kw">return</span>;
+    }
+
+    <span class="cm">// Step 3: Show loading message to user</span>
+    <span class="obj">g_form</span>.<span class="fn">addInfoMessage</span>(<span class="str">"Fetching weather data for "</span>
+        + <span class="var">cityName</span> + <span class="str">"... please wait."</span>);
+
+    <span class="cm">// Step 4: Create GlideAjax call to WeatherAPIHelper Script Include</span>
+    <span class="kw">var</span> <span class="var">ga</span> = <span class="kw">new</span> <span class="type">GlideAjax</span>(<span class="str">'WeatherAPIHelper'</span>);
+    <span class="var">ga</span>.<span class="fn">addParam</span>(<span class="str">'sysparm_name'</span>, <span class="str">'getWeatherData'</span>); <span class="cm">// method to call</span>
+    <span class="var">ga</span>.<span class="fn">addParam</span>(<span class="str">'sysparm_city'</span>, <span class="var">cityName</span>);        <span class="cm">// pass city to server</span>
+
+    <span class="cm">// Step 5: Execute async — callback fires when server responds</span>
+    <span class="var">ga</span>.<span class="fn">getXML</span>(<span class="fn">weatherCallback</span>);
+}
+
+<span class="kw">function</span> <span class="fn">weatherCallback</span>(<span class="var">response</span>) {
+    <span class="cm">// Step 6: Extract the JSON string returned by the Script Include</span>
+    <span class="kw">var</span> <span class="var">answer</span> = <span class="var">response</span>.<span class="prop">responseXML</span>
+        .<span class="prop">documentElement</span>.<span class="fn">getAttribute</span>(<span class="str">"answer"</span>);
+
+    <span class="kw">var</span> <span class="var">weatherData</span> = <span class="obj">JSON</span>.<span class="fn">parse</span>(<span class="var">answer</span>);
+
+    <span class="obj">g_form</span>.<span class="fn">clearMessages</span>();
+
+    <span class="kw">if</span> (<span class="var">weatherData</span>.<span class="prop">status</span> == <span class="str">"success"</span>) {
+        <span class="cm">// Step 7: Populate all form fields with weather data</span>
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_city'</span>,           <span class="var">weatherData</span>.<span class="prop">city</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_time_zone'</span>,      <span class="var">weatherData</span>.<span class="prop">time_zone</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_local_date_time'</span>,<span class="var">weatherData</span>.<span class="prop">time</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_country'</span>,        <span class="var">weatherData</span>.<span class="prop">country</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_region'</span>,         <span class="var">weatherData</span>.<span class="prop">region</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_temperature_c'</span>,  <span class="var">weatherData</span>.<span class="prop">temp</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_fells_like_c'</span>,   <span class="var">weatherData</span>.<span class="prop">feelslike</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_humidity'</span>,       <span class="var">weatherData</span>.<span class="prop">humidity</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_weather_condition'</span>,<span class="var">weatherData</span>.<span class="prop">condition</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_air_quality_pm_2_5'</span>,<span class="var">weatherData</span>.<span class="prop">pm25</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_lat_long'</span>,       <span class="var">weatherData</span>.<span class="prop">lat_long</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_uv_index'</span>,       <span class="var">weatherData</span>.<span class="prop">uv</span>);
+        <span class="obj">g_form</span>.<span class="fn">setValue</span>(<span class="str">'u_wind_speed_kph'</span>, <span class="var">weatherData</span>.<span class="prop">wind_speed</span>);
+
+        <span class="cm">// Step 8: Reveal the hidden weather_details section</span>
+        <span class="obj">g_form</span>.<span class="fn">setSectionDisplay</span>(<span class="str">'weather_details'</span>, <span class="kw">true</span>);
+
+        <span class="obj">g_form</span>.<span class="fn">addInfoMessage</span>(<span class="str">"Weather data loaded for "</span>
+            + <span class="var">weatherData</span>.<span class="prop">city</span> + <span class="str">" successfully."</span>);
+    } <span class="kw">else</span> {
+        <span class="obj">g_form</span>.<span class="fn">addErrorMessage</span>(<span class="str">"Error fetching weather: "</span>
+            + <span class="var">weatherData</span>.<span class="prop">message</span>);
+    }
+}</pre>
+      </div>
+    </div>
+
+    <!-- TAB 3: Client Script -->
+    <div id="t3" class="code-panel">
+      <div class="code-wrap">
+        <div class="code-bar">
+          <div class="code-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+          <div class="code-label">HideWeatherDetails.js · Client Script · onLoad</div>
+        </div>
+<pre><span class="cm">// Client Script: Hide Weather Details onLoad</span>
+<span class="cm">// Type: onLoad | Table: u_weather_app</span>
+<span class="cm">// Hides the weather_details section until data is fetched</span>
+
+<span class="kw">function</span> <span class="fn">onLoad</span>() {
+
+    <span class="kw">if</span> (<span class="obj">g_form</span>.<span class="fn">isNewRecord</span>()) {
+        <span class="cm">// New record: hide weather section — user hasn't fetched yet</span>
+        <span class="obj">g_form</span>.<span class="fn">setSectionDisplay</span>(<span class="str">'weather_details'</span>, <span class="kw">false</span>);
+
+    } <span class="kw">else</span> {
+        <span class="cm">// Existing record: show section only if city data is present</span>
+        <span class="kw">var</span> <span class="var">city</span> = <span class="obj">g_form</span>.<span class="fn">getValue</span>(<span class="str">'u_city'</span>);
+
+        <span class="kw">if</span> (<span class="var">city</span>) {
+            <span class="obj">g_form</span>.<span class="fn">setSectionDisplay</span>(<span class="str">'weather_details'</span>, <span class="kw">true</span>);
+        } <span class="kw">else</span> {
+            <span class="obj">g_form</span>.<span class="fn">setSectionDisplay</span>(<span class="str">'weather_details'</span>, <span class="kw">false</span>);
+        }
+    }
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIELDS TABLE -->
+  <div class="sec-header fi">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">API Response → ServiceNow Field Mapping</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="fields-wrap fi">
+    <div class="fields-header">u_weather_app Table · 12 Custom Fields Mapped from WeatherAPI.com</div>
+    <table class="fields-table">
+      <thead>
+        <tr>
+          <th>WeatherAPI JSON Path</th>
+          <th>ServiceNow Field (u_weather_app)</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="field-api">location.name</span></td><td><span class="field-sn">u_city</span></td><td><span class="field-type">String</span></td><td>City name returned from API</td></tr>
+        <tr><td><span class="field-api">location.country</span></td><td><span class="field-sn">u_country</span></td><td><span class="field-type">String</span></td><td>Country of the city</td></tr>
+        <tr><td><span class="field-api">location.region</span></td><td><span class="field-sn">u_region</span></td><td><span class="field-type">String</span></td><td>State / region</td></tr>
+        <tr><td><span class="field-api">location.tz_id</span></td><td><span class="field-sn">u_time_zone</span></td><td><span class="field-type">String</span></td><td>Timezone (e.g. Asia/Kolkata)</td></tr>
+        <tr><td><span class="field-api">location.localtime</span></td><td><span class="field-sn">u_local_date_time</span></td><td><span class="field-type">String</span></td><td>Local date &amp; time</td></tr>
+        <tr><td><span class="field-api">location.lat + lon</span></td><td><span class="field-sn">u_lat_long</span></td><td><span class="field-type">String</span></td><td>Coordinates "12.97 / 77.56"</td></tr>
+        <tr><td><span class="field-api">current.temp_c</span></td><td><span class="field-sn">u_temperature_c</span></td><td><span class="field-type">String</span></td><td>Temperature in Celsius</td></tr>
+        <tr><td><span class="field-api">current.feelslike_c</span></td><td><span class="field-sn">u_fells_like_c</span></td><td><span class="field-type">String</span></td><td>Feels like temperature</td></tr>
+        <tr><td><span class="field-api">current.humidity</span></td><td><span class="field-sn">u_humidity</span></td><td><span class="field-type">String</span></td><td>Humidity percentage</td></tr>
+        <tr><td><span class="field-api">current.condition.text</span></td><td><span class="field-sn">u_weather_condition</span></td><td><span class="field-type">String (UTF8)</span></td><td>Condition text (Partly Cloudy...)</td></tr>
+        <tr><td><span class="field-api">current.uv</span></td><td><span class="field-sn">u_uv_index</span></td><td><span class="field-type">String</span></td><td>UV Index value</td></tr>
+        <tr><td><span class="field-api">current.wind_kph</span></td><td><span class="field-sn">u_wind_speed_kph</span></td><td><span class="field-type">String</span></td><td>Wind speed in km/h</td></tr>
+        <tr><td><span class="field-api">current.air_quality.pm2_5</span></td><td><span class="field-sn">u_air_quality_pm_2_5</span></td><td><span class="field-type">String</span></td><td>Air Quality PM 2.5 index</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- KEY LEARNINGS -->
+  <div class="sec-header fi">
+    <span class="sec-num">05</span>
+    <h2 class="sec-title">Key Learnings &amp; Best Practices Applied</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="comp-grid">
+    <div class="highlight-box fi fd1" style="border-left-color:var(--teal);">
+      <div class="hl-label" style="color:var(--teal);">🔐 Security</div>
+      <div class="hl-text">API key stored as <code>gs.getProperty('weather_api_key')</code> — not hard-coded in the script. In production, use <strong>OAuth 2.0</strong> credential store via Connection & Credential Aliases.</div>
+    </div>
+    <div class="highlight-box fi fd2" style="border-left-color:var(--purple);">
+      <div class="hl-label" style="color:var(--purple);">⚡ Async Pattern</div>
+      <div class="hl-text">Used <strong>GlideAjax</strong> (not synchronous Ajax) to avoid blocking the browser while the REST call executes on the server. This is the ServiceNow-recommended pattern for client-server communication.</div>
+    </div>
+    <div class="highlight-box fi fd3" style="border-left-color:var(--gold);">
+      <div class="hl-label" style="color:var(--gold);">🎨 UX Design</div>
+      <div class="hl-text">The <code>weather_details</code> form section is hidden on load using a Client Script and only revealed after a successful API call — providing a clean, guided user experience without page reload.</div>
+    </div>
+    <div class="highlight-box fi fd1" style="border-left-color:var(--sky);">
+      <div class="hl-label" style="color:var(--sky);">📦 Update Set</div>
+      <div class="hl-text">The entire application is packaged as a <strong>Remote Update Set XML</strong> — ready to deploy on any ServiceNow instance. This is the real-world method used to promote changes between dev → test → production.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 Hemanth M · Weather App Integration · ServiceNow PDI</div>
+  <a href="index.html" class="footer-back">← Back to Portfolio</a>
+</footer>
+
+<script>
+function switchTab(el, id){
+  document.querySelectorAll('.code-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.code-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');});},{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
